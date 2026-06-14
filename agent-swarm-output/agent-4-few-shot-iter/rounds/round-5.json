@@ -1,0 +1,189 @@
+{
+  "ranAt": "2026-06-13T13:26:58.898Z",
+  "model": "MiniMax-M2.7",
+  "temperature": 0,
+  "config": "user-verbose-T0 + 5 examples (best from round 4)",
+  "summary": {
+    "totalQueries": 5,
+    "successfulQueries": 3,
+    "avgLatency": 9931,
+    "totalLength2Spans": 19,
+    "totalSpans": 19,
+    "length2Ratio": 1
+  },
+  "results": [
+    {
+      "query": "深秋的街道铺满落叶，远处传来咖啡店轻柔的音乐。",
+      "queryBaselineStarts": [
+        0,
+        3,
+        7,
+        12,
+        17,
+        20
+      ],
+      "latencyMs": 16662,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 4096,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 416
+      },
+      "thinkingChars": 12231,
+      "rawText": "",
+      "lengths": null,
+      "starts": null,
+      "overlap1": null,
+      "overlap2": null,
+      "parseError": "Unexpected end of JSON input"
+    },
+    {
+      "query": "城市的清晨从一碗热粥开始，街角的早餐店冒着蒸汽。",
+      "queryBaselineStarts": [
+        0,
+        3,
+        10,
+        13,
+        16,
+        21
+      ],
+      "latencyMs": 6882,
+      "usage": {
+        "input_tokens": 444,
+        "output_tokens": 1299
+      },
+      "thinkingChars": 5628,
+      "rawText": "{\"highlight\":{\"0\":[0,2,6,2,13,2,16,2,21,2]}}",
+      "lengths": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "starts": [
+        0,
+        6,
+        13,
+        16,
+        21
+      ],
+      "overlap1": "4/5",
+      "overlap2": "4/5",
+      "totalChars": 10,
+      "density": 41.7,
+      "length2Count": 5,
+      "lengthTotalCount": 5
+    },
+    {
+      "query": "写作是一种与未来读者的对话，作者写下文字，期望有人愿意倾听。",
+      "queryBaselineStarts": [
+        0,
+        8,
+        11,
+        14,
+        18,
+        23,
+        27
+      ],
+      "latencyMs": 4386,
+      "usage": {
+        "input_tokens": 444,
+        "output_tokens": 973
+      },
+      "thinkingChars": 2998,
+      "rawText": "{\"highlight\":{\"0\":[0,2,8,2,11,2,14,2,18,2,21,2,25,2]}}",
+      "lengths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "starts": [
+        0,
+        8,
+        11,
+        14,
+        18,
+        21,
+        25
+      ],
+      "overlap1": "5/7",
+      "overlap2": "7/7",
+      "totalChars": 14,
+      "density": 46.7,
+      "length2Count": 7,
+      "lengthTotalCount": 7
+    },
+    {
+      "query": "海边的礁石上长满了贝类，潮水退去后留下海盐结晶。",
+      "queryBaselineStarts": [
+        0,
+        3,
+        6,
+        9,
+        14,
+        17,
+        21
+      ],
+      "latencyMs": 16356,
+      "usage": {
+        "input_tokens": 447,
+        "output_tokens": 4096
+      },
+      "thinkingChars": 11909,
+      "rawText": "",
+      "lengths": null,
+      "starts": null,
+      "overlap1": null,
+      "overlap2": null,
+      "parseError": "Unexpected end of JSON input"
+    },
+    {
+      "query": "夜读时一盏台灯就足够，书页翻动的声音让整个房间变得安静。",
+      "queryBaselineStarts": [
+        0,
+        5,
+        8,
+        13,
+        16,
+        21,
+        25
+      ],
+      "latencyMs": 5369,
+      "usage": {
+        "input_tokens": 449,
+        "output_tokens": 1089
+      },
+      "thinkingChars": 4455,
+      "rawText": "{\"highlight\":{\"0\":[0,2,5,2,8,2,13,2,16,2,19,2,25,2]}}",
+      "lengths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "starts": [
+        0,
+        5,
+        8,
+        13,
+        16,
+        19,
+        25
+      ],
+      "overlap1": "6/7",
+      "overlap2": "7/7",
+      "totalChars": 14,
+      "density": 50,
+      "length2Count": 7,
+      "lengthTotalCount": 7
+    }
+  ]
+}

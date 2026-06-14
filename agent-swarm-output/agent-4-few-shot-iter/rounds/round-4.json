@@ -1,0 +1,154 @@
+{
+  "ranAt": "2026-06-13T13:23:46.611Z",
+  "model": "MiniMax-M2.7",
+  "queryText": "深秋的街道铺满落叶，远处传来咖啡店轻柔的音乐。",
+  "queryBaselineStarts": [
+    0,
+    3,
+    7,
+    12,
+    17,
+    20
+  ],
+  "queryBaselineRaw": [
+    0,
+    2,
+    3,
+    2,
+    7,
+    2,
+    12,
+    2,
+    17,
+    2,
+    20,
+    2
+  ],
+  "results": [
+    {
+      "label": "r4-system-verbose-T0.1",
+      "rulePosition": "system",
+      "ruleStyle": "verbose",
+      "temperature": 0.1,
+      "latencyMs": 49652,
+      "usage": {
+        "input_tokens": 443,
+        "output_tokens": 4096
+      },
+      "rawText": "",
+      "thinkingChars": 10795,
+      "parseError": "Unexpected end of JSON input"
+    },
+    {
+      "label": "r4-user-verbose-T0.1",
+      "rulePosition": "user",
+      "ruleStyle": "verbose",
+      "temperature": 0.1,
+      "latencyMs": 10105,
+      "usage": {
+        "input_tokens": 443,
+        "output_tokens": 2071
+      },
+      "rawText": "{\"highlight\":{\"0\":[0,2,6,2,12,2,18,2]}}",
+      "thinkingChars": 6980,
+      "starts": [
+        0,
+        6,
+        12,
+        18
+      ],
+      "lengths": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "totalChars": 8,
+      "density": 34.8,
+      "overlap1": "4/4 starts within ±1",
+      "overlap2": "4/4 starts within ±2"
+    },
+    {
+      "label": "r4-user-concise-T0.1",
+      "rulePosition": "user",
+      "ruleStyle": "concise",
+      "temperature": 0.1,
+      "latencyMs": 52583,
+      "usage": {
+        "input_tokens": 425,
+        "output_tokens": 4096
+      },
+      "rawText": "",
+      "thinkingChars": 11473,
+      "parseError": "Unexpected end of JSON input"
+    },
+    {
+      "label": "r4-user-verbose-T0",
+      "rulePosition": "user",
+      "ruleStyle": "verbose",
+      "temperature": 0,
+      "latencyMs": 6499,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 1299,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 416
+      },
+      "rawText": "{\"highlight\":{\"0\":[3,2,7,2,10,2,13,2,17,2,20,2]}}",
+      "thinkingChars": 6367,
+      "starts": [
+        3,
+        7,
+        10,
+        13,
+        17,
+        20
+      ],
+      "lengths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "totalChars": 12,
+      "density": 52.2,
+      "overlap1": "5/6 starts within ±1",
+      "overlap2": "6/6 starts within ±2"
+    },
+    {
+      "label": "r4-user-verbose-T0.3",
+      "rulePosition": "user",
+      "ruleStyle": "verbose",
+      "temperature": 0.3,
+      "latencyMs": 10506,
+      "usage": {
+        "input_tokens": 27,
+        "output_tokens": 2069,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 416
+      },
+      "rawText": "{\"highlight\":{\"0\":[0,2,4,2,10,2,16,2,20,2]}}",
+      "thinkingChars": 6754,
+      "starts": [
+        0,
+        4,
+        10,
+        16,
+        20
+      ],
+      "lengths": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "totalChars": 10,
+      "density": 43.5,
+      "overlap1": "4/5 starts within ±1",
+      "overlap2": "5/5 starts within ±2"
+    }
+  ]
+}
