@@ -1,0 +1,74 @@
+[
+  {
+    "id": "ruanyifeng_weekly_290",
+    "label": "阮一峰科技爱好者周刊 290",
+    "category": "chinese_blog",
+    "url": "https://www.ruanyifeng.com/blog/2024/02/weekly-issue-290.html"
+  },
+  {
+    "id": "ruanyifeng_weekly_275",
+    "label": "阮一峰科技爱好者周刊 275",
+    "category": "chinese_blog",
+    "url": "https://www.ruanyifeng.com/blog/2023/10/weekly-issue-275.html"
+  },
+  {
+    "id": "zhwiki_reading",
+    "label": "中文维基百科：阅读",
+    "category": "encyclopedia",
+    "url": "https://zh.wikipedia.org/wiki/%E9%98%85%E8%AF%BB"
+  },
+  {
+    "id": "zhwiki_ai",
+    "label": "中文维基百科：人工智能",
+    "category": "encyclopedia",
+    "url": "https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"
+  },
+  {
+    "id": "enwiki_speed_reading",
+    "label": "English Wikipedia: Speed reading",
+    "category": "encyclopedia",
+    "url": "https://en.wikipedia.org/wiki/Speed_reading"
+  },
+  {
+    "id": "paul_graham_read",
+    "label": "Paul Graham: How to Read",
+    "category": "essay",
+    "url": "https://www.paulgraham.com/read.html"
+  },
+  {
+    "id": "paul_graham_superlinear",
+    "label": "Paul Graham: Superlinear Returns",
+    "category": "essay",
+    "url": "https://www.paulgraham.com/superlinear.html"
+  },
+  {
+    "id": "python_313_release",
+    "label": "Python 3.13.0 release post",
+    "category": "tech_blog",
+    "url": "https://blog.python.org/2024/10/python-3130-final-released.html"
+  },
+  {
+    "id": "chrome_active_tab",
+    "label": "Chrome extensions activeTab docs",
+    "category": "documentation",
+    "url": "https://developer.chrome.com/docs/extensions/develop/concepts/activeTab"
+  },
+  {
+    "id": "github_blog_example",
+    "label": "GitHub Blog example article",
+    "category": "tech_blog",
+    "url": "https://github.blog/2019-03-29-leader-spotlight-erin-spiceland/"
+  },
+  {
+    "id": "w3c_wcag22",
+    "label": "W3C WCAG 2.2 recommendation",
+    "category": "documentation",
+    "url": "https://www.w3.org/TR/WCAG22/"
+  },
+  {
+    "id": "mdn_dom",
+    "label": "MDN DOM overview",
+    "category": "documentation",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"
+  }
+]

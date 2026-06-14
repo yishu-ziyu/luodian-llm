@@ -1,0 +1,47 @@
+# Local environment and secrets — never commit
+.env
+.env.local
+.env.*.local
+web-mvp/.env.local
+
+# Dependencies
+node_modules/
+
+# Original extension code (kept locally for research, not pushed)
+# Backup lives outside the repo. We do not redistribute this code.
+original-tillglance-extension/
+
+# Private session logs and todo scratchpads
+notes/
+tasks/
+
+# Saved experiment records contain model responses to public article text;
+# useful locally for re-analysis but not part of the open-source artifact.
+web-mvp/data/
+
+# OS / editor scratch files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Test / probe artifacts inside agent-swarm-output that contain raw LLM
+# responses (large JSON files with model output). Keep the agent reports
+# themselves but drop the verbose raw data.
+agent-swarm-output/**/raw/
+agent-swarm-output/**/outputs/
+agent-swarm-output/**/*.log
+agent-swarm-output/**/probe-*.json
+agent-swarm-output/**/mock-*.json
+agent-swarm-output/**/*-results.json
+agent-swarm-output/**/all-results.json
+agent-swarm-output/**/aggregate.json
+agent-swarm-output/**/runner-b.log
+
+# Coverage and build artifacts
+coverage/
+dist/
+build/
+*.tsbuildinfo

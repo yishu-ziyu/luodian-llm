@@ -1,0 +1,15 @@
+{
+  "name": "saccade-llm",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:web-mvp": "node web-mvp/server.mjs",
+    "test:web-mvp": "node --test web-mvp/tests/*.test.mjs",
+    "bakeoff:url-extraction": "node experiments/url-extraction-bakeoff/run-bakeoff.mjs"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "defuddle": "^0.18.1",
+    "jsdom": "^24.1.3"
+  }
+}

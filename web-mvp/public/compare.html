@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Saccade 高亮对照</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="app-shell compare-shell">
+      <header class="topbar">
+        <div>
+          <h1>Saccade 高亮对照</h1>
+          <p class="subtitle">同一篇文章，对比参考算法与 LLM 高亮选点。</p>
+        </div>
+        <div class="top-actions">
+          <a class="nav-link" href="/">阅读页</a>
+          <div class="mode-note" id="compare-model-note">baseline / AI</div>
+        </div>
+      </header>
+
+      <section class="workspace compare-workspace" aria-label="高亮对照工作台">
+        <section class="import-panel" aria-label="对照文章导入">
+          <label class="input-label" for="compare-url-input">公开网页 URL</label>
+          <div class="input-row">
+            <input id="compare-url-input" type="url" placeholder="https://example.com/article" autocomplete="off">
+            <button id="compare-url-button" type="button">导入 URL</button>
+          </div>
+
+          <div class="file-row">
+            <label class="file-picker" for="compare-file-input">选择 .txt / .md</label>
+            <input id="compare-file-input" type="file" accept=".txt,.md,text/plain,text/markdown">
+            <button id="compare-file-button" type="button">导入文件</button>
+            <span id="compare-file-name" class="file-name">未选择文件</span>
+          </div>
+
+          <div class="control-row">
+            <fieldset class="density-group">
+              <legend>AI 高亮密度</legend>
+              <label><input type="radio" name="compare-density" value="low">低</label>
+              <label><input type="radio" name="compare-density" value="medium" checked>中</label>
+              <label><input type="radio" name="compare-density" value="high">高</label>
+            </fieldset>
+            <button id="rerun-compare-button" type="button" disabled>重新对照</button>
+          </div>
+
+          <p class="privacy">
+            对照实验把文章文本发送给大模型服务，参考算法在本地按规则生成。请只使用可授权测试材料。
+          </p>
+        </section>
+
+        <section class="compare-pane" aria-label="对照结果">
+          <section class="status-line" id="compare-status-line" role="status">等待导入文章。</section>
+
+          <section class="metric-grid" id="metric-grid" aria-label="对照指标">
+            <div class="metric-card">
+              <span class="metric-label">位置命中率</span>
+              <strong id="metric-position">-</strong>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">覆盖相似度</span>
+              <strong id="metric-coverage">-</strong>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">密度偏差</span>
+              <strong id="metric-density">-</strong>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Baseline 召回</span>
+              <strong id="metric-recall">-</strong>
+            </div>
+          </section>
+
+          <section class="compare-columns" aria-label="双栏高亮对照">
+            <article class="compare-reader" id="baseline-reader" aria-label="参考算法高亮">
+              <div class="compare-reader-title">参考算法</div>
+              <div class="empty-state">导入文章后显示 baseline。</div>
+            </article>
+            <article class="compare-reader" id="ai-reader" aria-label="大模型高亮">
+              <div class="compare-reader-title">MiniMax-M3</div>
+              <div class="empty-state">导入文章后显示 AI 高亮。</div>
+            </article>
+          </section>
+
+          <article class="compare-reader diff-reader" id="diff-reader" aria-label="差异视图">
+            <div class="compare-reader-title">差异视图</div>
+            <div class="diff-legend" aria-label="差异图例">
+              <span><i class="legend-swatch both"></i>两者重合</span>
+              <span><i class="legend-swatch baseline-only"></i>参考算法独有</span>
+              <span><i class="legend-swatch ai-only"></i>AI 独有</span>
+            </div>
+            <div class="empty-state">这里会显示两套高亮的重合与偏差。</div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="/compare-app.js"></script>
+  </body>
+</html>

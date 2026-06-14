@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Saccade 阅读加速</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>Saccade 阅读加速</h1>
+          <p class="subtitle">导入文章，由 LLM 预测眼动落点，生成语义高亮阅读轨道。</p>
+        </div>
+        <div class="top-actions">
+          <a class="nav-link" href="/compare">对照实验</a>
+          <div class="mode-note" id="model-note">auto</div>
+        </div>
+      </header>
+
+      <section class="workspace" aria-label="阅读工作台">
+        <section class="import-panel" aria-label="文章导入">
+          <label class="input-label" for="url-input">公开网页 URL</label>
+          <div class="input-row">
+            <input id="url-input" type="url" placeholder="https://example.com/article" autocomplete="off">
+            <button id="import-url-button" type="button">导入 URL</button>
+          </div>
+
+          <div class="file-row">
+            <label class="file-picker" for="file-input">选择 .txt / .md</label>
+            <input id="file-input" type="file" accept=".txt,.md,text/plain,text/markdown">
+            <button id="import-file-button" type="button">导入文件</button>
+            <span id="file-name" class="file-name">未选择文件</span>
+          </div>
+
+          <div class="control-row">
+            <fieldset class="density-group">
+              <legend>高亮密度</legend>
+              <label><input type="radio" name="density" value="low">低</label>
+              <label><input type="radio" name="density" value="medium" checked>中</label>
+              <label><input type="radio" name="density" value="high">高</label>
+            </fieldset>
+            <label class="toggle-label"><input id="highlight-toggle" type="checkbox" checked>显示高亮</label>
+            <button id="regenerate-button" type="button" disabled>重新生成</button>
+          </div>
+
+          <p class="privacy">
+            你导入的文章文本会发送给大模型服务，用于生成语义高亮。请不要上传敏感、机密、未授权或付费受限内容。
+          </p>
+        </section>
+
+        <section class="reading-pane" aria-label="阅读结果">
+          <section class="status-line" id="status-line" role="status">等待导入文章。</section>
+
+          <article class="reader" id="reader" aria-label="高亮阅读器">
+            <div class="empty-state">导入公开网页、txt 或 md 后，这里会显示清洗后的文章和高亮。</div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
