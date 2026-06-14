@@ -27,7 +27,7 @@
 ## 关键决策
 
 - Saccade 命名：从 eye-tracking 文献的 "saccade"（眼跳）借词，描述 "模型预测眼动落点" 的核心机制。
-- 项目独立：以眼动学 + LLM 提示工程为研究主线，独立成 `saccade-llm`；不依赖任何上游服务。
+- 项目独立：以眼动学 + LLM 提示工程为研究主线，独立成 `落点-llm`（GitHub 上 pinyin 落地为 `luodian-llm`）；不依赖任何上游服务。
 - 对照页的"参考算法"是本地确定性 mock，不是第三方 baseline；UI 明确标注 `reference-mock`。
 - mock 永不假装是真模型：缺 key 时显式走 mock 路径，modelInfo 字段里 `provider: "mock"` 永远可读。
 
