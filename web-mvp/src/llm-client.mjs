@@ -6,7 +6,9 @@ import { assertHighlightMap, generateMockHighlightMap, clipHighlightSpans } from
 
 const DEFAULT_MINIMAX_BASE_URL = "https://api.minimax.io/anthropic";
 const DEFAULT_MINIMAX_MODEL = "MiniMax-M3";
+const DEFAULT_TILLGLANCE_API_URL = "https://api.tillglance.com/nlphl";
 const ANTHROPIC_VERSION = "2023-06-01";
+const MINIMAX_MAX_OUTPUT_TOKENS = 16384;
 const MINIMAX_MAX_PARAGRAPHS_PER_REQUEST = 4;
 const MINIMAX_MAX_CHARS_PER_REQUEST = 1200;
 const MINIMAX_MAX_CONCURRENT_REQUESTS = 5;
@@ -82,7 +84,9 @@ export function resolveLlmConfig({ providerMode = "auto", env = loadProviderEnv(
     endpoint: normalizeAnthropicMessagesEndpoint(
       env.MINIMAX_ANTHROPIC_BASE_URL || env.MINIMAX_BASE_URL || DEFAULT_MINIMAX_BASE_URL
     ),
-    model: env.MINIMAX_MODEL || DEFAULT_MINIMAX_MODEL
+    model: env.MINIMAX_MODEL || DEFAULT_MINIMAX_MODEL,
+    tillGlanceApiUrl: env.TILLGLANCE_API_URL || DEFAULT_TILLGLANCE_API_URL,
+    tillGlanceApiKey: env.TILLGLANCE_API_KEY || null
   };
 }
 
@@ -455,10 +459,43 @@ function mergeMiniMaxBatchResults(results) {
     (merged, result) => ({
       highlight: { ...merged.highlight, ...result.highlight },
       model: result.model || merged.model,
-      usage: mergeUsage(merged.usage, result.usage)
+      usage: mergeUsage(merged.usage, result.usage),
+      fallbackUsed: merged.fallbackUsed || result.fallbackUsed || false,
+      fallbackReason: merged.fallbackReason || result.fallbackReason || null
     }),
-    { highlight: {}, model: null, usage: null }
+    { highlight: {}, model: null, usage: null, fallbackUsed: false, fallbackReason: null }
   );
+}
+
+async function requestTillGlanceHighlightBatch({ paragraphs, config, fetchImpl }) {
+  const contentDict = Object.fromEntries(paragraphs.map((paragraph) => [paragraph.id, paragraph.text]));
+
+  const response = await fetchImpl(config.tillGlanceApiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(config.tillGlanceApiKey ? { Authorization: `Bearer ${config.tillGlanceApiKey}` } : {})
+    },
+    body: JSON.stringify(contentDict)
+  });
+
+  if (!response.ok) {
+    throw new Error(`TillGlance fallback request failed with HTTP ${response.status}.`);
+  }
+
+  const responseJson = await response.json();
+  const highlight = normalizeHighlightMapShape(responseJson);
+  const clippedHighlight = clipHighlightSpans(highlight, paragraphs);
+  assertHighlightMap(clippedHighlight, paragraphs);
+
+  const tgVersion = response.headers.get("X-Tg-Version");
+  return {
+    highlight: clippedHighlight,
+    model: tgVersion ? `tg-${tgVersion}` : "tillglance-nlphl",
+    usage: null,
+    fallbackUsed: true,
+    fallbackReason: null
+  };
 }
 
 async function mapWithConcurrency(items, limit, mapper) {
@@ -478,13 +515,9 @@ async function mapWithConcurrency(items, limit, mapper) {
 }
 
 async function requestMiniMaxHighlightBatch({ paragraphs, density, config, fetchImpl }) {
-  // Round-8 fix (Agent 6): pass `thinking: { type: "disabled" }` so the
-  // model does not emit a thinking block as the only / first content block.
-  // Anthropic Messages API supports this field on compatible providers
-  // (including MiniMax M3, which follows the 2023-06-01 protocol).
-  // If the provider rejects the field, `response.ok === false` → the
-  // existing HTTP error path fires; the A-side `extractAnthropicText` fix
-  // is the safety net for old model versions that still emit thinking.
+  // Keep both controls: M3 can honor `thinking: disabled`; older compatible
+  // models may ignore it, so a larger output budget prevents thinking from
+  // consuming the whole response before final JSON is emitted.
   const response = await fetchImpl(config.endpoint, {
     method: "POST",
     headers: {
@@ -494,10 +527,11 @@ async function requestMiniMaxHighlightBatch({ paragraphs, density, config, fetch
     },
     body: JSON.stringify({
       model: config.model,
-      max_tokens: 4096,
+      max_tokens: MINIMAX_MAX_OUTPUT_TOKENS,
       temperature: 0,
       thinking: { type: "disabled" },
-      system: "Return final JSON only, no explanation.",
+      system:
+        "Disable thinking. Return only the final JSON. Do not include reasoning, explanation, markdown, or any text outside JSON.",
       messages: [
         {
           role: "user",
@@ -523,11 +557,19 @@ async function requestMiniMaxHighlightBatch({ paragraphs, density, config, fetch
   };
 }
 
-async function requestMiniMaxHighlightBatchWithRetry({ paragraphs, density, config, fetchImpl }) {
+async function requestMiniMaxHighlightBatchWithRetry({ paragraphs, density, config, fetchImpl, fallbackOnFailure = true }) {
   try {
     return await requestMiniMaxHighlightBatch({ paragraphs, density, config, fetchImpl });
   } catch (error) {
-    if (paragraphs.length <= 1 || !isStructuredOutputError(error)) {
+    if (!isStructuredOutputError(error)) {
+      throw error;
+    }
+
+    if (paragraphs.length <= 1) {
+      if (fallbackOnFailure && config.tillGlanceApiUrl) {
+        const tillGlanceResult = await requestTillGlanceHighlightBatch({ paragraphs, config, fetchImpl });
+        return { ...tillGlanceResult, fallbackReason: error.message };
+      }
       throw error;
     }
 
@@ -537,13 +579,15 @@ async function requestMiniMaxHighlightBatchWithRetry({ paragraphs, density, conf
         paragraphs: paragraphs.slice(0, midpoint),
         density,
         config,
-        fetchImpl
+        fetchImpl,
+        fallbackOnFailure
       }),
       requestMiniMaxHighlightBatchWithRetry({
         paragraphs: paragraphs.slice(midpoint),
         density,
         config,
-        fetchImpl
+        fetchImpl,
+        fallbackOnFailure
       })
     ]);
 
@@ -551,27 +595,32 @@ async function requestMiniMaxHighlightBatchWithRetry({ paragraphs, density, conf
   }
 }
 
-async function callMiniMaxHighlight({ paragraphs, density, config, fetchImpl }) {
+async function callMiniMaxHighlight({ paragraphs, density, config, fetchImpl, fallbackOnFailure = true }) {
   const startedAt = Date.now();
   const batches = splitParagraphsForMiniMax(paragraphs);
   const batchResults = await mapWithConcurrency(batches, MINIMAX_MAX_CONCURRENT_REQUESTS, (batch) =>
-    requestMiniMaxHighlightBatchWithRetry({ paragraphs: batch, density, config, fetchImpl })
+    requestMiniMaxHighlightBatchWithRetry({ paragraphs: batch, density, config, fetchImpl, fallbackOnFailure })
   );
   const merged = mergeMiniMaxBatchResults(batchResults);
   const clippedHighlight = clipHighlightSpans(merged.highlight, paragraphs);
   assertHighlightMap(clippedHighlight, paragraphs);
 
+  const modelInfo = {
+    provider: merged.fallbackUsed ? "tillglance" : "minimax",
+    model: merged.model || config.model,
+    apiType: config.apiType,
+    latencyMs: Date.now() - startedAt,
+    requestCount: batchResults.length,
+    fallbackUsed: merged.fallbackUsed || false,
+    usage: merged.usage
+  };
+  if (merged.fallbackUsed && merged.fallbackReason) {
+    modelInfo.fallbackReason = merged.fallbackReason;
+  }
+
   return {
     highlight: merged.highlight,
-    modelInfo: {
-      provider: "minimax",
-      model: merged.model || config.model,
-      apiType: config.apiType,
-      latencyMs: Date.now() - startedAt,
-      requestCount: batchResults.length,
-      fallbackUsed: false,
-      usage: merged.usage
-    }
+    modelInfo
   };
 }
 
@@ -583,7 +632,8 @@ function generateMockResult(paragraphs, density) {
     highlight,
     modelInfo: {
       provider: "mock",
-      model: "mock-semantic-reading-guide"
+      model: "mock-semantic-reading-guide",
+      fallbackUsed: false
     }
   };
 }
@@ -592,6 +642,7 @@ export async function generateAiHighlight({
   paragraphs,
   density = "medium",
   providerMode,
+  fallbackOnFailure = true,
   env,
   envFilePaths,
   readFileSync,
@@ -611,5 +662,5 @@ export async function generateAiHighlight({
     throw new Error("fetch is not available for the configured LLM provider.");
   }
 
-  return callMiniMaxHighlight({ paragraphs, density, config, fetchImpl });
+  return callMiniMaxHighlight({ paragraphs, density, config, fetchImpl, fallbackOnFailure });
 }

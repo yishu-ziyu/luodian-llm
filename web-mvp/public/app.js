@@ -16,7 +16,12 @@ const elements = {
   reader: document.querySelector("#reader"),
   regenerateButton: document.querySelector("#regenerate-button"),
   highlightToggle: document.querySelector("#highlight-toggle"),
-  modelNote: document.querySelector("#model-note")
+  modelNote: document.querySelector("#model-note"),
+  sourceTabs: document.querySelectorAll("[data-source-mode]"),
+  sourcePanels: document.querySelectorAll("[data-source-panel]"),
+  statChars: document.querySelector("#stat-chars"),
+  statMinutes: document.querySelector("#stat-minutes"),
+  statAnchors: document.querySelector("#stat-anchors")
 };
 
 function selectedDensity() {
@@ -26,6 +31,35 @@ function selectedDensity() {
 function setStatus(message, level = "info") {
   elements.statusLine.textContent = message;
   elements.statusLine.classList.toggle("error", level === "error");
+}
+
+function setSourceMode(mode) {
+  elements.sourceTabs.forEach((tab) => {
+    const active = tab.dataset.sourceMode === mode;
+    tab.classList.toggle("is-active", active);
+    tab.setAttribute("aria-selected", String(active));
+  });
+
+  elements.sourcePanels.forEach((panel) => {
+    const active = panel.dataset.sourcePanel === mode;
+    panel.classList.toggle("is-active", active);
+    panel.hidden = !active;
+  });
+}
+
+function countHighlightAnchors(highlight) {
+  if (!highlight) return 0;
+  return Object.values(highlight).reduce((total, ranges) => total + Math.floor((ranges?.length || 0) / 2), 0);
+}
+
+function updateStats() {
+  const chars = state.article?.paragraphs?.reduce((total, paragraph) => total + (paragraph.charLength || Array.from(paragraph.text || "").length), 0) || 0;
+  const minutes = chars > 0 ? Math.max(1, Math.ceil(chars / 500)) : "--";
+  const anchors = state.highlight ? countHighlightAnchors(state.highlight) : "--";
+
+  elements.statChars.textContent = String(chars);
+  elements.statMinutes.textContent = String(minutes);
+  elements.statAnchors.textContent = String(anchors);
 }
 
 async function postJson(url, payload) {
@@ -76,8 +110,22 @@ function renderReader() {
   if (!state.article) {
     const empty = document.createElement("div");
     empty.className = "empty-state";
-    empty.textContent = "导入公开网页、txt 或 md 后，这里会显示清洗后的文章和高亮。";
+    empty.innerHTML = `
+      <div class="saccade-ruler" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="sample-document">
+        <h2>示例文本</h2>
+        <p>导入公开网页或本地文本后，系统会在文章中标出读者视线最可能落下的<span class="sample-highlight">关键位置</span>。</p>
+        <p>这些短促的<span class="sample-highlight">语义落点</span>会形成一条温和的阅读轨道，帮助你更快回到句子的主干。</p>
+        <p>右侧纸面会保留原文节奏，只在必要位置加入<span class="sample-highlight">柔和高亮</span>。</p>
+      </div>
+    `;
     elements.reader.append(empty);
+    updateStats();
     return;
   }
 
@@ -99,6 +147,7 @@ function renderReader() {
     }
     elements.reader.append(p);
   }
+  updateStats();
 }
 
 async function generateHighlightAndSave() {
@@ -118,7 +167,12 @@ async function generateHighlightAndSave() {
 
   state.highlight = result.highlight;
   state.modelInfo = result.modelInfo;
-  elements.modelNote.textContent = result.modelInfo.model || result.modelInfo.provider;
+
+  const fallbackUsed = result.modelInfo?.fallbackUsed === true;
+  elements.modelNote.textContent = fallbackUsed
+    ? `${result.modelInfo.model || result.modelInfo.provider} (fallback)`
+    : result.modelInfo.model || result.modelInfo.provider;
+  elements.modelNote.classList.toggle("fallback", fallbackUsed);
   elements.regenerateButton.disabled = false;
   renderReader();
 
@@ -127,13 +181,20 @@ async function generateHighlightAndSave() {
     aiHighlight: state.highlight,
     modelInfo: state.modelInfo
   });
-  setStatus(`已生成高亮，并保存实验记录：${saved.experiment.id}`);
+
+  if (fallbackUsed) {
+    setStatus("已切换参考算法高亮（LLM 不可用）");
+    elements.statusLine.classList.add("fallback");
+  } else {
+    setStatus(`已生成高亮，并保存实验记录：${saved.experiment.id}`);
+  }
 }
 
 async function importArticle(importer) {
   try {
     elements.regenerateButton.disabled = true;
     state.highlight = null;
+    updateStats();
     setStatus("导入文章中...");
 
     const data = await importer();
@@ -158,6 +219,12 @@ elements.importUrlButton.addEventListener("click", () => {
 elements.fileInput.addEventListener("change", () => {
   state.selectedFile = elements.fileInput.files?.[0] || null;
   elements.fileName.textContent = state.selectedFile ? state.selectedFile.name : "未选择文件";
+});
+
+elements.sourceTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    setSourceMode(tab.dataset.sourceMode);
+  });
 });
 
 elements.importFileButton.addEventListener("click", () => {

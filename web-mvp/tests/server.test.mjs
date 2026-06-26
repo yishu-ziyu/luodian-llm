@@ -83,6 +83,32 @@ test("POST /api/highlight uses the configured highlight generator", async () => 
   assert.equal(parsed.modelInfo.provider, "test-provider");
 });
 
+test("POST /api/highlight forwards enableFallback query param", async () => {
+  const generatorCalls = [];
+  const response = responseRecorder();
+
+  await handleWebMvpRequest(
+    jsonRequest("/api/highlight?enableFallback=false", {
+      paragraphs: [{ id: "0", index: 0, text: "第一段正文用于高亮。", charLength: 10 }],
+      density: "medium"
+    }),
+    response,
+    {
+      highlightGenerator: async ({ paragraphs, fallbackOnFailure }) => {
+        generatorCalls.push({ fallbackOnFailure });
+        return {
+          highlight: { [paragraphs[0].id]: [0, 2] },
+          modelInfo: { provider: "test-provider", model: "test-model" }
+        };
+      }
+    }
+  );
+
+  assert.equal(generatorCalls.length, 1);
+  assert.equal(generatorCalls[0].fallbackOnFailure, false);
+  assert.equal(response.statusCode, 200);
+});
+
 test("POST /api/compare returns baseline, AI highlight, metrics, and experiment record", async () => {
   const outputDir = await fs.mkdtemp(path.join(os.tmpdir(), "saccade-api-compare-"));
   const response = responseRecorder();
