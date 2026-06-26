@@ -173,6 +173,7 @@ async function generateHighlightAndSave() {
     ? `${result.modelInfo.model || result.modelInfo.provider} (fallback)`
     : result.modelInfo.model || result.modelInfo.provider;
   elements.modelNote.classList.toggle("fallback", fallbackUsed);
+  elements.statusLine.classList.toggle("fallback", fallbackUsed);
   elements.regenerateButton.disabled = false;
   renderReader();
 
@@ -184,7 +185,6 @@ async function generateHighlightAndSave() {
 
   if (fallbackUsed) {
     setStatus("已切换参考算法高亮（LLM 不可用）");
-    elements.statusLine.classList.add("fallback");
   } else {
     setStatus(`已生成高亮，并保存实验记录：${saved.experiment.id}`);
   }
