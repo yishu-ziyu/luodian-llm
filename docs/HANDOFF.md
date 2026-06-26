@@ -10,7 +10,7 @@
 - 内容入口：公开 URL 用 Defuddle 主抽取 + Readability fallback，`.txt` / `.md` 文件直接读文本。
 - LLM 接入：默认走 `MiniMax-M3`（Anthropic 兼容协议）。无 key 时退化为本地 mock 算法（`generateMockHighlightMap`），从不静默伪装。
 - 对照页面：`/compare` 把参考算法和 LLM 输出并排显示，并保存一次 `ReadingExperiment` 记录（含 position-hit-rate、coverage-similarity、density-delta、baseline-recall）。
-- 长文 batching：服务端按每批最多 4 段 / 1200 字符、最多 5 并发分批请求 LLM；thinking-only 响应二分重试。
+- 长文 batching：服务端按每批最多 4 段 / 1200 字符、最多 5 并发分批请求 LLM；thinking-only 响应二分重试。MiniMax 请求侧已显式禁 thinking，并把输出预算从 4096 提到 16384。
 - 视觉：暖纸背景、墨蓝强调、衬线层级、左侧导入控制 + 右侧纸面阅读器。
 - 测试：`npm run test:web-mvp` 当前 38 tests / 38 pass / 0 fail。
 
@@ -18,7 +18,7 @@
 
 按 `notes/session-logs/2026-06-14-saccade-round-8-log.md` 排期：
 
-1. 修 `extractAnthropicText` 跳过 thinking block（A-side 已有，B-side 待补 max_tokens 调高 + system-prompt 显式禁用 thinking）
+1. 重测 B-side thinking block 修复后的长文真实 LLM 稳定性；必要时再评估是否换 model
 2. Rule 3 措辞调成 "first content word"（提升 function-word-led 段体验）
 3. PM 决策 wrap 软合并（产品 vs 启发式膨胀）
 4. 混合 CN/EN 段落集支持（当前 `detectLanguage` 是段落集级别）
@@ -43,7 +43,7 @@
 - `npm run test:web-mvp`：38 tests, 38 pass, 0 fail。
 - API smoke 已覆盖 `/api/health`、`/api/import/file`、`/api/highlight`、`/api/compare`、`/api/experiments`。
 - 真实 LLM smoke：12 篇英文 deterministic check 11/12 pass；50 篇 mock 综合 50/50 pass。
-- 真实 LLM 已知问题：~50% 长文请求返回 thinking-only（`stop_reason: max_tokens`），需 round-9 修。
+- 真实 LLM 已知问题：round-8 观测到 ~50% 长文请求返回 thinking-only（`stop_reason: max_tokens`）。round-9 已落地请求侧缓解（`thinking: disabled`、`max_tokens=16384`、system prompt 显式禁 thinking），但长文失败率尚未重测。
 - 长文 batching 验证：38 段 markdown 样本 HTTP 200，约 100 秒返回，`requestCount=10`，38 段均有高亮。
 - Playwright QA：URL 导入、文件导入、高亮开关、390px 移动端无横向溢出、控制台无错误。
 - 当前可试用地址：`http://localhost:4173`。

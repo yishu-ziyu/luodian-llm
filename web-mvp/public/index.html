@@ -9,52 +9,103 @@
   <body>
     <main class="app-shell">
       <header class="topbar">
-        <div>
-          <h1>Saccade 阅读加速</h1>
-          <p class="subtitle">导入文章，由 LLM 预测眼动落点，生成语义高亮阅读轨道。</p>
+        <div class="brand-lockup">
+          <h1>落点-llm <span>/ Saccade LLM</span></h1>
+          <p class="subtitle">LLM 语义阅读高亮器</p>
         </div>
-        <div class="top-actions">
+        <div class="top-actions" aria-label="全局操作">
           <a class="nav-link" href="/compare">对照实验</a>
-          <div class="mode-note" id="model-note">auto</div>
+          <div class="model-cluster">
+            <span>模型</span>
+            <div class="mode-note" id="model-note">auto</div>
+          </div>
         </div>
       </header>
 
       <section class="workspace" aria-label="阅读工作台">
-        <section class="import-panel" aria-label="文章导入">
-          <label class="input-label" for="url-input">公开网页 URL</label>
-          <div class="input-row">
-            <input id="url-input" type="url" placeholder="https://example.com/article" autocomplete="off">
-            <button id="import-url-button" type="button">导入 URL</button>
-          </div>
+        <aside class="import-panel" aria-label="文章导入与高亮设置">
+          <section class="rail-section source-section">
+            <h2>导入内容</h2>
+            <div class="source-tabs" role="tablist" aria-label="导入方式">
+              <button class="source-tab is-active" id="url-tab" type="button" role="tab" aria-selected="true" aria-controls="url-source" data-source-mode="url">公开网页</button>
+              <button class="source-tab" id="file-tab" type="button" role="tab" aria-selected="false" aria-controls="file-source" data-source-mode="file">本地文件</button>
+            </div>
 
-          <div class="file-row">
-            <label class="file-picker" for="file-input">选择 .txt / .md</label>
-            <input id="file-input" type="file" accept=".txt,.md,text/plain,text/markdown">
-            <button id="import-file-button" type="button">导入文件</button>
-            <span id="file-name" class="file-name">未选择文件</span>
-          </div>
+            <div class="source-card is-active" id="url-source" role="tabpanel" aria-labelledby="url-tab" data-source-panel="url">
+              <label class="input-label" for="url-input">公开网页 URL</label>
+              <div class="input-row">
+                <input id="url-input" type="url" placeholder="https://example.com/article" autocomplete="off">
+                <button id="import-url-button" type="button">导入 URL</button>
+              </div>
+            </div>
 
-          <div class="control-row">
+            <div class="source-card" id="file-source" role="tabpanel" aria-labelledby="file-tab" data-source-panel="file" hidden>
+              <label class="input-label" for="file-input">上传 .txt / .md 文件</label>
+              <div class="file-drop">
+                <label class="file-picker" for="file-input">选择文件</label>
+                <input id="file-input" type="file" accept=".txt,.md,text/plain,text/markdown">
+                <span id="file-name" class="file-name">未选择文件</span>
+              </div>
+              <button id="import-file-button" type="button">导入文件</button>
+            </div>
+          </section>
+
+          <section class="rail-section controls-section">
+            <h2>阅读与高亮选项</h2>
             <fieldset class="density-group">
               <legend>高亮密度</legend>
-              <label><input type="radio" name="density" value="low">低</label>
-              <label><input type="radio" name="density" value="medium" checked>中</label>
-              <label><input type="radio" name="density" value="high">高</label>
+              <label><input type="radio" name="density" value="low"><span>低</span></label>
+              <label><input type="radio" name="density" value="medium" checked><span>中</span></label>
+              <label><input type="radio" name="density" value="high"><span>高</span></label>
             </fieldset>
-            <label class="toggle-label"><input id="highlight-toggle" type="checkbox" checked>显示高亮</label>
-            <button id="regenerate-button" type="button" disabled>重新生成</button>
-          </div>
 
-          <p class="privacy">
-            你导入的文章文本会发送给大模型服务，用于生成语义高亮。请不要上传敏感、机密、未授权或付费受限内容。
-          </p>
-        </section>
+            <label class="switch-row">
+              <span>
+                <strong>显示高亮</strong>
+                <small>语义落点标记</small>
+              </span>
+              <input id="highlight-toggle" type="checkbox" checked>
+            </label>
+
+            <div class="highlight-preview" aria-label="高亮样式预览">
+              <span class="preview-swatch"></span>
+              <span>语义落点</span>
+            </div>
+
+            <button id="regenerate-button" class="secondary-action" type="button" disabled>重新生成高亮</button>
+          </section>
+
+          <section class="privacy-panel" aria-label="隐私与安全">
+            <h2>隐私与安全</h2>
+            <p>文章文本仅用于本次高亮生成。请不要导入敏感、机密、未授权或付费受限内容。</p>
+          </section>
+        </aside>
 
         <section class="reading-pane" aria-label="阅读结果">
-          <section class="status-line" id="status-line" role="status">等待导入文章。</section>
+          <section class="reader-status" aria-label="阅读状态">
+            <section class="status-line" id="status-line" role="status">等待导入内容</section>
+            <div class="reader-stats" aria-label="文章指标">
+              <span>字数 <strong id="stat-chars">0</strong></span>
+              <span>预计阅读 <strong id="stat-minutes">--</strong> 分钟</span>
+              <span>落点 <strong id="stat-anchors">--</strong> 个</span>
+            </div>
+          </section>
 
           <article class="reader" id="reader" aria-label="高亮阅读器">
-            <div class="empty-state">导入公开网页、txt 或 md 后，这里会显示清洗后的文章和高亮。</div>
+            <div class="empty-state">
+              <div class="saccade-ruler" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="sample-document">
+                <h2>示例文本</h2>
+                <p>导入公开网页或本地文本后，系统会在文章中标出读者视线最可能落下的<span class="sample-highlight">关键位置</span>。</p>
+                <p>这些短促的<span class="sample-highlight">语义落点</span>会形成一条温和的阅读轨道，帮助你更快回到句子的主干。</p>
+                <p>右侧纸面会保留原文节奏，只在必要位置加入<span class="sample-highlight">柔和高亮</span>。</p>
+              </div>
+            </div>
           </article>
         </section>
       </section>

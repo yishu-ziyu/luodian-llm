@@ -8,7 +8,7 @@
 
 **研究 / 实验项目。** 当前已闭环：能跑、能测试、能对比参考算法与 LLM 输出、能保存实验记录。但**不保证生产可用**：
 
-- 真实 LLM 在长文 / 多段 batching 场景下有约 **50% 空响应率**（`stop_reason: max_tokens` 且响应只含 thinking block）。修了一半——客户端 `extractAnthropicText` 已 skip thinking block 并在二分重试里识别，但 B-side（provider 端）我们没有权限，需要服务端配合或换 model。
+- 真实 LLM 在长文 / 多段 batching 场景下曾有约 **50% 空响应率**（`stop_reason: max_tokens` 且响应只含 thinking block）。当前已做请求侧缓解：`extractAnthropicText` 会 skip thinking block 并触发二分重试，请求体显式 `thinking: { type: "disabled" }`，`max_tokens` 提到 16384，system prompt 明确禁止 thinking / 解释文本。长文失败率仍需重新实测。
 - mock 路径 100% 稳定，闭包里所有 38 个测试都跑通。
 - `/compare` 页面的"参考算法"是本地确定性 mock，不是第三方 ground truth；要严肃评估 LLM 质量需引入独立人工标注。
 
@@ -88,7 +88,7 @@ LLM 客户端的几个关键设计：
 
 | 现象 | 状态 | 说明 |
 |---|---|---|
-| 真实 LLM 长文 ~50% 空响应 | 部分修 | A-side 改完；B-side 需要 model 服务端配合（`thinking: { type: "disabled" }` 当前被 MiniMax M2.7 静默忽略） |
+| 真实 LLM 长文 ~50% 空响应 | 部分修 | A-side 已 skip thinking + 二分重试；请求侧已加 `thinking: { type: "disabled" }`、`max_tokens=16384`、显式禁 thinking system prompt。长文失败率待重测 |
 | mock 路径 100% 通过 | OK | step=10 确定性分布，作为闭环验证足够 |
 | `en-12-proper` 密度偶发 14.7% | 已知 | 模型非确定性，±2pp 容差可接受 |
 | `/compare` 的"参考算法"是 mock | 设计如此 | 不是 ground truth，UI 明确标注 `reference-mock` |
@@ -97,7 +97,7 @@ LLM 客户端的几个关键设计：
 
 ## 路线图（按价值排）
 
-1. B-side thinking block fix（system prompt 显式禁用 / 升 model）
+1. 重测 B-side thinking block 修复后的长文真实 LLM 稳定性，必要时再评估是否换 model
 2. Rule 3 措辞从 "first 2-3 chars" 改 "first content word"，提升 function-word-led 段体验
 3. PM 决策 wrap 软合并：长段被 wrap 后被切碎是否要软合并相邻段
 4. 混合 CN/EN 段落集支持（当前 `detectLanguage` 是段落集级别）
