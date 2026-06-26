@@ -9,7 +9,7 @@
 **研究 / 实验项目。** 当前已闭环：能跑、能测试、能对比参考算法与 LLM 输出、能保存实验记录。但**不保证生产可用**：
 
 - 真实 LLM 在长文 / 多段 batching 场景下曾有约 **50% 空响应率**（`stop_reason: max_tokens` 且响应只含 thinking block）。当前已做请求侧缓解：`extractAnthropicText` 会 skip thinking block 并触发二分重试，请求体显式 `thinking: { type: "disabled" }`，`max_tokens` 提到 16384，system prompt 明确禁止 thinking / 解释文本。长文失败率仍需重新实测。
-- mock 路径 100% 稳定，闭包里所有 38 个测试都跑通。
+- mock 路径 100% 稳定，闭包里所有 46 个测试都跑通。
 - `/compare` 页面的"参考算法"是本地确定性 mock，不是第三方 ground truth；要严肃评估 LLM 质量需引入独立人工标注。
 
 如果只是想看"眼动高亮长什么样"，运行 `npm run dev:web-mvp` 打开 `http://localhost:4173` 即可，全程不消耗 LLM 配额。
@@ -49,7 +49,7 @@ npm run dev:web-mvp
 
 ```bash
 npm run test:web-mvp
-# 38 tests / 38 pass / 0 fail
+# 46 tests / 46 pass / 0 fail
 ```
 
 测试覆盖：

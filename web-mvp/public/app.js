@@ -31,6 +31,10 @@ function selectedDensity() {
 function setStatus(message, level = "info") {
   elements.statusLine.textContent = message;
   elements.statusLine.classList.toggle("error", level === "error");
+  if (level === "error") {
+    elements.statusLine.classList.remove("fallback");
+    elements.modelNote.classList.remove("fallback");
+  }
 }
 
 function setSourceMode(mode) {

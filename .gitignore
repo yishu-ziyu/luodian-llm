@@ -45,3 +45,9 @@ coverage/
 dist/
 build/
 *.tsbuildinfo
+
+# Generated smoke test output
+web-mvp/scripts/stability-smoke-output.json
+
+# Ship workflow artifacts (local only)
+.ship/
