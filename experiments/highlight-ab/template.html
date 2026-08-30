@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>高亮 A/B 盲测</title>
+    <style>
+      :root { color-scheme: light; font-family: ui-sans-serif, system-ui, "PingFang SC", sans-serif; background:#f5f3ed; color:#27241f; }
+      * { box-sizing:border-box; }
+      body { margin:0; }
+      main { width:min(1120px, calc(100% - 32px)); margin:0 auto; padding:36px 0 80px; }
+      header { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:28px; }
+      h1 { margin:0; font-size:28px; letter-spacing:-.04em; }
+      header p { margin:8px 0 0; color:#6e685f; }
+      .progress { font-variant-numeric:tabular-nums; color:#6e685f; white-space:nowrap; }
+      .pair { border-top:1px solid #d8d2c8; padding:26px 0 30px; }
+      .pair-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; color:#746d63; font-size:13px; }
+      .versions { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+      .version { background:#fff; border:1px solid #ddd7cd; padding:22px 24px; min-height:150px; }
+      .version h2 { margin:0 0 13px; font-size:13px; font-weight:600; color:#776f64; }
+      .text { font:18px/1.85 "Songti SC", "Noto Serif SC", serif; text-align:justify; }
+      .hl {
+        background-color:transparent;
+        background-image:
+          radial-gradient(ellipse 96% 88% at 46% 52%, rgb(225 146 28 / 42%) 0%, rgb(235 161 39 / 30%) 58%, transparent 100%),
+          radial-gradient(ellipse 74% 94% at 68% 45%, rgb(246 180 55 / 24%) 0%, transparent 88%),
+          radial-gradient(ellipse 82% 72% at 27% 63%, rgb(255 198 74 / 22%) 0%, transparent 90%);
+        background-size:1.07em 1.18em, .93em 1.08em, 1.13em 1.26em;
+        background-position:.02em 52%, -.08em 45%, .11em 58%;
+        background-repeat:repeat-x;
+        box-decoration-break:clone;
+        -webkit-box-decoration-break:clone;
+      }
+      fieldset { display:flex; gap:10px; margin:15px 0 0; padding:0; border:0; }
+      legend { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+      label { cursor:pointer; }
+      label span { display:inline-block; border:1px solid #cfc8bc; padding:7px 11px; background:#fff; }
+      input:checked + span { background:#28251f; color:#fff; border-color:#28251f; }
+      .actions { position:sticky; bottom:0; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 16px; background:rgb(245 243 237 / 94%); border-top:1px solid #d8d2c8; backdrop-filter:blur(10px); }
+      button { border:0; background:#28251f; color:#fff; padding:10px 16px; font:inherit; cursor:pointer; }
+      button:disabled { opacity:.4; cursor:not-allowed; }
+      .result { display:none; margin-top:12px; padding:18px; background:#ece7dd; }
+      .revealed .result { display:block; }
+      .method { display:none; color:#855a16; font-weight:600; }
+      .revealed .method { display:inline; }
+      .metrics { display:none; margin-top:10px; color:#6b645a; font-size:13px; }
+      .revealed .metrics { display:block; }
+      @media (max-width:760px) { .versions { grid-template-columns:1fr; } header { align-items:start; flex-direction:column; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div><h1>高亮 A/B 盲测</h1><p id="source"></p></div>
+        <div class="progress" id="progress">0 / 0 已选择</div>
+      </header>
+      <section id="pairs"></section>
+      <div class="actions">
+        <span>每段只判断：哪一边更能帮助你抓住原意？</span>
+        <button id="reveal" disabled>揭晓并计算结果</button>
+      </div>
+      <section class="result" id="result" aria-live="polite"></section>
+    </main>
+    <script>
+      const experiment = __EXPERIMENT_DATA__;
+      const storageKey = `luodian-highlight-ab:${experiment.id}`;
+      const brushClass = "hl";
+      const pairs = document.getElementById("pairs");
+      const progress = document.getElementById("progress");
+      const reveal = document.getElementById("reveal");
+      const result = document.getElementById("result");
+      const answers = JSON.parse(localStorage.getItem(storageKey) || "{}");
+      document.getElementById("source").textContent = `${experiment.source.title} · ${experiment.paragraphs.length} 段真实文章`;
+
+      function renderText(container, text, spans) {
+        let cursor = 0;
+        for (const span of [...spans].sort((a, b) => a.start - b.start)) {
+          if (span.start > cursor) container.append(document.createTextNode(text.slice(cursor, span.start)));
+          const mark = document.createElement("span");
+          mark.className = brushClass;
+          mark.textContent = text.slice(span.start, span.end);
+          container.append(mark);
+          cursor = span.end;
+        }
+        if (cursor < text.length) container.append(document.createTextNode(text.slice(cursor)));
+      }
+
+      function option(id, value, label) {
+        const wrapper = document.createElement("label");
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = `choice-${id}`;
+        input.value = value;
+        input.checked = answers[id] === value;
+        input.addEventListener("change", () => {
+          answers[id] = value;
+          localStorage.setItem(storageKey, JSON.stringify(answers));
+          updateProgress();
+        });
+        const text = document.createElement("span");
+        text.textContent = label;
+        wrapper.append(input, text);
+        return wrapper;
+      }
+
+      for (const [index, paragraph] of experiment.paragraphs.entries()) {
+        const section = document.createElement("article");
+        section.className = "pair";
+        section.dataset.id = paragraph.id;
+        const head = document.createElement("div");
+        head.className = "pair-head";
+        head.innerHTML = `<span>段落 ${index + 1}</span><span class="method"></span>`;
+        const versions = document.createElement("div");
+        versions.className = "versions";
+        for (const [side, method] of [["A", paragraph.leftMethod], ["B", paragraph.leftMethod === "local" ? "model" : "local"]]) {
+          const card = document.createElement("section");
+          card.className = "version";
+          const title = document.createElement("h2");
+          title.textContent = `方案 ${side}`;
+          const text = document.createElement("div");
+          text.className = "text";
+          renderText(text, paragraph.text, method === "local" ? paragraph.localSpans : paragraph.modelSpans);
+          card.append(title, text);
+          versions.append(card);
+        }
+        const choices = document.createElement("fieldset");
+        choices.append(
+          Object.assign(document.createElement("legend"), { textContent: "选择更好的方案" }),
+          option(paragraph.id, "A", "A 更好"),
+          option(paragraph.id, "B", "B 更好"),
+          option(paragraph.id, "neither", "都不行")
+        );
+        const metrics = document.createElement("div");
+        metrics.className = "metrics";
+        metrics.textContent = `纯算法 ${paragraph.metrics.localAnchors} 个落点 / ${(paragraph.metrics.localCoverage * 100).toFixed(1)}% 覆盖；模型+算法 ${paragraph.metrics.modelAnchors} 个 / ${(paragraph.metrics.modelCoverage * 100).toFixed(1)}%；字符重合 ${(paragraph.metrics.overlap * 100).toFixed(1)}%。`;
+        section.append(head, versions, choices, metrics);
+        pairs.append(section);
+      }
+
+      function updateProgress() {
+        const count = experiment.paragraphs.filter((paragraph) => answers[paragraph.id]).length;
+        progress.textContent = `${count} / ${experiment.paragraphs.length} 已选择`;
+        reveal.disabled = count !== experiment.paragraphs.length;
+      }
+
+      reveal.addEventListener("click", () => {
+        document.documentElement.classList.add("revealed");
+        let localWins = 0;
+        let modelWins = 0;
+        let neither = 0;
+        for (const paragraph of experiment.paragraphs) {
+          const chosen = answers[paragraph.id];
+          const chosenMethod = chosen === "neither" ? "neither" : chosen === "A" ? paragraph.leftMethod : paragraph.leftMethod === "local" ? "model" : "local";
+          if (chosenMethod === "local") localWins += 1;
+          else if (chosenMethod === "model") modelWins += 1;
+          else neither += 1;
+          const article = document.querySelector(`[data-id="${paragraph.id}"]`);
+          article.querySelector(".method").textContent = `A = ${experiment.methods[paragraph.leftMethod]}；B = ${experiment.methods[paragraph.leftMethod === "local" ? "model" : "local"]}`;
+        }
+        result.textContent = `你的判断：纯算法 ${localWins} 胜，大模型+算法 ${modelWins} 胜，都不行 ${neither}。模型 ${experiment.model.name}，完整评分 ${experiment.model.scoredCandidates} 个合法候选，本轮排序 ${(experiment.model.latencyMs / 1000).toFixed(1)} 秒。`;
+        result.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+
+      updateProgress();
+    </script>
+  </body>
+</html>

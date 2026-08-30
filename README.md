@@ -9,7 +9,7 @@
 **研究 / 实验项目。** 当前已闭环：能跑、能测试、能对比参考算法与 LLM 输出、能保存实验记录。但**不保证生产可用**：
 
 - 真实 LLM 在长文 / 多段 batching 场景下曾有约 **50% 空响应率**（`stop_reason: max_tokens` 且响应只含 thinking block）。当前已做请求侧缓解：`extractAnthropicText` 会 skip thinking block 并触发二分重试，请求体显式 `thinking: { type: "disabled" }`，`max_tokens` 提到 16384，system prompt 明确禁止 thinking / 解释文本。长文失败率仍需重新实测。
-- mock 路径 100% 稳定，闭包里所有 46 个测试都跑通。
+- mock 路径 100% 稳定，Web MVP 的 40 个测试都跑通。
 - `/compare` 页面的"参考算法"是本地确定性 mock，不是第三方 ground truth；要严肃评估 LLM 质量需引入独立人工标注。
 
 如果只是想看"眼动高亮长什么样"，运行 `npm run dev:web-mvp` 打开 `http://localhost:4173` 即可，全程不消耗 LLM 配额。
@@ -49,7 +49,7 @@ npm run dev:web-mvp
 
 ```bash
 npm run test:web-mvp
-# 46 tests / 46 pass / 0 fail
+# 40 tests / 40 pass / 0 fail
 ```
 
 测试覆盖：
@@ -93,7 +93,7 @@ LLM 客户端的几个关键设计：
 | `en-12-proper` 密度偶发 14.7% | 已知 | 模型非确定性，±2pp 容差可接受 |
 | `/compare` 的"参考算法"是 mock | 设计如此 | 不是 ground truth，UI 明确标注 `reference-mock` |
 | `extractAnthropicText` 错误消息不向后兼容 | 已知 | round-8 改完错误信息，外部依赖该消息的代码会 break |
-| 没有 RAG / 长期记忆 | 未实现 | round-6 设计稿在 agent-swarm-output/agent-3-rag-langchain/，未落地 |
+| 没有 RAG / 长期记忆 | 未实现 | 当前不进入高亮主路径 |
 
 ## 路线图（按价值排）
 
@@ -104,13 +104,13 @@ LLM 客户端的几个关键设计：
 5. 独立人工标注 ground truth 替代 mock 参考算法
 6. URL / txt / md 导入用户引导文档
 
-## 与 TillGlance 的关系
+## 独立性
 
-**这个项目和 TillGlance / 眺览 Chrome 扩展没有任何代码或服务依赖。** Saccade LLM 是从零开始的项目，以"眼动学 + LLM 提示工程"为研究主线。
+本项目的候选生成、落点选择、DOM 渲染和扩展代码均为独立实现，不调用任何第三方阅读高亮服务。
 
-眼动落点的概念（ORP、saccade distance、wrap-up effect）是公开的学术研究结论，不属于任何单一产品的专利。"落点" 命名直接描述该项目预测"读者下一步视线落点"的核心机制。
+眼动落点的概念（ORP、saccade distance、wrap-up effect）来自公开学术研究。"落点" 命名直接描述项目预测"读者下一步视线落点"的核心机制。
 
-`/compare` 页面的"参考算法"是本地确定性 mock（`generateMockHighlightMap`，step=10），不是任何第三方 baseline。
+`/compare` 页面的"参考算法"是本项目的本地确定性 mock（`generateMockHighlightMap`，step=10）。
 
 ## 引用方式
 

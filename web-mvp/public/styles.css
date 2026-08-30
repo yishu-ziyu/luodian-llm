@@ -481,21 +481,6 @@ h1 span {
   background: var(--danger-soft);
 }
 
-.status-line.fallback {
-  color: #b45f06;
-}
-
-.status-line.fallback::before {
-  border-color: #b45f06;
-  background: #f5e6d3;
-}
-
-.mode-note.fallback {
-  color: #b45f06;
-  background: #f5e6d3;
-  border-color: #d9a466;
-}
-
 .reader-stats {
   display: inline-flex;
   flex-wrap: wrap;

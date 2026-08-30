@@ -86,11 +86,9 @@ async function handleApiRequest(request, response, options) {
 
   if (url.pathname === "/api/highlight") {
     const highlightGenerator = options.highlightGenerator || generateAiHighlight;
-    const enableFallback = url.searchParams.get("enableFallback") !== "false";
     const result = await highlightGenerator({
       paragraphs: body.paragraphs || [],
-      density: body.density || "medium",
-      fallbackOnFailure: enableFallback
+      density: body.density || "medium"
     });
     sendJson(response, 200, result);
     return;

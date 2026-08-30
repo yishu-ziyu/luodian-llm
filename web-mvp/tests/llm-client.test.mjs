@@ -282,160 +282,9 @@ test("generateAiHighlight recovers JSON-like MiniMax pair arrays before validati
   assert.deepEqual(result.highlight, { "0": [0, 2, 6, 2] });
 });
 
-test("resolveLlmConfig includes TillGlance URL and key when MiniMax is configured", () => {
-  const config = resolveLlmConfig({
-    providerMode: "minimax",
-    env: {
-      MINIMAX_TOKEN_PLAN_KEY: "test-token-plan-key",
-      TILLGLANCE_API_URL: "https://custom.tillglance.test/nlphl",
-      TILLGLANCE_API_KEY: "test-tillglance-key"
-    }
-  });
-
-  assert.equal(config.tillGlanceApiUrl, "https://custom.tillglance.test/nlphl");
-  assert.equal(config.tillGlanceApiKey, "test-tillglance-key");
-});
-
-test("resolveLlmConfig defaults TillGlance URL when key is absent", () => {
-  const config = resolveLlmConfig({
-    providerMode: "minimax",
-    env: { MINIMAX_TOKEN_PLAN_KEY: "test-token-plan-key" }
-  });
-
-  assert.equal(config.tillGlanceApiUrl, "https://api.tillglance.com/nlphl");
-  assert.equal(config.tillGlanceApiKey, null);
-});
-
-test("generateAiHighlight falls back to TillGlance when MiniMax returns only thinking blocks", async () => {
+test("generateAiHighlight fails explicitly when a single paragraph has no structured model output", async () => {
   const paragraphs = [{ id: "0", index: 0, text: "第一段正文用于测试高亮。", charLength: 12 }];
-  const tillGlanceRequests = [];
-
-  const result = await generateAiHighlight({
-    paragraphs,
-    providerMode: "minimax",
-    env: {
-      MINIMAX_API_KEY: "test-minimax-key",
-      TILLGLANCE_API_KEY: "test-tillglance-key"
-    },
-    fetchImpl: async (url, options) => {
-      if (url.includes("tillglance")) {
-        tillGlanceRequests.push({ url, body: JSON.parse(options.body) });
-        return {
-          ok: true,
-          status: 200,
-          headers: new Map([["X-Tg-Version", "v1"]]),
-          async json() {
-            return { "0": [0, 2, 6, 2] };
-          }
-        };
-      }
-
-      return {
-        ok: true,
-        status: 200,
-        async json() {
-          return {
-            model: "MiniMax-M3",
-            stop_reason: "max_tokens",
-            content: [{ type: "thinking", thinking: "no final text" }]
-          };
-        }
-      };
-    }
-  });
-
-  assert.equal(tillGlanceRequests.length, 1);
-  assert.deepEqual(tillGlanceRequests[0].body, { "0": "第一段正文用于测试高亮。" });
-  assert.equal(result.modelInfo.provider, "tillglance");
-  assert.equal(result.modelInfo.model, "tg-v1");
-  assert.equal(result.modelInfo.fallbackUsed, true);
-  assert.match(result.modelInfo.fallbackReason, /thinking blocks/);
-  assertHighlightMap(result.highlight, paragraphs);
-  assert.deepEqual(result.highlight, { "0": [0, 2, 6, 2] });
-});
-
-test("generateAiHighlight reports fallback reason and provider when partial batch uses fallback", async () => {
-  const paragraphs = Array.from({ length: 6 }, (_, index) => ({
-    id: String(index),
-    index,
-    text: `第${index + 1}段正文用于测试部分 batch fallback。`,
-    charLength: Array.from(`第${index + 1}段正文用于测试部分 batch fallback。`).length
-  }));
-  const tillGlanceRequests = [];
-
-  const result = await generateAiHighlight({
-    paragraphs,
-    providerMode: "minimax",
-    env: {
-      MINIMAX_API_KEY: "test-minimax-key",
-      TILLGLANCE_API_KEY: "test-tillglance-key"
-    },
-    fetchImpl: async (url, options) => {
-      if (url.includes("tillglance")) {
-        tillGlanceRequests.push({ url, body: JSON.parse(options.body) });
-        const batchParagraphs = paragraphs.slice(4, 6);
-        return {
-          ok: true,
-          status: 200,
-          headers: new Map([["X-Tg-Version", "v2"]]),
-          async json() {
-            return Object.fromEntries(batchParagraphs.map((p) => [p.id, [0, 2]]));
-          }
-        };
-      }
-
-      const body = JSON.parse(options.body);
-      const prompt = body.messages[0].content[0].text;
-      const batch = parsePromptParagraphs(prompt);
-
-      if (batch.some((p) => Number(p.id) >= 4)) {
-        return {
-          ok: true,
-          status: 200,
-          async json() {
-            return {
-              model: "MiniMax-M3",
-              content: [{ type: "thinking", thinking: "no final text" }]
-            };
-          }
-        };
-      }
-
-      return {
-        ok: true,
-        status: 200,
-        async json() {
-          return {
-            model: "MiniMax-M3",
-            content: [
-              {
-                type: "text",
-                text: JSON.stringify({
-                  highlight: Object.fromEntries(batch.map((p) => [p.id, [0, 2]]))
-                })
-              }
-            ],
-            usage: { input_tokens: 10, output_tokens: 2 }
-          };
-        }
-      };
-    }
-  });
-
-  assert.equal(tillGlanceRequests.length, 2);
-  const allTillGlanceIds = tillGlanceRequests
-    .flatMap((request) => Object.keys(request.body))
-    .sort();
-  assert.deepEqual(allTillGlanceIds, ["4", "5"]);
-  assert.equal(result.modelInfo.provider, "tillglance");
-  assert.equal(result.modelInfo.fallbackUsed, true);
-  assert.match(result.modelInfo.fallbackReason, /thinking blocks|text content/);
-  assert.deepEqual(Object.keys(result.highlight).sort(), paragraphs.map((p) => p.id));
-  assertHighlightMap(result.highlight, paragraphs);
-});
-
-test("generateAiHighlight propagates TillGlance HTTP error when fallback fails", async () => {
-  const paragraphs = [{ id: "0", index: 0, text: "第一段正文用于测试高亮。", charLength: 12 }];
+  let requestCount = 0;
 
   await assert.rejects(
     async () =>
@@ -443,57 +292,8 @@ test("generateAiHighlight propagates TillGlance HTTP error when fallback fails",
         paragraphs,
         providerMode: "minimax",
         env: { MINIMAX_API_KEY: "test-minimax-key" },
-        fetchImpl: async (url) => {
-          if (url.includes("tillglance")) {
-            return {
-              ok: false,
-              status: 503,
-              async json() {
-                return { error: "service unavailable" };
-              }
-            };
-          }
-
-          return {
-            ok: true,
-            status: 200,
-            async json() {
-              return {
-                model: "MiniMax-M3",
-                content: [{ type: "thinking", thinking: "no final text" }]
-              };
-            }
-          };
-        }
-      }),
-    /TillGlance fallback request failed/
-  );
-});
-
-test("generateAiHighlight with fallbackOnFailure false throws on MiniMax structured output error", async () => {
-  const paragraphs = [{ id: "0", index: 0, text: "第一段正文用于测试高亮。", charLength: 12 }];
-  let tillGlanceCalled = false;
-
-  await assert.rejects(
-    async () =>
-      generateAiHighlight({
-        paragraphs,
-        providerMode: "minimax",
-        fallbackOnFailure: false,
-        env: { MINIMAX_API_KEY: "test-minimax-key" },
-        fetchImpl: async (url) => {
-          if (url.includes("tillglance")) {
-            tillGlanceCalled = true;
-            return {
-              ok: true,
-              status: 200,
-              headers: new Map(),
-              async json() {
-                return { "0": [0, 2] };
-              }
-            };
-          }
-
+        fetchImpl: async () => {
+          requestCount += 1;
           return {
             ok: true,
             status: 200,
@@ -509,10 +309,10 @@ test("generateAiHighlight with fallbackOnFailure false throws on MiniMax structu
     /thinking blocks|text content/
   );
 
-  assert.equal(tillGlanceCalled, false);
+  assert.equal(requestCount, 1);
 });
 
-test("generateAiHighlight mock mode does not call TillGlance", async () => {
+test("generateAiHighlight mock mode stays fully local", async () => {
   const paragraphs = [{ id: "0", index: 0, text: "第一段正文用于测试高亮。", charLength: 12 }];
   let fetchCalled = false;
 
@@ -528,5 +328,4 @@ test("generateAiHighlight mock mode does not call TillGlance", async () => {
 
   assert.equal(fetchCalled, false);
   assert.equal(result.modelInfo.provider, "mock");
-  assert.equal(result.modelInfo.fallbackUsed, false);
 });

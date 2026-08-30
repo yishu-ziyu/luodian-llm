@@ -18,10 +18,9 @@ URL / txt / md 导入
 
 ## 固定资料面
 
-- 工程设计：`docs/superpowers/specs/2026-06-02-web-mvp-engineering-design.md`
-- 实施计划：`docs/superpowers/plans/2026-06-02-web-mvp-implementation-plan.md`
 - 稳定交接：`docs/HANDOFF.md`
-- 迭代日志：`notes/session-logs/`
+- 本地算法：`docs/LOCAL_HIGHLIGHT_ALGORITHM.md`
+- 迭代日志：`CHANGELOG.md`
 
 任何关键结论必须写入这些资料面之一，不能只留在聊天里。
 
@@ -41,6 +40,12 @@ URL / txt / md 导入
 
 没有 fresh verification，不允许声明完成。
 
+## 开发日志
+
+- 只记录改变产品方向、架构或优先级的重要节点。
+- 每个节点只写：改了什么、观察到什么、为什么这样决定。
+- 默认不写命令、实现过程和测试流水账；每个节点不超过 5 条。
+
 ## 阶段门槛
 
 ### Gate 0：协议和计划
@@ -49,7 +54,7 @@ URL / txt / md 导入
 
 - `docs/DEVELOPMENT_PROTOCOL.md` 存在。
 - `docs/HANDOFF.md` 存在。
-- `docs/superpowers/plans/2026-06-02-web-mvp-implementation-plan.md` 存在。
+- `docs/LOCAL_HIGHLIGHT_ALGORITHM.md` 存在。
 
 ### Gate 1：内容导入
 
@@ -91,7 +96,7 @@ URL / txt / md 导入
 
 - 多步任务按"先报告下一步 → 派 agent 执行 → 回收验证"模式推进。
 - 完成一项就勾一项，不等到最后批量勾。
-- 原版扩展目录默认只读；要修改必须先说明原因。
+- 不引入任何第三方阅读高亮服务或未授权实现。
 - 不在项目文档、日志或聊天中写入密钥。
 
 ## 交接规则

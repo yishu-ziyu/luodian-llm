@@ -6,7 +6,6 @@ import { assertHighlightMap, generateMockHighlightMap, clipHighlightSpans } from
 
 const DEFAULT_MINIMAX_BASE_URL = "https://api.minimax.io/anthropic";
 const DEFAULT_MINIMAX_MODEL = "MiniMax-M3";
-const DEFAULT_TILLGLANCE_API_URL = "https://api.tillglance.com/nlphl";
 const ANTHROPIC_VERSION = "2023-06-01";
 const MINIMAX_MAX_OUTPUT_TOKENS = 16384;
 const MINIMAX_MAX_PARAGRAPHS_PER_REQUEST = 4;
@@ -84,9 +83,7 @@ export function resolveLlmConfig({ providerMode = "auto", env = loadProviderEnv(
     endpoint: normalizeAnthropicMessagesEndpoint(
       env.MINIMAX_ANTHROPIC_BASE_URL || env.MINIMAX_BASE_URL || DEFAULT_MINIMAX_BASE_URL
     ),
-    model: env.MINIMAX_MODEL || DEFAULT_MINIMAX_MODEL,
-    tillGlanceApiUrl: env.TILLGLANCE_API_URL || DEFAULT_TILLGLANCE_API_URL,
-    tillGlanceApiKey: env.TILLGLANCE_API_KEY || null
+    model: env.MINIMAX_MODEL || DEFAULT_MINIMAX_MODEL
   };
 }
 
@@ -459,43 +456,10 @@ function mergeMiniMaxBatchResults(results) {
     (merged, result) => ({
       highlight: { ...merged.highlight, ...result.highlight },
       model: result.model || merged.model,
-      usage: mergeUsage(merged.usage, result.usage),
-      fallbackUsed: merged.fallbackUsed || result.fallbackUsed || false,
-      fallbackReason: merged.fallbackReason || result.fallbackReason || null
+      usage: mergeUsage(merged.usage, result.usage)
     }),
-    { highlight: {}, model: null, usage: null, fallbackUsed: false, fallbackReason: null }
+    { highlight: {}, model: null, usage: null }
   );
-}
-
-async function requestTillGlanceHighlightBatch({ paragraphs, config, fetchImpl }) {
-  const contentDict = Object.fromEntries(paragraphs.map((paragraph) => [paragraph.id, paragraph.text]));
-
-  const response = await fetchImpl(config.tillGlanceApiUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...(config.tillGlanceApiKey ? { Authorization: `Bearer ${config.tillGlanceApiKey}` } : {})
-    },
-    body: JSON.stringify(contentDict)
-  });
-
-  if (!response.ok) {
-    throw new Error(`TillGlance fallback request failed with HTTP ${response.status}.`);
-  }
-
-  const responseJson = await response.json();
-  const highlight = normalizeHighlightMapShape(responseJson);
-  const clippedHighlight = clipHighlightSpans(highlight, paragraphs);
-  assertHighlightMap(clippedHighlight, paragraphs);
-
-  const tgVersion = response.headers.get("X-Tg-Version");
-  return {
-    highlight: clippedHighlight,
-    model: tgVersion ? `tg-${tgVersion}` : "tillglance-nlphl",
-    usage: null,
-    fallbackUsed: true,
-    fallbackReason: null
-  };
 }
 
 async function mapWithConcurrency(items, limit, mapper) {
@@ -557,7 +521,7 @@ async function requestMiniMaxHighlightBatch({ paragraphs, density, config, fetch
   };
 }
 
-async function requestMiniMaxHighlightBatchWithRetry({ paragraphs, density, config, fetchImpl, fallbackOnFailure = true }) {
+async function requestMiniMaxHighlightBatchWithRetry({ paragraphs, density, config, fetchImpl }) {
   try {
     return await requestMiniMaxHighlightBatch({ paragraphs, density, config, fetchImpl });
   } catch (error) {
@@ -566,10 +530,6 @@ async function requestMiniMaxHighlightBatchWithRetry({ paragraphs, density, conf
     }
 
     if (paragraphs.length <= 1) {
-      if (fallbackOnFailure && config.tillGlanceApiUrl) {
-        const tillGlanceResult = await requestTillGlanceHighlightBatch({ paragraphs, config, fetchImpl });
-        return { ...tillGlanceResult, fallbackReason: error.message };
-      }
       throw error;
     }
 
@@ -579,15 +539,13 @@ async function requestMiniMaxHighlightBatchWithRetry({ paragraphs, density, conf
         paragraphs: paragraphs.slice(0, midpoint),
         density,
         config,
-        fetchImpl,
-        fallbackOnFailure
+        fetchImpl
       }),
       requestMiniMaxHighlightBatchWithRetry({
         paragraphs: paragraphs.slice(midpoint),
         density,
         config,
-        fetchImpl,
-        fallbackOnFailure
+        fetchImpl
       })
     ]);
 
@@ -595,28 +553,24 @@ async function requestMiniMaxHighlightBatchWithRetry({ paragraphs, density, conf
   }
 }
 
-async function callMiniMaxHighlight({ paragraphs, density, config, fetchImpl, fallbackOnFailure = true }) {
+async function callMiniMaxHighlight({ paragraphs, density, config, fetchImpl }) {
   const startedAt = Date.now();
   const batches = splitParagraphsForMiniMax(paragraphs);
   const batchResults = await mapWithConcurrency(batches, MINIMAX_MAX_CONCURRENT_REQUESTS, (batch) =>
-    requestMiniMaxHighlightBatchWithRetry({ paragraphs: batch, density, config, fetchImpl, fallbackOnFailure })
+    requestMiniMaxHighlightBatchWithRetry({ paragraphs: batch, density, config, fetchImpl })
   );
   const merged = mergeMiniMaxBatchResults(batchResults);
   const clippedHighlight = clipHighlightSpans(merged.highlight, paragraphs);
   assertHighlightMap(clippedHighlight, paragraphs);
 
   const modelInfo = {
-    provider: merged.fallbackUsed ? "tillglance" : "minimax",
+    provider: "minimax",
     model: merged.model || config.model,
     apiType: config.apiType,
     latencyMs: Date.now() - startedAt,
     requestCount: batchResults.length,
-    fallbackUsed: merged.fallbackUsed || false,
     usage: merged.usage
   };
-  if (merged.fallbackUsed && merged.fallbackReason) {
-    modelInfo.fallbackReason = merged.fallbackReason;
-  }
 
   return {
     highlight: merged.highlight,
@@ -632,8 +586,7 @@ function generateMockResult(paragraphs, density) {
     highlight,
     modelInfo: {
       provider: "mock",
-      model: "mock-semantic-reading-guide",
-      fallbackUsed: false
+      model: "mock-semantic-reading-guide"
     }
   };
 }
@@ -642,7 +595,6 @@ export async function generateAiHighlight({
   paragraphs,
   density = "medium",
   providerMode,
-  fallbackOnFailure = true,
   env,
   envFilePaths,
   readFileSync,
@@ -662,5 +614,5 @@ export async function generateAiHighlight({
     throw new Error("fetch is not available for the configured LLM provider.");
   }
 
-  return callMiniMaxHighlight({ paragraphs, density, config, fetchImpl, fallbackOnFailure });
+  return callMiniMaxHighlight({ paragraphs, density, config, fetchImpl });
 }

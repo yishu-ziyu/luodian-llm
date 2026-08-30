@@ -1,0 +1,177 @@
+{
+  "source": {
+    "title": "和 Mars 在混沌讨论 AI 产品和知识管理",
+    "url": "https://read.pmthinking.com/p/178"
+  },
+  "measuredAt": "2026-08-30T16:54:53.934Z",
+  "metrics": {
+    "exactPhraseRecall": 0.39622641509433965,
+    "foundCount": 21,
+    "goldCount": 53,
+    "genericCandidateRate": 0.044585987261146494,
+    "knownBadBoundaryRate": 0.012738853503184714,
+    "candidatesPer100Chars": 27.162629757785467,
+    "candidateCount": 157,
+    "textLength": 578
+  },
+  "paragraphs": [
+    {
+      "id": "p0",
+      "textLength": 93,
+      "goldCount": 7,
+      "candidateCount": 20,
+      "found": [
+        "整理"
+      ],
+      "missing": [
+        "Mars",
+        "混沌学院",
+        "AI",
+        "知识管理",
+        "万物皆可盘",
+        "知识管理沙龙"
+      ],
+      "genericCount": 0,
+      "knownBadBoundaryCount": 0
+    },
+    {
+      "id": "p1",
+      "textLength": 57,
+      "goldCount": 6,
+      "candidateCount": 12,
+      "found": [
+        "影响",
+        "删减",
+        "修改"
+      ],
+      "missing": [
+        "AI",
+        "产品中的应用",
+        "知识管理"
+      ],
+      "genericCount": 2,
+      "knownBadBoundaryCount": 0
+    },
+    {
+      "id": "p3",
+      "textLength": 31,
+      "goldCount": 4,
+      "candidateCount": 9,
+      "found": [],
+      "missing": [
+        "没想清楚",
+        "短期应该不会",
+        "核心原因",
+        "3 个"
+      ],
+      "genericCount": 0,
+      "knownBadBoundaryCount": 0
+    },
+    {
+      "id": "p6",
+      "textLength": 90,
+      "goldCount": 7,
+      "candidateCount": 27,
+      "found": [
+        "场景",
+        "主题",
+        "发散"
+      ],
+      "missing": [
+        "AI",
+        "自动关联",
+        "真正用起来",
+        "收敛性问题"
+      ],
+      "genericCount": 0,
+      "knownBadBoundaryCount": 1
+    },
+    {
+      "id": "p7",
+      "textLength": 46,
+      "goldCount": 7,
+      "candidateCount": 12,
+      "found": [
+        "提问",
+        "扮演",
+        "他者",
+        "聆听",
+        "反馈"
+      ],
+      "missing": [
+        "不会选择",
+        "AI"
+      ],
+      "genericCount": 0,
+      "knownBadBoundaryCount": 0
+    },
+    {
+      "id": "p9",
+      "textLength": 43,
+      "goldCount": 5,
+      "candidateCount": 11,
+      "found": [
+        "提问",
+        "不能",
+        "目的",
+        "意义",
+        "擅长"
+      ],
+      "missing": [],
+      "genericCount": 0,
+      "knownBadBoundaryCount": 0
+    },
+    {
+      "id": "p17",
+      "textLength": 54,
+      "goldCount": 4,
+      "candidateCount": 16,
+      "found": [
+        "答案"
+      ],
+      "missing": [
+        "AI",
+        "不能帮助",
+        "管理知识"
+      ],
+      "genericCount": 2,
+      "knownBadBoundaryCount": 1
+    },
+    {
+      "id": "p24",
+      "textLength": 40,
+      "goldCount": 5,
+      "candidateCount": 11,
+      "found": [
+        "无法",
+        "丧失",
+        "乐趣"
+      ],
+      "missing": [
+        "自己的想法",
+        "绘画过程"
+      ],
+      "genericCount": 0,
+      "knownBadBoundaryCount": 0
+    },
+    {
+      "id": "p25",
+      "textLength": 124,
+      "goldCount": 8,
+      "candidateCount": 39,
+      "found": [],
+      "missing": [
+        "反噬作用",
+        "擅长开车",
+        "双腿就退化",
+        "提高做其他事的效率",
+        "节省的时间",
+        "核心能力",
+        "最痛苦的部分",
+        "当下的付出"
+      ],
+      "genericCount": 3,
+      "knownBadBoundaryCount": 0
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>落点插件验收文章</title>
+    <style>
+      body { margin: 0; color: #20242a; font: 18px/1.8 system-ui, sans-serif; }
+      nav, footer { padding: 16px 24px; background: #f2f3f5; }
+      main { width: min(720px, calc(100% - 48px)); margin: 48px auto; }
+      h1 { line-height: 1.25; }
+      a { color: #174ea6; }
+      code { display: block; padding: 12px; background: #f6f7f8; }
+    </style>
+  </head>
+  <body>
+    <nav id="navigation">首页　产品　价格　联系</nav>
+    <main>
+      <article id="article">
+        <h1>在原网页中获得稳定的阅读落点</h1>
+        <p id="first">浏览器阅读插件不应该强迫读者离开当前页面，而应该安静地增强原有文字。</p>
+        <p id="second">高亮必须保留<a id="source-link" href="#source">原始链接</a>、复制能力和页面布局，并且能够完整撤销。</p>
+        <pre><code id="code">const externalRequest = false;</code></pre>
+      </article>
+    </main>
+    <footer id="footer">版权信息与网站导航不会被高亮。</footer>
+  </body>
+</html>

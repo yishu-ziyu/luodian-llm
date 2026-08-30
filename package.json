@@ -1,15 +1,32 @@
 {
   "name": "luodian-llm",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev:web-mvp": "node web-mvp/server.mjs",
     "test:web-mvp": "node --test web-mvp/tests/*.test.mjs",
+    "dev:extension": "wxt",
+    "build:extension": "wxt build",
+    "typecheck:extension": "wxt prepare && tsc --noEmit",
+    "test:extension": "vitest run extension/tests",
+    "verify:extension-build": "npm run build:extension && node extension/scripts/verify-build.mjs",
+    "verify:extension": "npm run test && npm run typecheck:extension && npm run verify:extension-build",
+    "verify:landing": "node landing/verify.mjs",
+    "verify:release": "npm run verify:extension && npm run verify:landing",
+    "generate:highlight-ab": "node --experimental-strip-types experiments/highlight-ab/run.mjs",
+    "serve:highlight-ab": "node experiments/highlight-ab/server.mjs",
+    "test": "npm run test:web-mvp && npm run test:extension",
     "bakeoff:url-extraction": "node experiments/url-extraction-bakeoff/run-bakeoff.mjs"
   },
   "dependencies": {
     "@mozilla/readability": "^0.6.0",
     "defuddle": "^0.18.1",
     "jsdom": "^24.1.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "wxt": "^0.21.4"
   }
 }

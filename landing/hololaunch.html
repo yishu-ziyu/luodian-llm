@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="落点 Holo 风格实验页：在原网页中标出语义主干，让眼睛更快找到重点。">
+    <meta name="theme-color" content="#f2f2f1">
+    <title>落点 · Holo 风格实验</title>
+    <link rel="icon" href="./assets/luodian-icon.png" type="image/png">
+    <style>
+      :root {
+        --ink: #0b0b0b;
+        --paper: #f4f4f2;
+        --white: #fff;
+        --line: rgb(11 11 11 / 15%);
+        --muted: rgb(11 11 11 / 62%);
+        --focus: #ffbd3e;
+        --amber: #e2a02b;
+        --deep: #191612;
+        --sans: "Avenir Next", Avenir, "Helvetica Neue", "PingFang SC", system-ui, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; background: var(--paper); }
+      body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); }
+      a { color: inherit; }
+      button { color: inherit; font: inherit; }
+      img { display: block; max-width: 100%; }
+
+      .nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 30;
+        height: 52px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        padding: 0 18px;
+        background: rgb(242 242 241 / 92%);
+        backdrop-filter: blur(14px);
+      }
+      .brand { display: inline-flex; align-items: center; gap: 9px; width: max-content; text-decoration: none; font-weight: 700; }
+      .brand img { width: 28px; height: 28px; border-radius: 7px; }
+      .nav-center { display: flex; gap: 24px; font-size: 13px; }
+      .nav-center a { text-decoration: none; opacity: .7; transition: opacity 180ms ease; }
+      .nav-center a:hover { opacity: 1; }
+      .nav-cta { justify-self: end; min-height: 34px; display: inline-flex; align-items: center; padding: 0 18px; border: 1px solid var(--ink); border-radius: 999px; text-decoration: none; font-size: 12px; }
+
+      .hero { position: relative; height: clamp(760px, 100svh, 980px); min-height: 760px; overflow: hidden; padding-top: 52px; background: var(--deep); }
+      .hero::before { content: ""; position: absolute; inset: 52px 0 0; background: url("./assets/attention-field-v2.png") center / cover no-repeat; animation: field-breathe 18s ease-in-out infinite alternate; }
+      .hero::after { content: ""; position: absolute; inset: 52px 0 0; pointer-events: none; background: linear-gradient(90deg, rgb(0 0 0 / 52%) 0%, rgb(0 0 0 / 16%) 47%, transparent 72%), linear-gradient(0deg, rgb(0 0 0 / 34%) 0%, transparent 58%); }
+      @keyframes field-breathe { to { transform: scale(1.035) translate3d(-.7%, -.5%, 0); } }
+      .hero-kicker { position: absolute; z-index: 2; top: 96px; left: 48px; max-width: 300px; margin: 0; color: var(--white); font-size: 16px; line-height: 1.45; text-shadow: 0 1px 18px rgb(0 0 0 / 35%); }
+      .hero-copy { position: absolute; z-index: 2; left: 48px; bottom: 52px; width: min(620px, calc(100% - 560px)); color: var(--white); }
+      .hero h1 { margin: 0; font-size: clamp(48px, 4.3vw, 68px); line-height: .98; font-weight: 500; letter-spacing: -.065em; }
+      .hero-line { display: block; white-space: nowrap; }
+      .hero-accent { color: var(--focus); }
+      .hero-sub { margin: 18px 0 22px; color: rgb(255 255 255 / 75%); font-size: 20px; line-height: 1.35; }
+      .pill { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 22px; border: 0; border-radius: 999px; background: var(--ink); color: var(--white); text-decoration: none; font-size: 14px; cursor: pointer; transition: transform 180ms ease; }
+      .pill:hover { transform: translateY(-2px); }
+
+      .metric-card { position: absolute; z-index: 2; right: 48px; bottom: 52px; width: min(390px, 32vw); min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; padding: 26px; border-radius: 24px; background: rgb(255 255 255 / 94%); }
+      .metric-label { align-self: flex-end; font-size: 17px; }
+      .metric-value { font-size: clamp(64px, 6vw, 88px); line-height: .85; letter-spacing: -.075em; }
+      .metric-foot { color: var(--muted); font-size: 12px; }
+
+      .section { padding: 112px 48px; background: var(--white); }
+      .section + .section { border-top: 1px solid var(--line); }
+      .section-label { margin: 0 0 24px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+      .section h2 { margin: 0; max-width: 16ch; font-size: clamp(42px, 5vw, 74px); line-height: .98; font-weight: 500; letter-spacing: -.06em; }
+
+      .spotlight { display: grid; grid-template-columns: 1.25fr .75fr; gap: 18px; margin-top: 54px; }
+      .reading-stage { min-height: 680px; overflow: hidden; border-radius: 26px; background: #dedddd; }
+      .window-bar { height: 50px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; padding: 0 18px; background: #e9e7e2; }
+      .dots { display: flex; gap: 7px; }
+      .dots i { width: 9px; height: 9px; border-radius: 50%; background: #b9b6ae; }
+      .url { justify-self: center; width: min(380px, 80%); padding: 8px 16px; overflow: hidden; border-radius: 999px; background: rgb(255 255 255 / 70%); color: #777; font: 11px/1 monospace; text-align: center; white-space: nowrap; }
+      .window-logo { width: 27px; height: 27px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+      .window-logo img { width: 100%; height: 100%; border-radius: 7px; }
+      .article { min-height: 630px; padding: 72px clamp(34px, 7vw, 90px); background: #fffefa; }
+      .article-meta { margin: 0 0 24px; color: #777; font: 12px/1 monospace; letter-spacing: .08em; }
+      .article h3 { max-width: 16ch; margin: 0 0 34px; font-size: clamp(34px, 4vw, 58px); line-height: 1.05; font-weight: 500; letter-spacing: -.05em; }
+      .article p { max-width: 700px; margin: 0 0 18px; font-family: "Iowan Old Style", "Songti SC", serif; font-size: 18px; line-height: 1.9; }
+      .mark { background-image: none; box-decoration-break: clone; -webkit-box-decoration-break: clone; transition: background-image 180ms ease; }
+      .reading-stage.is-on .mark { background-image: radial-gradient(ellipse 96% 88% at 46% 52%, rgb(225 146 28 / 42%) 0%, rgb(235 161 39 / 30%) 58%, transparent 100%), radial-gradient(ellipse 74% 94% at 68% 45%, rgb(246 180 55 / 24%) 0%, transparent 88%); background-size: 1.07em 1.18em, .93em 1.08em; background-position: .02em 52%, -.08em 45%; background-repeat: repeat-x; }
+
+      .spot-copy { min-height: 680px; display: flex; flex-direction: column; justify-content: space-between; padding: 34px; border-radius: 26px; background: var(--ink); color: var(--white); }
+      .spot-copy small { opacity: .65; text-transform: uppercase; letter-spacing: .08em; }
+      .spot-copy h3 { margin: auto 0 20px; font-size: clamp(34px, 3vw, 48px); line-height: 1.02; font-weight: 500; letter-spacing: -.05em; }
+      .spot-copy p { margin: 0 0 24px; color: rgb(255 255 255 / 65%); font-size: 16px; line-height: 1.65; }
+      .spot-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+      .spot-tags span { padding: 7px 11px; border: 1px solid rgb(255 255 255 / 25%); border-radius: 999px; font-size: 12px; }
+
+      .how { background: #f5f5f3; }
+      .how-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; }
+      .tabs { display: flex; gap: 8px; padding: 5px; border: 1px solid var(--ink); border-radius: 999px; }
+      .tab { min-height: 36px; padding: 0 16px; border: 0; border-radius: 999px; background: transparent; cursor: pointer; }
+      .tab.is-active { background: var(--ink); color: var(--white); }
+      .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 54px; }
+      .flow-card { min-height: 430px; display: flex; flex-direction: column; justify-content: space-between; padding: 26px; border: 1px solid var(--line); border-radius: 26px; background: var(--white); }
+      .flow-visual { position: relative; min-height: 210px; overflow: hidden; border-radius: 18px; background: #e8e8e5; }
+      .flow-visual::before, .flow-visual::after { content: ""; position: absolute; border-radius: 999px; background: var(--deep); filter: blur(18px); animation: drift 5s ease-in-out infinite alternate; }
+      .flow-visual::before { width: 160px; height: 160px; left: -24px; top: 30px; }
+      .flow-visual::after { width: 110px; height: 110px; right: 10px; top: 70px; background: var(--amber); animation-delay: -2s; }
+      .flow-card:nth-child(2) .flow-visual::before { background: var(--amber); }
+      .flow-card:nth-child(3) .flow-visual::after { background: var(--amber); }
+      @keyframes drift { to { transform: translate(48px, -18px) scale(1.16); } }
+      .flow-card h3 { margin: 28px 0 10px; font-size: 25px; font-weight: 500; letter-spacing: -.035em; }
+      .flow-card p { margin: 0; color: var(--muted); line-height: 1.6; }
+      .flow-card[hidden] { display: none; }
+
+      .loop { position: relative; min-height: 720px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 70px 48px; background: var(--deep); color: var(--white); }
+      .loop::before { content: ""; position: absolute; inset: -5%; background: linear-gradient(0deg, rgb(0 0 0 / 62%), rgb(0 0 0 / 18%)), url("./assets/attention-field-v2.png") center / cover no-repeat; filter: saturate(.8); opacity: .58; }
+      .loop-content { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; align-items: end; gap: 80px; }
+      .loop h2 { max-width: 13ch; font-size: clamp(58px, 7vw, 110px); }
+      .loop p { max-width: 460px; margin: 0; color: rgb(255 255 255 / 72%); font-size: 19px; line-height: 1.65; }
+      .loop strong { color: var(--focus); font-weight: inherit; }
+
+      .final { min-height: 520px; display: grid; place-items: center; padding: 80px 24px; background: var(--white); text-align: center; }
+      .final h2 { max-width: 11ch; margin: 0 0 30px; font-size: clamp(56px, 7vw, 104px); line-height: .95; font-weight: 500; letter-spacing: -.065em; }
+      footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px 48px; border-top: 1px solid var(--line); background: var(--white); color: var(--muted); font-size: 12px; }
+
+      @media (max-width: 900px) {
+        .nav { grid-template-columns: 1fr auto; }
+        .nav-center { display: none; }
+        .hero { height: 930px; min-height: 930px; background: var(--white); }
+        .hero::before { inset: 106px 0 auto; height: 320px; background-position: 58% center; animation: none; }
+        .hero::after { inset: 52px 0 auto; height: 400px; background: linear-gradient(180deg, var(--white) 0%, transparent 24% 70%, var(--white) 100%); }
+        .hero-kicker { top: 78px; left: 16px; right: 16px; max-width: 360px; color: var(--ink); font-size: 16px; text-shadow: none; }
+        .hero-copy { left: 16px; right: 16px; bottom: 250px; width: auto; color: var(--ink); }
+        .hero h1 { font-size: clamp(40px, 10vw, 56px); line-height: 1.02; }
+        .hero-sub { color: var(--muted); font-size: 18px; }
+        .metric-card { left: 16px; right: 16px; bottom: 24px; width: auto; min-height: 170px; padding: 24px; background: #f8f8f7; }
+        .metric-value { font-size: 76px; }
+        .section { padding: 80px 18px; }
+        .spotlight, .flow-grid, .loop-content { grid-template-columns: 1fr; }
+        .spot-copy { min-height: 460px; }
+        .how-head { align-items: flex-start; flex-direction: column; }
+        .loop { min-height: 760px; padding: 56px 18px; }
+      }
+
+      @media (max-width: 520px) {
+        .nav { padding-inline: 16px; }
+        .hero { min-height: 930px; }
+        .hero-line { white-space: nowrap; }
+        .hero h1 { max-width: none; font-size: 40px; }
+        .hero-copy { bottom: 238px; }
+        .metric-value { font-size: 66px; }
+        .reading-stage, .spot-copy { min-height: auto; }
+        .article { min-height: 540px; padding: 48px 28px; }
+        .article h3 { font-size: 38px; }
+        .article p { font-size: 16px; }
+        .flow-card { min-height: 360px; }
+        footer { padding-inline: 18px; flex-direction: column; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="#top"><img src="./assets/luodian-icon.png" alt=""><span>落点</span></a>
+      <div class="nav-center"><a href="#spotlight">效果</a><a href="#how">如何工作</a></div>
+      <a class="nav-cta" href="#install">安装预览版</a>
+    </nav>
+
+    <main>
+      <section class="hero" id="top">
+        <p class="hero-kicker">为中文长文标出主题、判断与因果，让眼睛少走弯路。</p>
+        <div class="hero-copy">
+          <h1><span class="hero-line">把每一次阅读，</span><span class="hero-line">变成<span class="hero-accent">更快</span>的理解。</span></h1>
+          <p class="hero-sub">在原网页中先看见语义主干。</p>
+          <a class="pill" href="#spotlight">看看实际效果</a>
+        </div>
+        <aside class="metric-card" aria-label="候选短语召回率">
+          <span class="metric-label">完整短语召回</span>
+          <strong class="metric-value">90.6%</strong>
+          <span class="metric-foot">53 个人工短语基准 · 当前候选生成层</span>
+        </aside>
+      </section>
+
+      <section class="section" id="spotlight">
+        <p class="section-label">Product spotlight</p>
+        <h2>Featured Reading</h2>
+        <div class="spotlight">
+          <div class="reading-stage is-on" id="reading-stage">
+            <div class="window-bar" aria-hidden="true">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="url">read.example.com / article</span>
+              <button class="window-logo" id="reading-toggle" type="button" aria-label="切换演示高亮" aria-pressed="true"><img src="./assets/luodian-icon.png" alt=""></button>
+            </div>
+            <article class="article">
+              <p class="article-meta">READING EFFICIENCY · 06 MIN</p>
+              <h3>读得更快，从更早看见结构开始。</h3>
+              <p>阅读时，视线会在<span class="mark">主题</span>、<span class="mark">判断</span>和<span class="mark">因果关系</span>之间跳跃。落点先标出这些语义支点，让你用<span class="mark">一次扫视</span>建立句子的骨架。</p>
+              <p>它不替你摘要，也不删掉上下文；只是减少<span class="mark">寻找重点的时间</span>，让完整内容仍然留在原位。</p>
+            </article>
+          </div>
+          <aside class="spot-copy">
+            <small>Why it matters</small>
+            <div>
+              <h3>不是少读一点，是更快知道哪里值得细读。</h3>
+              <p>当前版本本地运行、原页工作、随时撤销。Logo 就是演示开关。</p>
+              <div class="spot-tags"><span>主题</span><span>判断</span><span>因果</span><span>否定</span></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section how" id="how">
+        <div class="how-head">
+          <div><p class="section-label">How it works</p><h2>一条轨道，两层能力。</h2></div>
+          <div class="tabs" role="tablist" aria-label="能力视图">
+            <button class="tab is-active" type="button" data-view="instant" role="tab" aria-selected="true">即时阅读</button>
+            <button class="tab" type="button" data-view="evolve" role="tab" aria-selected="false">持续进化</button>
+          </div>
+        </div>
+        <div class="flow-grid" data-panel="instant">
+          <article class="flow-card"><div class="flow-visual"></div><div><h3>识别正文</h3><p>只处理中文正文，避开导航、代码与已有强调。</p></div></article>
+          <article class="flow-card"><div class="flow-visual"></div><div><h3>生成阅读轨道</h3><p>从高信息候选中选择连续、完整且有间隔的落点。</p></div></article>
+          <article class="flow-card"><div class="flow-visual"></div><div><h3>完整撤销</h3><p>再次点击，插件节点全部移除，页面恢复原样。</p></div></article>
+        </div>
+        <div class="flow-grid" data-panel="evolve" hidden>
+          <article class="flow-card"><div class="flow-visual"></div><div><h3>盲测纠错</h3><p>在全新文章中比较本地排序与模型语义判断。</p></div></article>
+          <article class="flow-card"><div class="flow-visual"></div><div><h3>吸收可靠改进</h3><p>只有人类偏好与新文章回归同时成立，纠错才进入算法。</p></div></article>
+          <article class="flow-card"><div class="flow-visual"></div><div><h3>重新编译插件</h3><p>测试、构建和真实 Chrome 复验通过后才发布下一版。</p></div></article>
+        </div>
+      </section>
+
+      <section class="loop">
+        <div class="loop-content">
+          <h2>每一次选择，都让下一版<strong>更准</strong>。</h2>
+          <p>本地算法给出稳定骨架，大模型只修正少数语义错位。可靠纠错被蒸馏回下一版本地算法，让模型调用越来越少，让即时体验越来越强。</p>
+        </div>
+      </section>
+
+      <section class="final" id="install">
+        <div><h2>先从下一篇长文开始。</h2><a class="pill" href="https://github.com/yishu-ziyu/luodian-llm">安装开发者预览版</a></div>
+      </section>
+    </main>
+
+    <footer><span>落点 · 阅读效率实验</span><span>本地骨架 · 语义纠错 · 可验证进化</span></footer>
+
+    <script>
+      const stage = document.querySelector("#reading-stage");
+      const readingToggle = document.querySelector("#reading-toggle");
+      readingToggle.addEventListener("click", () => {
+        const enabled = stage.classList.toggle("is-on");
+        readingToggle.setAttribute("aria-pressed", String(enabled));
+      });
+
+      const tabs = document.querySelectorAll(".tab");
+      tabs.forEach((tab) => tab.addEventListener("click", () => {
+        tabs.forEach((item) => { item.classList.toggle("is-active", item === tab); item.setAttribute("aria-selected", String(item === tab)); });
+        document.querySelectorAll("[data-panel]").forEach((panel) => { panel.hidden = panel.dataset.panel !== tab.dataset.view; });
+      }));
+    </script>
+  </body>
+</html>

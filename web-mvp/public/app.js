@@ -31,10 +31,6 @@ function selectedDensity() {
 function setStatus(message, level = "info") {
   elements.statusLine.textContent = message;
   elements.statusLine.classList.toggle("error", level === "error");
-  if (level === "error") {
-    elements.statusLine.classList.remove("fallback");
-    elements.modelNote.classList.remove("fallback");
-  }
 }
 
 function setSourceMode(mode) {
@@ -172,12 +168,7 @@ async function generateHighlightAndSave() {
   state.highlight = result.highlight;
   state.modelInfo = result.modelInfo;
 
-  const fallbackUsed = result.modelInfo?.fallbackUsed === true;
-  elements.modelNote.textContent = fallbackUsed
-    ? `${result.modelInfo.model || result.modelInfo.provider} (fallback)`
-    : result.modelInfo.model || result.modelInfo.provider;
-  elements.modelNote.classList.toggle("fallback", fallbackUsed);
-  elements.statusLine.classList.toggle("fallback", fallbackUsed);
+  elements.modelNote.textContent = result.modelInfo.model || result.modelInfo.provider;
   elements.regenerateButton.disabled = false;
   renderReader();
 
@@ -187,11 +178,7 @@ async function generateHighlightAndSave() {
     modelInfo: state.modelInfo
   });
 
-  if (fallbackUsed) {
-    setStatus("已切换参考算法高亮（LLM 不可用）");
-  } else {
-    setStatus(`已生成高亮，并保存实验记录：${saved.experiment.id}`);
-  }
+  setStatus(`已生成高亮，并保存实验记录：${saved.experiment.id}`);
 }
 
 async function importArticle(importer) {

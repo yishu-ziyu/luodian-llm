@@ -40,15 +40,15 @@ const samples = [
       "因此，语义高亮算法应该优先选择内容词，而非功能词。",
       "长文场景下，模型输出不稳定的问题变得尤为突出。",
       "当段落数量超过一定阈值时，部分模型会返回空内容或思考块。",
-      " fallback 机制的存在就是为了在这种情况下保证可用性。",
-      "它并不试图替代主模型，而是在主模型失效时提供一条退路。",
-      "这条退路的输出质量可能略低，但至少不会让页面空白。",
+      "系统会先将长文拆分为小批次，再对失败批次递归缩小范围。",
+      "单段仍然失败时会返回明确错误，不伪装成成功结果。",
+      "本地扩展不受远程模型影响，始终可以生成确定的阅读轨道。",
       "用户体验研究中，稳定性往往比偶尔的惊艳更重要。",
       "一个总是可用的工具，比一个偶尔完美但经常失败的工具更有价值。",
       "这也是我们优先保证长文高亮成功率的原因。",
-      "每次 fallback 都应该被记录，以便后续分析主模型的失败模式。",
+      "每次显式失败都应该被记录，以便后续分析模型的失败模式。",
       "通过收集足够多的样本，我们可以针对性地优化 prompt。",
-      "最终目标是让 fallback 越来越少，而不是越来越多。",
+      "最终目标是让失败率和用户等待时间同时降低。",
       "这需要在模型能力、成本和用户体验之间找到平衡。"
     ]
   },
@@ -74,17 +74,15 @@ const samples = [
       "第二层是输出解析，能够从非标准格式中恢复高亮数据。",
       "第三层是分批处理，将长文拆成多个小批次分别请求。",
       "第四层是二分重试，当某批次失败时进一步缩小范围。",
-      "最后一层是外部 fallback，当所有内部手段都失败时调用备用服务。",
-      "这五层机制共同构成了长文高亮的稳定性保障。",
+      "这些内部机制共同构成了长文高亮的稳定性保障。",
       "每一层都有其成本和限制，需要在实际使用中权衡。",
       "例如，分批处理会增加请求次数和总延迟。",
       "二分重试虽然提高了成功率，但会进一步增加延迟。",
-      "外部 fallback 则可能带来额外的依赖和成本。",
-      "因此，监控各层的触发频率至关重要。",
+      "因此，监控各层的触发频率和明确错误至关重要。",
       "稳定性 smoke 测试就是为此而设计的开发者工具。",
-      "它定期对预设样本发起请求，统计成功率和 fallback 率。",
+      "它定期对预设样本发起请求，统计成功率和延迟。",
       "通过这些数据，开发者可以判断系统是否 regress。",
-      "如果 fallback 率突然上升，说明主模型或提示需要调整。",
+      "如果失败率突然上升，说明模型或提示需要调整。",
       "如果延迟显著增加，可能是分批策略需要优化。",
       "最终，这些监控数据会反哺产品决策。"
     ]
@@ -140,7 +138,6 @@ async function runSample(sample) {
       title: sample.title,
       paragraphCount: article.paragraphs.length,
       ok: true,
-      fallbackUsed: result.modelInfo?.fallbackUsed === true,
       provider: result.modelInfo?.provider || "unknown",
       model: result.modelInfo?.model || "unknown",
       latencyMs,
@@ -153,7 +150,6 @@ async function runSample(sample) {
       title: sample.title,
       paragraphCount: article.paragraphs.length,
       ok: false,
-      fallbackUsed: false,
       provider: null,
       model: null,
       latencyMs: Date.now() - startedAt,
@@ -166,7 +162,6 @@ async function runSample(sample) {
 function summarize(results) {
   const total = results.length;
   const successful = results.filter((result) => result.ok).length;
-  const fallbackCount = results.filter((result) => result.fallbackUsed).length;
   const latencies = results.filter((result) => result.ok).map((result) => result.latencyMs);
   const averageLatencyMs = latencies.length > 0 ? Math.round(latencies.reduce((a, b) => a + b, 0) / latencies.length) : 0;
 
@@ -174,9 +169,7 @@ function summarize(results) {
     total,
     successful,
     failed: total - successful,
-    fallbackCount,
     successRate: total > 0 ? successful / total : 0,
-    fallbackRate: total > 0 ? fallbackCount / total : 0,
     averageLatencyMs
   };
 }
@@ -192,7 +185,7 @@ async function main() {
   for (const sample of samples) {
     const result = await runSample(sample);
     results.push(result);
-    const status = result.ok ? (result.fallbackUsed ? "FALLBACK" : "OK") : "FAIL";
+    const status = result.ok ? "OK" : "FAIL";
     console.log(`${status}  ${result.title.padEnd(8)}  ${result.paragraphCount}段  ${result.latencyMs}ms  ${result.model || result.error || ""}`);
   }
 
@@ -207,8 +200,8 @@ async function main() {
   await fs.writeFile(outputPath, JSON.stringify(report, null, 2));
 
   console.log("");
-  console.log(`总样本: ${summary.total}  成功: ${summary.successful}  失败: ${summary.failed}  fallback: ${summary.fallbackCount}`);
-  console.log(`成功率: ${(summary.successRate * 100).toFixed(1)}%  fallback 率: ${(summary.fallbackRate * 100).toFixed(1)}%  平均延迟: ${summary.averageLatencyMs}ms`);
+  console.log(`总样本: ${summary.total}  成功: ${summary.successful}  失败: ${summary.failed}`);
+  console.log(`成功率: ${(summary.successRate * 100).toFixed(1)}%  平均延迟: ${summary.averageLatencyMs}ms`);
   console.log(`报告已保存: ${outputPath}`);
 }
 
