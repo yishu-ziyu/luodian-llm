@@ -1,9 +1,18 @@
+import { renderArticleContent } from "./reader-renderer.js";
+import {
+  applyReaderPreferences,
+  loadReaderPreferences,
+  READER_PREFERENCES_STORAGE_KEY,
+  saveReaderPreferences
+} from "./reader-preferences.js";
+
 const state = {
   article: null,
   highlight: null,
   modelInfo: null,
   selectedFile: null,
-  showHighlight: true
+  showHighlight: true,
+  readerPreferences: loadReaderPreferences()
 };
 
 const elements = {
@@ -21,7 +30,10 @@ const elements = {
   sourcePanels: document.querySelectorAll("[data-source-panel]"),
   statChars: document.querySelector("#stat-chars"),
   statMinutes: document.querySelector("#stat-minutes"),
-  statAnchors: document.querySelector("#stat-anchors")
+  statAnchors: document.querySelector("#stat-anchors"),
+  preferenceInputs: document.querySelectorAll("[data-reader-preference]"),
+  preferenceOutputs: document.querySelectorAll("[data-preference-output]"),
+  highlightPreview: document.querySelector("#highlight-preview")
 };
 
 function selectedDensity() {
@@ -75,37 +87,33 @@ async function postJson(url, payload) {
   return data;
 }
 
-function appendHighlightedText(container, text, ranges) {
-  const chars = Array.from(text);
-  const sortedRanges = [...(ranges || [])]
-    .reduce((pairs, value, index, source) => {
-      if (index % 2 === 0) pairs.push([value, source[index + 1]]);
-      return pairs;
-    }, [])
-    .filter(([start, length]) => Number.isInteger(start) && Number.isInteger(length) && length > 0)
-    .sort(([left], [right]) => left - right);
-
-  let cursor = 0;
-  for (const [start, length] of sortedRanges) {
-    if (start < cursor || start >= chars.length) continue;
-    if (start > cursor) {
-      container.append(document.createTextNode(chars.slice(cursor, start).join("")));
-    }
-
-    const mark = document.createElement("mark");
-    mark.className = "reading-highlight";
-    mark.textContent = chars.slice(start, Math.min(start + length, chars.length)).join("");
-    container.append(mark);
-    cursor = Math.min(start + length, chars.length);
+function updatePreferenceControls() {
+  for (const input of elements.preferenceInputs) {
+    const value = state.readerPreferences[input.dataset.readerPreference];
+    if (input.type === "radio") input.checked = input.value === value;
+    else input.value = String(value);
   }
-
-  if (cursor < chars.length) {
-    container.append(document.createTextNode(chars.slice(cursor).join("")));
+  for (const output of elements.preferenceOutputs) {
+    const key = output.dataset.preferenceOutput;
+    const value = state.readerPreferences[key];
+    output.value = key === "fontSize" ? `${value}px` : key === "measure" ? `${value} 字` : String(value);
   }
+  elements.highlightPreview.dataset.highlightStyle = state.readerPreferences.highlightStyle;
+  elements.highlightPreview.dataset.highlightTone = state.readerPreferences.highlightTone;
+}
+
+function updatePreferenceOutput(key) {
+  const output = Array.from(elements.preferenceOutputs).find(
+    (candidate) => candidate.dataset.preferenceOutput === key
+  );
+  if (!output) return;
+  const value = state.readerPreferences[key];
+  output.value = key === "fontSize" ? `${value}px` : key === "measure" ? `${value} 字` : String(value);
 }
 
 function renderReader() {
   elements.reader.replaceChildren();
+  applyReaderPreferences(elements.reader, state.readerPreferences);
 
   if (!state.article) {
     const empty = document.createElement("div");
@@ -131,22 +139,33 @@ function renderReader() {
 
   const title = document.createElement("h2");
   title.textContent = state.article.title;
-  elements.reader.append(title);
+  const sheet = document.createElement("div");
+  sheet.className = "reader-sheet";
+  sheet.append(title);
 
   const meta = document.createElement("div");
   meta.className = "reader-meta";
-  meta.textContent = `${state.article.sourceType} · ${state.article.paragraphs.length} 段 · ${state.article.extraction.method}`;
-  elements.reader.append(meta);
-
-  for (const paragraph of state.article.paragraphs) {
-    const p = document.createElement("p");
-    if (state.showHighlight && state.highlight?.[paragraph.id]) {
-      appendHighlightedText(p, paragraph.text, state.highlight[paragraph.id]);
-    } else {
-      p.textContent = paragraph.text;
-    }
-    elements.reader.append(p);
+  const metaText = `${state.article.sourceType} · ${state.article.paragraphs.length} 段 · ${state.article.extraction.method}`;
+  if (state.article.sourceUrl) {
+    const sourceLink = document.createElement("a");
+    sourceLink.href = state.article.sourceUrl;
+    sourceLink.target = "_blank";
+    sourceLink.rel = "noopener noreferrer";
+    sourceLink.textContent = metaText;
+    meta.append(sourceLink);
+  } else {
+    meta.textContent = metaText;
   }
+  sheet.append(meta);
+
+  const content = document.createElement("div");
+  content.className = "reader-content";
+  renderArticleContent(content, state.article, {
+    highlight: state.highlight,
+    showHighlight: state.showHighlight
+  });
+  sheet.append(content);
+  elements.reader.append(sheet);
   updateStats();
 }
 
@@ -250,3 +269,28 @@ document.querySelectorAll('input[name="density"]').forEach((input) => {
     elements.regenerateButton.disabled = false;
   });
 });
+
+elements.preferenceInputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    const key = input.dataset.readerPreference;
+    if (input.type === "radio" && !input.checked) return;
+    state.readerPreferences = saveReaderPreferences(localStorage, {
+      ...state.readerPreferences,
+      [key]: input.value
+    });
+    updatePreferenceOutput(key);
+    if (key === "highlightStyle") elements.highlightPreview.dataset.highlightStyle = state.readerPreferences.highlightStyle;
+    if (key === "highlightTone") elements.highlightPreview.dataset.highlightTone = state.readerPreferences.highlightTone;
+    applyReaderPreferences(elements.reader, state.readerPreferences);
+  });
+});
+
+window.addEventListener("storage", (event) => {
+  if (event.key !== READER_PREFERENCES_STORAGE_KEY) return;
+  state.readerPreferences = loadReaderPreferences();
+  updatePreferenceControls();
+  applyReaderPreferences(elements.reader, state.readerPreferences);
+});
+
+updatePreferenceControls();
+applyReaderPreferences(elements.reader, state.readerPreferences);

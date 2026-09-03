@@ -55,18 +55,29 @@ test("rejects hostnames that resolve to private network addresses", async () => 
 });
 
 test("selects Defuddle when primary extraction is good enough", async () => {
+  let receivedOptions;
   const article = await extractUrlArticle("https://example.com/story", {
     fetchImpl: async () => okHtmlResponse("<article>unused</article>"),
-    defuddleImpl: async () => ({
+    defuddleImpl: async (_html, _url, options) => {
+      receivedOptions = options;
+      return {
       title: "Defuddle title",
-      content: `<article>${"正文".repeat(180)}</article>`
-    })
+        content: `<article><p>${"正文".repeat(180)}<a href="/source">来源</a></p><img src="/image.jpg" alt="图"></article>`
+      };
+    }
   });
 
   assert.equal(article.sourceType, "url");
   assert.equal(article.title, "Defuddle title");
   assert.equal(article.extraction.method, "defuddle");
   assert.equal(article.extraction.fallbackUsed, false);
+  assert.deepEqual(receivedOptions, {
+    separateMarkdown: true,
+    removeImages: false,
+    useAsync: false
+  });
+  assert.match(article.contentHtml, /href="https:\/\/example\.com\/source"/);
+  assert.match(article.contentHtml, /src="\/api\/image\?url=https%3A%2F%2Fexample\.com%2Fimage\.jpg"/);
 });
 
 test("selects Readability fallback when Defuddle output is too short", async () => {
@@ -78,7 +89,8 @@ test("selects Readability fallback when Defuddle output is too short", async () 
     }),
     readabilityImpl: () => ({
       title: "Readability title",
-      textContent: "可读正文".repeat(120)
+      textContent: "可读正文".repeat(120),
+      content: `<article><p>${"可读正文".repeat(120)}<a href="/full">全文</a></p></article>`
     })
   });
 
@@ -86,4 +98,22 @@ test("selects Readability fallback when Defuddle output is too short", async () 
   assert.equal(article.extraction.method, "readability");
   assert.equal(article.extraction.fallbackUsed, true);
   assert.match(article.extraction.warnings[0], /Defuddle output was too short/);
+  assert.match(article.contentHtml, /href="https:\/\/example\.com\/full"/);
+});
+
+test("Readability falls back to plain text when its rich content is empty", async () => {
+  const article = await extractUrlArticle("https://example.com/story", {
+    fetchImpl: async () => okHtmlResponse("<article>unused</article>"),
+    defuddleImpl: async () => ({ title: "Defuddle title", content: "<p>短</p>" }),
+    readabilityImpl: () => ({
+      title: "Plain fallback",
+      textContent: "可读正文".repeat(120),
+      content: ""
+    })
+  });
+
+  assert.equal(article.extraction.method, "readability");
+  assert.equal(article.title, "Plain fallback");
+  assert.equal(article.contentHtml, undefined);
+  assert.equal(article.paragraphs.length, 1);
 });

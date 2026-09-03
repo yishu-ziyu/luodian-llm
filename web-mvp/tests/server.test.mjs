@@ -42,12 +42,42 @@ test("GET /api/health returns ok", async () => {
   assert.deepEqual(JSON.parse(response.body), { ok: true });
 });
 
+test("GET /api/image returns only the validated proxy result", async () => {
+  const response = responseRecorder();
+  await handleWebMvpRequest(getRequest("/api/image?url=https%3A%2F%2Fexample.com%2Fcover.jpg"), response, {
+    imageFetcher: async (url) => {
+      assert.equal(url, "https://example.com/cover.jpg");
+      return { bytes: Buffer.from("image"), contentType: "image/png" };
+    }
+  });
+
+  assert.equal(response.statusCode, 200);
+  assert.equal(response.headers["Content-Type"], "image/png");
+  assert.equal(response.headers["X-Content-Type-Options"], "nosniff");
+});
+
 test("GET /compare serves the comparison page", async () => {
   const response = responseRecorder();
   await handleWebMvpRequest(getRequest("/compare"), response);
 
   assert.equal(response.statusCode, 200);
   assert.match(response.body, /Saccade 高亮对照/);
+});
+
+test("GET serves reader modules required by the main page", async () => {
+  for (const pathname of ["/reader-renderer.js", "/reader-preferences.js"]) {
+    const response = responseRecorder();
+    await handleWebMvpRequest(getRequest(pathname), response);
+
+    assert.equal(response.statusCode, 200);
+    assert.equal(response.headers["Content-Type"], "text/javascript; charset=utf-8");
+    assert.match(response.body, /export/);
+  }
+
+  const stylesheet = responseRecorder();
+  await handleWebMvpRequest(getRequest("/reader.css"), stylesheet);
+  assert.equal(stylesheet.statusCode, 200);
+  assert.equal(stylesheet.headers["Content-Type"], "text/css; charset=utf-8");
 });
 
 test("POST /api/import/file returns an ArticleDocument", async () => {

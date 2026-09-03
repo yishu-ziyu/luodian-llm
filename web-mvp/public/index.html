@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Saccade 阅读加速</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/reader.css">
   </head>
   <body>
     <main class="app-shell">
@@ -67,9 +68,36 @@
               <input id="highlight-toggle" type="checkbox" checked>
             </label>
 
-            <div class="highlight-preview" aria-label="高亮样式预览">
+            <div class="highlight-preview" id="highlight-preview" aria-label="高亮样式预览">
               <span class="preview-swatch"></span>
               <span>语义落点</span>
+            </div>
+
+            <fieldset class="option-group">
+              <legend>高亮呈现</legend>
+              <label><input type="radio" name="highlight-style" value="marker" data-reader-preference="highlightStyle"><span>荧光</span></label>
+              <label><input type="radio" name="highlight-style" value="underline" data-reader-preference="highlightStyle"><span>底线</span></label>
+              <label><input type="radio" name="highlight-style" value="bold" data-reader-preference="highlightStyle"><span>粗体</span></label>
+            </fieldset>
+
+            <fieldset class="option-group tone-group">
+              <legend>高亮颜色</legend>
+              <label><input type="radio" name="highlight-tone" value="amber" data-reader-preference="highlightTone"><span>琥珀</span></label>
+              <label><input type="radio" name="highlight-tone" value="blue" data-reader-preference="highlightTone"><span>蓝</span></label>
+              <label><input type="radio" name="highlight-tone" value="rose" data-reader-preference="highlightTone"><span>玫红</span></label>
+            </fieldset>
+
+            <div class="range-control">
+              <label for="font-size-input">字号 <output data-preference-output="fontSize"></output></label>
+              <input id="font-size-input" type="range" min="16" max="24" step="1" data-reader-preference="fontSize">
+            </div>
+            <div class="range-control">
+              <label for="line-height-input">行距 <output data-preference-output="lineHeight"></output></label>
+              <input id="line-height-input" type="range" min="1.55" max="2.1" step="0.05" data-reader-preference="lineHeight">
+            </div>
+            <div class="range-control">
+              <label for="measure-input">栏宽 <output data-preference-output="measure"></output></label>
+              <input id="measure-input" type="range" min="48" max="78" step="2" data-reader-preference="measure">
             </div>
 
             <button id="regenerate-button" class="secondary-action" type="button" disabled>重新生成高亮</button>

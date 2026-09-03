@@ -9,6 +9,7 @@ import { saveReadingExperiment } from "./src/experiments.mjs";
 import { generateAiHighlight } from "./src/llm-client.mjs";
 import { computeHighlightMetrics } from "./src/compare-metrics.mjs";
 import { generateMockHighlightMap } from "./src/highlight.mjs";
+import { fetchPublicImage } from "./src/image-proxy.mjs";
 
 const moduleDir = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(moduleDir, "public");
@@ -43,7 +44,16 @@ function sendError(response, statusCode, message) {
 async function serveStatic(requestUrl, response) {
   const url = new URL(requestUrl, "http://localhost");
   const pathname = url.pathname === "/" ? "/index.html" : url.pathname === "/compare" ? "/compare.html" : url.pathname;
-  const allowedFiles = new Set(["/index.html", "/compare.html", "/styles.css", "/app.js", "/compare-app.js"]);
+  const allowedFiles = new Set([
+    "/index.html",
+    "/compare.html",
+    "/styles.css",
+    "/reader.css",
+    "/app.js",
+    "/compare-app.js",
+    "/reader-renderer.js",
+    "/reader-preferences.js"
+  ]);
 
   if (!allowedFiles.has(pathname)) {
     sendError(response, 404, "Not found.");
@@ -62,6 +72,17 @@ async function handleApiRequest(request, response, options) {
 
   if (request.method === "GET" && url.pathname === "/api/health") {
     sendJson(response, 200, { ok: true });
+    return;
+  }
+
+  if (request.method === "GET" && url.pathname === "/api/image") {
+    const imageFetcher = options.imageFetcher || fetchPublicImage;
+    const image = await imageFetcher(url.searchParams.get("url") || "");
+    response.statusCode = 200;
+    response.setHeader("Content-Type", image.contentType);
+    response.setHeader("Cache-Control", "public, max-age=3600");
+    response.setHeader("X-Content-Type-Options", "nosniff");
+    response.end(image.bytes);
     return;
   }
 

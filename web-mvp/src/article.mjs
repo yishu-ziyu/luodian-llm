@@ -37,9 +37,22 @@ export function splitIntoParagraphs(text, options = {}) {
   return rawParts.map((paragraph) => paragraph.trim()).filter(Boolean);
 }
 
-export function createArticleDocument({ sourceType, sourceUrl, title, plainText, extraction }) {
-  const normalizedText = String(plainText || "").trim();
-  const paragraphs = splitIntoParagraphs(normalizedText).map((text, index) => ({
+export function createArticleDocument({
+  sourceType,
+  sourceUrl,
+  title,
+  plainText,
+  paragraphTexts,
+  contentHtml,
+  extraction
+}) {
+  const hasRichParagraphs = Array.isArray(paragraphTexts);
+  const normalizedInputText = String(plainText || "").trim();
+  const normalizedParagraphs = hasRichParagraphs
+    ? paragraphTexts.map((text) => String(text).trim()).filter(Boolean)
+    : splitIntoParagraphs(normalizedInputText);
+  const normalizedText = hasRichParagraphs ? normalizedParagraphs.join("\n\n") : normalizedInputText;
+  const paragraphs = normalizedParagraphs.map((text, index) => ({
     id: String(index),
     index,
     text,
@@ -57,6 +70,7 @@ export function createArticleDocument({ sourceType, sourceUrl, title, plainText,
     title: title?.trim() || "Untitled",
     plainText: normalizedText,
     paragraphs,
+    ...(contentHtml ? { contentHtml } : {}),
     extraction,
     createdAt: new Date().toISOString()
   };

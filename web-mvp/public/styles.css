@@ -393,6 +393,8 @@ h1 span {
 }
 
 .highlight-preview {
+  --reader-highlight-wash: var(--highlight-wash);
+  --reader-highlight-edge: var(--highlight-edge);
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -408,8 +410,8 @@ h1 span {
   height: 18px;
   border-radius: 3px;
   background:
-    linear-gradient(180deg, transparent 0 38%, var(--highlight-wash) 38% 88%, rgba(247, 211, 116, 0.18) 88% 100%);
-  box-shadow: inset 0 -1px 0 var(--highlight-edge);
+    linear-gradient(180deg, transparent 0 38%, var(--reader-highlight-wash) 38% 88%, transparent 88% 100%);
+  box-shadow: inset 0 -1px 0 var(--reader-highlight-edge);
 }
 
 .secondary-action {
@@ -499,6 +501,11 @@ h1 span {
 }
 
 .reader {
+  --reader-font-size: 20px;
+  --reader-line-height: 1.85;
+  --reader-measure: 70ch;
+  --reader-highlight-wash: var(--highlight-wash);
+  --reader-highlight-edge: var(--highlight-edge);
   position: relative;
   min-height: 620px;
   margin: 0;
@@ -525,7 +532,6 @@ h1 span {
 }
 
 .reader h2 {
-  max-width: 820px;
   margin: 0 0 24px;
   color: var(--ink);
   font-family: var(--serif);
@@ -545,12 +551,11 @@ h1 span {
 }
 
 .reader p {
-  max-width: 850px;
   margin: 0 0 22px;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 20px;
-  line-height: 1.85;
+  font-size: var(--reader-font-size);
+  line-height: var(--reader-line-height);
   letter-spacing: 0;
 }
 
@@ -563,8 +568,8 @@ h1 span {
   color: inherit;
   font-weight: inherit;
   background:
-    linear-gradient(180deg, transparent 0 42%, var(--highlight-wash) 42% 86%, rgba(247, 211, 116, 0.2) 86% 100%);
-  box-shadow: inset 0 -1px 0 var(--highlight-edge);
+    linear-gradient(180deg, transparent 0 42%, var(--reader-highlight-wash) 42% 86%, transparent 86% 100%);
+  box-shadow: inset 0 -1px 0 var(--reader-highlight-edge);
 }
 
 .empty-state {
@@ -825,11 +830,6 @@ h1 span {
 
   .reader h2 {
     font-size: 27px;
-  }
-
-  .reader p {
-    font-size: 18px;
-    line-height: 1.76;
   }
 
   .empty-state {

@@ -98,3 +98,14 @@ test("createArticleDocument returns stable paragraph ids", () => {
   assert.equal(article.paragraphs[0].id, "0");
   assert.equal(article.paragraphs[1].charLength, 3);
 });
+
+test("createArticleDocument preserves normalized file plainText", () => {
+  const article = createArticleDocument({
+    sourceType: "file",
+    title: "Single newline",
+    plainText: "first\nsecond",
+    extraction: { method: "file", fallbackUsed: false, warnings: [] }
+  });
+
+  assert.equal(article.plainText, "first\nsecond");
+});

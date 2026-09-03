@@ -4,6 +4,7 @@ import { Defuddle } from "defuddle/node";
 import { lookup as dnsLookup } from "node:dns/promises";
 import { isIP } from "node:net";
 import { createArticleDocument } from "./article.mjs";
+import { sanitizeArticleContent } from "./rich-content.mjs";
 
 function normalizeText(value) {
   return String(value || "")
@@ -12,11 +13,6 @@ function normalizeText(value) {
     .replace(/\n{3,}/g, "\n\n")
     .replace(/[ \t]{2,}/g, " ")
     .trim();
-}
-
-function htmlToText(html) {
-  const dom = new JSDOM(`<main>${html || ""}</main>`);
-  return normalizeText(dom.window.document.body.textContent || "");
 }
 
 function parseReadability(html, url) {
@@ -71,7 +67,7 @@ function normalizeLookupResult(result) {
   return entries.map((entry) => (typeof entry === "string" ? entry : entry?.address)).filter(Boolean);
 }
 
-async function assertFetchablePublicHttpUrl(parsedUrl, options, hasCustomFetch) {
+export async function assertFetchablePublicHttpUrl(parsedUrl, options, hasCustomFetch) {
   const hostname = parsedUrl.hostname.toLowerCase();
   if (hostname === "localhost" || hostname.endsWith(".localhost") || hostname.endsWith(".local")) {
     throw new Error("URL resolves to a private or local network address.");
@@ -79,7 +75,7 @@ async function assertFetchablePublicHttpUrl(parsedUrl, options, hasCustomFetch) 
 
   if (isIP(hostname)) {
     if (isPrivateIp(hostname)) throw new Error("URL resolves to a private or local network address.");
-    return;
+    return [hostname];
   }
 
   const lookupImpl = options.lookupImpl || (!hasCustomFetch ? dnsLookup : null);
@@ -89,6 +85,7 @@ async function assertFetchablePublicHttpUrl(parsedUrl, options, hasCustomFetch) 
   if (!addresses.length || addresses.some(isPrivateIp)) {
     throw new Error("URL resolves to a private or local network address.");
   }
+  return addresses;
 }
 
 export async function extractUrlArticle(url, options = {}) {
@@ -112,27 +109,33 @@ export async function extractUrlArticle(url, options = {}) {
 
   const html = await response.text();
   const defuddleResult = await defuddleImpl(html, parsedUrl.href, {
-    markdown: true,
-    removeImages: true
+    separateMarkdown: true,
+    removeImages: false,
+    useAsync: false
   });
-  const defuddleText = htmlToText(defuddleResult?.content || defuddleResult?.contentMarkdown || "");
+  const defuddleContent = sanitizeArticleContent(defuddleResult?.content || "", parsedUrl.href);
+  const defuddleText = normalizeText(defuddleContent.paragraphTexts.join("\n\n"));
 
   let selected = {
     method: "defuddle",
     title: defuddleResult?.title || parsedUrl.hostname,
     text: defuddleText,
+    content: defuddleContent,
     fallbackUsed: false,
     warnings: []
   };
 
   if (scoreExtractedText(defuddleText) < 2) {
     const readable = readabilityImpl(html, parsedUrl.href);
-    const readabilityText = normalizeText(readable?.textContent || "");
+    const readabilityContent = sanitizeArticleContent(readable?.content || "", parsedUrl.href);
+    const sanitizedText = normalizeText(readabilityContent.paragraphTexts.join("\n\n"));
+    const readabilityText = sanitizedText || normalizeText(readable?.textContent || "");
     if (scoreExtractedText(readabilityText) > scoreExtractedText(defuddleText)) {
       selected = {
         method: "readability",
         title: readable?.title || selected.title,
         text: readabilityText,
+        content: sanitizedText ? readabilityContent : null,
         fallbackUsed: true,
         warnings: ["Defuddle output was too short; Readability fallback selected."]
       };
@@ -144,6 +147,8 @@ export async function extractUrlArticle(url, options = {}) {
     sourceUrl: parsedUrl.href,
     title: selected.title,
     plainText: normalizeText(selected.text),
+    paragraphTexts: selected.content?.paragraphTexts,
+    contentHtml: selected.content?.html,
     extraction: {
       method: selected.method,
       fallbackUsed: selected.fallbackUsed,
