@@ -1,0 +1,53 @@
+[pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/tmp/node_modules/undici)
+[pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+[pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/Users/mahaoxuan/.local/lib/node_modules/@earendil-works/pi-coding-agent/node_modules/undici)
+[pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+# start 2026-06-13T17:59:32.965Z → 20 paragraphs → http://localhost:4173
+[ 1/20] B0 技术-长 ... ERROR x0 fetch failed
+[ 2/20] B1 技术-长 ... hit=83% den=47% lat=1778ms (retry x2)
+[ 3/20] B2 生活-中 ... ERROR x4 {"error":"Range out of bounds at paragraph 0."}
+[ 4/20] B3 评论-中 ... hit=90% den=47% lat=1468ms
+[ 5/20] B4 散文-中 ... hit=63% den=41% lat=1028ms
+[ 6/20] B5 技术-中 ... hit=100% den=39% lat=2040ms
+[ 7/20] B6 文化-中 ... ERROR x0 fetch failed
+[ 8/20] B7 散文-中 ... hit=100% den=40% lat=10254ms
+[ 9/20] B8 生活-短 ... hit=100% den=50% lat=1731ms
+[10/20] B9 散文-中 ... hit=86% den=41% lat=1683ms
+[11/20] F0 散文-短 ... hit=100% den=47% lat=2127ms
+[12/20] F1 散文-中 ... hit=100% den=45% lat=1331ms
+[13/20] F2 技术-中 ... hit=88% den=47% lat=1738ms
+[14/20] F3 技术-中 ... hit=63% den=38% lat=3665ms
+[15/20] F4 对话-短 ... hit=100% den=57% lat=8736ms
+[16/20] F5 对话-短 ... hit=50% den=65% lat=10226ms
+[17/20] F6 短句 ... hit=100% den=75% lat=7675ms
+[18/20] F7 短句 ... hit=100% den=55% lat=930ms
+[19/20] F8 长-生活 ... hit=92% den=30% lat=1317ms
+[20/20] F9 长-技术 ... hit=69% den=31% lat=1278ms
+
+# === SUMMARY ===
+{
+  "total": 20,
+  "successful": 17,
+  "failed": 3,
+  "avgLatencyMs": 2950,
+  "avgWallMs": null,
+  "avgPositionHitRate": 0.872,
+  "avgBaselineRecall": 0.9046,
+  "avgCoverageSimilarity": 0.3598,
+  "avgAiDensity": 0.4665,
+  "avgBaselineDensity": 0.4736,
+  "avgDensityDelta": -0.0071,
+  "totalSpans": 142,
+  "totalBaselineSpans": 144,
+  "hitRate": {
+    "±0": 0.2676,
+    "±1": 0.6408,
+    "±2": 0.8521
+  },
+  "lengthDistribution": {
+    "2": 137,
+    "3": 5
+  }
+}
+
+# saved → /Users/mahaoxuan/Desktop/黑客松/眺览二次开发/agent-swarm-output/agent-4-few-shot-iter/round-6/round-6-results.json

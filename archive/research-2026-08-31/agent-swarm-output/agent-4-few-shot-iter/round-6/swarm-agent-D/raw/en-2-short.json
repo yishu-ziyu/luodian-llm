@@ -1,0 +1,107 @@
+{
+  "id": "en-2-short",
+  "category": "short",
+  "text": "Reading is to the mind what exercise is to the body.",
+  "charLength": 52,
+  "status": 200,
+  "requestBody": {
+    "paragraphs": [
+      {
+        "id": "0",
+        "text": "Reading is to the mind what exercise is to the body.",
+        "charLength": 52
+      }
+    ],
+    "density": "medium"
+  },
+  "response": {
+    "baselineHighlight": {
+      "0": []
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        6,
+        2,
+        9,
+        2,
+        13,
+        2,
+        17,
+        2,
+        23,
+        2,
+        26,
+        2,
+        31,
+        2,
+        36,
+        2,
+        40,
+        2,
+        44,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 51
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 1318,
+      "requestCount": 1,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 38,
+        "output_tokens": 50,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 882,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 1,
+        "chars": 52,
+        "baselineRanges": 0,
+        "aiRanges": 11,
+        "baselineChars": 0,
+        "aiChars": 22,
+        "overlapChars": 0,
+        "unionChars": 22
+      },
+      "coverageSimilarity": 0,
+      "positionHitRate": 0,
+      "baselineRecall": 0,
+      "baselineDensity": 0,
+      "aiDensity": 0.4231,
+      "densityDelta": 0.4231,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 52,
+          "baselineRanges": 0,
+          "aiRanges": 11,
+          "baselineChars": 0,
+          "aiChars": 22,
+          "overlapChars": 0,
+          "unionChars": 22,
+          "coverageSimilarity": 0,
+          "positionHitRate": 0,
+          "baselineRecall": 0,
+          "baselineDensity": 0,
+          "aiDensity": 0.4231,
+          "densityDelta": 0.4231
+        }
+      ]
+    }
+  },
+  "rawTextSnippet": "{\"baselineHighlight\":{\"0\":[]},\"aiHighlight\":{\"0\":[0,2,6,2,9,2,13,2,17,2,23,2,26,2,31,2,36,2,40,2,44,2]},\"baselineInfo\":{\"provider\":\"tillglance-nlphl\",\"endpoint\":\"https://api.tillglance.com/nlphl\",\"latencyMs\":51},\"modelInfo\":{\"provider\":\"minimax\",\"model\":\"MiniMax-M3\",\"apiType\":\"anthropic-compatible\",\"latencyMs\":1318,\"requestCount\":1,\"fallbackUsed\":false,\"usage\":{\"input_tokens\":38,\"output_tokens\":50,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":882,\"service_tier\":\"standard\"}},\"metrics\":{\"tolerance\":2,\"totals\":{\"paragraphs\":1,\"chars\":52,\"baselineRanges\":0,\"aiRanges\":11,\"baselineChars\":0,\"aiChars\":22,\"overlapChars\":0,\"unionChars\":22},\"coverageSimilarity\":0,\"positionHitRate\":0,\"baselineRecall\":0,\"baselineDensity\":0,\"aiDensity\":0.4231,\"densityDelta\":0.4231,\"perParagraph\":[{\"paragraph"
+}

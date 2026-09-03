@@ -1,0 +1,83 @@
+{
+  "ranAt": "2026-06-13T13:14:35.212Z",
+  "model": "MiniMax-M2.7",
+  "queryText": "深秋的街道铺满落叶，远处传来咖啡店轻柔的音乐。",
+  "queryBaselineStarts": [
+    0,
+    3,
+    7,
+    12,
+    17,
+    20
+  ],
+  "queryBaselineRaw": [
+    0,
+    2,
+    3,
+    2,
+    7,
+    2,
+    12,
+    2,
+    17,
+    2,
+    20,
+    2
+  ],
+  "queryBaselineLatencyMs": 328,
+  "results": [
+    {
+      "label": "round2-5shot-no-length-rule",
+      "numExamples": 5,
+      "withLengthConstraint": false,
+      "latencyMs": 15863,
+      "usage": {
+        "input_tokens": 2,
+        "output_tokens": 4096,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 448
+      },
+      "rawText": "",
+      "thinkingChars": 10479,
+      "lengths": null,
+      "starts": null,
+      "overlap1": null,
+      "overlap2": null,
+      "totalChars": null,
+      "density": null,
+      "parseError": "Unexpected end of JSON input"
+    },
+    {
+      "label": "round2-5shot-with-length-rule",
+      "numExamples": 5,
+      "withLengthConstraint": true,
+      "latencyMs": 3303,
+      "usage": {
+        "input_tokens": 9,
+        "output_tokens": 709,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 480
+      },
+      "rawText": "{\"highlight\":{\"0\":[0,2,3,2,8,2,13,2,18,2]}}",
+      "thinkingChars": 2357,
+      "lengths": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "starts": [
+        0,
+        3,
+        8,
+        13,
+        18
+      ],
+      "overlap1": "5/5 starts within ±1 of query baseline",
+      "overlap2": "5/5 starts within ±2 of query baseline",
+      "totalChars": 10,
+      "density": 43.5
+    }
+  ]
+}

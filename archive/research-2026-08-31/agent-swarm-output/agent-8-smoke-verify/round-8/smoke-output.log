@@ -1,0 +1,71 @@
+=== Agent 8 round-8 Phase 1: real MiniMax smoke (15 texts) ===
+started at 2026-06-14T03:39:11.674Z
+SUMMARY: {"totalPlanned":15,"enShort":5,"zhShort":5,"multiParagraph":5,"formats":{"single-paragraph":10,"single-newline":4,"double-newline":1}}
+
+--- per-article pass ---
+[start] en-1 (en, single-paragraph, 44 chars)
+[start] en-2 (en, single-paragraph, 52 chars)
+[start] en-3 (en, single-paragraph, 63 chars)
+  model=MiniMax-M2.7  paragraphs=1  spans=4  density=12.7%  first_anchor="gl" word="glitters" content=true  oob=0  latency=7085ms  req=1
+[start] en-4 (en, single-paragraph, 180 chars)
+  model=MiniMax-M2.7  paragraphs=1  spans=7  density=31.8%  first_anchor="qu" word="quick" content=true  oob=0  latency=7766ms  req=1
+[start] en-5 (en, single-paragraph, 168 chars)
+  model=MiniMax-M2.7  paragraphs=1  spans=4  density=15.4%  first_anchor="Re" word="Reading" content=true  oob=0  latency=13996ms  req=1
+[start] zh-B0 (zh, single-paragraph, 53 chars)
+  model=MiniMax-M2.7  paragraphs=1  spans=9  density=34.0%  first_anchor="阅读" word="阅" content=true  oob=0  latency=5215ms  req=1
+[start] zh-B1 (zh, single-paragraph, 51 chars)
+  model=MiniMax-M2.7  paragraphs=1  spans=16  density=62.7%  first_anchor="中文" word="中" content=true  oob=0  latency=4745ms  req=1
+[start] zh-B5 (zh, single-paragraph, 41 chars)
+  [ERROR] LLM_ERROR: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+[start] zh-B6 (zh, single-paragraph, 45 chars)
+  [ERROR] LLM_ERROR: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+[start] zh-F2 (zh, single-paragraph, 34 chars)
+  model=MiniMax-M2.7  paragraphs=1  spans=7  density=52.9%  first_anchor="深度" word="深" content=true  oob=0  latency=7594ms  req=1
+[start] multi-zh-1 (zh, single-newline, 108 chars)
+  model=MiniMax-M2.7  paragraphs=1  spans=11  density=60.0%  first_anchor="音乐" word="音" content=true  oob=0  latency=16192ms  req=1
+[start] multi-zh-2 (zh, single-newline, 144 chars)
+  model=MiniMax-M2.7  paragraphs=1  spans=8  density=46.3%  first_anchor="代码" word="代" content=true  oob=0  latency=24457ms  req=1
+[start] multi-en-1 (en, single-newline, 338 chars)
+  [ERROR] LLM_ERROR: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+[start] multi-en-2 (en, single-newline, 335 chars)
+  [ERROR] LLM_ERROR: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+[start] multi-zh-3 (zh, double-newline, 116 chars)
+  [ERROR] LLM_ERROR: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+  [ERROR] LLM_ERROR: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+  [ERROR] LLM_ERROR: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+
+=== aggregate ===
+total texts:        15
+success:            8 / 15
+empty-response:     7 / 15  (target 0 — round-7 V3 抽样 2/5)
+other errors:       0 / 15
+
+EN first-anchor:    content=3  function=0  unknown=0  / 3
+ZH first-anchor:    content=5  function=0  unknown=0  / 5
+
+density mean:       39.5%
+density p50/p95:    34.0% / 60.0%
+latency p50/p95:    7594ms / 16192ms
+OOB clip drops:     0  (target 0)
+
+--- EN first-anchor details ---
+  [OK] en-1: first_seg="qu" word="quick" start=4
+  [OK] en-2: first_seg="Re" word="Reading" start=0
+  [OK] en-3: first_seg="gl" word="glitters" start=9
+--- ZH first-anchor details ---
+  [OK] zh-B0: first_seg="阅读" word="阅" start=0
+  [OK] zh-B1: first_seg="中文" word="中" start=0
+  [OK] zh-B5: first_seg="代码" word="代" start=0
+  [OK] zh-B6: first_seg="音乐" word="音" start=0
+  [OK] zh-F2: first_seg="深度" word="深" start=0
+
+--- empty-response cases (FAIL) ---
+  [FAIL] en-4: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+  [FAIL] en-5: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+  [FAIL] multi-zh-1: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+  [FAIL] multi-zh-2: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+  [FAIL] multi-en-1: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+  [FAIL] multi-en-2: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+  [FAIL] multi-zh-3: MiniMax response contained only thinking blocks (1) (stop_reason: max_tokens); no text block was emitted.
+
+elapsed: 163.14s

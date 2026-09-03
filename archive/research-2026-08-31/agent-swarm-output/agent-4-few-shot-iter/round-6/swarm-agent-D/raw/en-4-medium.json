@@ -1,0 +1,123 @@
+{
+  "id": "en-4-medium",
+  "category": "medium",
+  "text": "The Tortoise and the Hare were neighbors. The Hare always laughed at the Tortoise for being slow. One day the Tortoise grew tired of the laughter and challenged the Hare to a race.",
+  "charLength": 180,
+  "status": 200,
+  "requestBody": {
+    "paragraphs": [
+      {
+        "id": "0",
+        "text": "The Tortoise and the Hare were neighbors. The Hare always laughed at the Tortoise for being slow. One day the Tortoise grew tired of the laughter and challenged the Hare to a race.",
+        "charLength": 180
+      }
+    ],
+    "density": "medium"
+  },
+  "response": {
+    "baselineHighlight": {
+      "0": []
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        4,
+        2,
+        6,
+        2,
+        15,
+        2,
+        17,
+        2,
+        26,
+        2,
+        30,
+        2,
+        35,
+        2,
+        40,
+        2,
+        45,
+        2,
+        56,
+        2,
+        61,
+        2,
+        68,
+        2,
+        74,
+        2,
+        82,
+        2,
+        86,
+        2,
+        95,
+        2,
+        101,
+        2,
+        108,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 75
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 1516,
+      "requestCount": 1,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 65,
+        "output_tokens": 82,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 882,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 1,
+        "chars": 180,
+        "baselineRanges": 0,
+        "aiRanges": 19,
+        "baselineChars": 0,
+        "aiChars": 38,
+        "overlapChars": 0,
+        "unionChars": 38
+      },
+      "coverageSimilarity": 0,
+      "positionHitRate": 0,
+      "baselineRecall": 0,
+      "baselineDensity": 0,
+      "aiDensity": 0.2111,
+      "densityDelta": 0.2111,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 180,
+          "baselineRanges": 0,
+          "aiRanges": 19,
+          "baselineChars": 0,
+          "aiChars": 38,
+          "overlapChars": 0,
+          "unionChars": 38,
+          "coverageSimilarity": 0,
+          "positionHitRate": 0,
+          "baselineRecall": 0,
+          "baselineDensity": 0,
+          "aiDensity": 0.2111,
+          "densityDelta": 0.2111
+        }
+      ]
+    }
+  },
+  "rawTextSnippet": "{\"baselineHighlight\":{\"0\":[]},\"aiHighlight\":{\"0\":[0,2,4,2,6,2,15,2,17,2,26,2,30,2,35,2,40,2,45,2,56,2,61,2,68,2,74,2,82,2,86,2,95,2,101,2,108,2]},\"baselineInfo\":{\"provider\":\"tillglance-nlphl\",\"endpoint\":\"https://api.tillglance.com/nlphl\",\"latencyMs\":75},\"modelInfo\":{\"provider\":\"minimax\",\"model\":\"MiniMax-M3\",\"apiType\":\"anthropic-compatible\",\"latencyMs\":1516,\"requestCount\":1,\"fallbackUsed\":false,\"usage\":{\"input_tokens\":65,\"output_tokens\":82,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":882,\"service_tier\":\"standard\"}},\"metrics\":{\"tolerance\":2,\"totals\":{\"paragraphs\":1,\"chars\":180,\"baselineRanges\":0,\"aiRanges\":19,\"baselineChars\":0,\"aiChars\":38,\"overlapChars\":0,\"unionChars\":38},\"coverageSimilarity\":0,\"positionHitRate\":0,\"baselineRecall\":0,\"baselineDensity\":0,\"aiDensity\":0.2111,\"densi"
+}

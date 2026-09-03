@@ -1,0 +1,283 @@
+{
+  "articleId": "M3",
+  "source": "fresh-散文-四季",
+  "category": "散文",
+  "importedParagraphs": [
+    {
+      "id": "0",
+      "index": 0,
+      "text": "故乡的春天总是来得迟缓，院子里的玉兰在清明前后才肯打开花苞。",
+      "charLength": 30
+    },
+    {
+      "id": "1",
+      "index": 1,
+      "text": "夏天傍晚的风穿过老巷，带着邻居家厨房飘出的饭菜香气。",
+      "charLength": 26
+    },
+    {
+      "id": "2",
+      "index": 2,
+      "text": "秋天的银杏叶铺满石板路，踩上去会有清脆的响声，孩子们的笑声穿过整条街道。",
+      "charLength": 36
+    },
+    {
+      "id": "3",
+      "index": 3,
+      "text": "冬天炉火边的旧书页脚卷起，主人在毛毯里读着前人留下的批注。",
+      "charLength": 29
+    }
+  ],
+  "compareResponse": {
+    "baselineHighlight": {
+      "0": [
+        0,
+        2,
+        5,
+        2,
+        9,
+        2,
+        12,
+        2,
+        16,
+        2,
+        21,
+        2,
+        27,
+        2
+      ],
+      "1": [
+        2,
+        2,
+        8,
+        2,
+        13,
+        3,
+        21,
+        2
+      ],
+      "2": [
+        0,
+        2,
+        3,
+        3,
+        8,
+        3,
+        13,
+        2,
+        17,
+        2,
+        20,
+        2,
+        23,
+        2,
+        27,
+        2,
+        33,
+        2
+      ],
+      "3": [
+        2,
+        2,
+        10,
+        2,
+        13,
+        2,
+        16,
+        2,
+        23,
+        2,
+        26,
+        2
+      ]
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        5,
+        2,
+        9,
+        2,
+        12,
+        2,
+        17,
+        2,
+        22,
+        2,
+        27,
+        3
+      ],
+      "1": [
+        0,
+        2,
+        4,
+        2,
+        8,
+        2,
+        13,
+        2,
+        16,
+        3,
+        20,
+        2,
+        24,
+        2
+      ],
+      "2": [
+        0,
+        2,
+        3,
+        2,
+        6,
+        2,
+        9,
+        2,
+        13,
+        2,
+        17,
+        2,
+        23,
+        2,
+        28,
+        2,
+        31,
+        2
+      ],
+      "3": [
+        0,
+        2,
+        4,
+        2,
+        6,
+        2,
+        11,
+        2,
+        15,
+        2,
+        19,
+        2,
+        23,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 179
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 7230,
+      "requestCount": 1,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 878,
+        "output_tokens": 157,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 128,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 4,
+        "chars": 121,
+        "baselineRanges": 26,
+        "aiRanges": 30,
+        "baselineChars": 55,
+        "aiChars": 62,
+        "overlapChars": 34,
+        "unionChars": 83
+      },
+      "coverageSimilarity": 0.4096,
+      "positionHitRate": 0.8667,
+      "baselineRecall": 0.9231,
+      "baselineDensity": 0.4545,
+      "aiDensity": 0.5124,
+      "densityDelta": 0.0579,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 30,
+          "baselineRanges": 7,
+          "aiRanges": 7,
+          "baselineChars": 14,
+          "aiChars": 15,
+          "overlapChars": 12,
+          "unionChars": 17,
+          "coverageSimilarity": 0.7059,
+          "positionHitRate": 1,
+          "baselineRecall": 1,
+          "baselineDensity": 0.4667,
+          "aiDensity": 0.5,
+          "densityDelta": 0.0333
+        },
+        {
+          "paragraphId": "1",
+          "index": 1,
+          "charLength": 26,
+          "baselineRanges": 4,
+          "aiRanges": 7,
+          "baselineChars": 9,
+          "aiChars": 15,
+          "overlapChars": 5,
+          "unionChars": 19,
+          "coverageSimilarity": 0.2632,
+          "positionHitRate": 0.7143,
+          "baselineRecall": 1,
+          "baselineDensity": 0.3462,
+          "aiDensity": 0.5769,
+          "densityDelta": 0.2308
+        },
+        {
+          "paragraphId": "2",
+          "index": 2,
+          "charLength": 36,
+          "baselineRanges": 9,
+          "aiRanges": 9,
+          "baselineChars": 20,
+          "aiChars": 18,
+          "overlapChars": 13,
+          "unionChars": 25,
+          "coverageSimilarity": 0.52,
+          "positionHitRate": 1,
+          "baselineRecall": 0.8889,
+          "baselineDensity": 0.5556,
+          "aiDensity": 0.5,
+          "densityDelta": -0.0556
+        },
+        {
+          "paragraphId": "3",
+          "index": 3,
+          "charLength": 29,
+          "baselineRanges": 6,
+          "aiRanges": 7,
+          "baselineChars": 12,
+          "aiChars": 14,
+          "overlapChars": 4,
+          "unionChars": 22,
+          "coverageSimilarity": 0.1818,
+          "positionHitRate": 0.7143,
+          "baselineRecall": 0.8333,
+          "baselineDensity": 0.4138,
+          "aiDensity": 0.4828,
+          "densityDelta": 0.069
+        }
+      ]
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "attempt": 0,
+      "ok": true,
+      "status": 200
+    }
+  ],
+  "wallMs": 7236
+}

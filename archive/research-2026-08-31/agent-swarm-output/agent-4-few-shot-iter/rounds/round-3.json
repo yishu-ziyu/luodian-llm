@@ -1,0 +1,96 @@
+{
+  "ranAt": "2026-06-13T13:20:31.686Z",
+  "model": "MiniMax-M2.7",
+  "queryText": "深秋的街道铺满落叶，远处传来咖啡店轻柔的音乐。",
+  "queryBaselineStarts": [
+    0,
+    3,
+    7,
+    12,
+    17,
+    20
+  ],
+  "queryBaselineRaw": [
+    0,
+    2,
+    3,
+    2,
+    7,
+    2,
+    12,
+    2,
+    17,
+    2,
+    20,
+    2
+  ],
+  "queryBaselineLatencyMs": 356,
+  "mergedExampleCount": 10,
+  "results": [
+    {
+      "label": "round3-5shot-with-length",
+      "numExamples": 5,
+      "withLengthConstraint": true,
+      "temperature": 0.1,
+      "latencyMs": 114006,
+      "usage": {
+        "input_tokens": 508,
+        "output_tokens": 4096,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "rawText": "",
+      "thinkingChars": 13227,
+      "parseError": "Unexpected end of JSON input"
+    },
+    {
+      "label": "round3-10shot-with-length",
+      "numExamples": 10,
+      "withLengthConstraint": true,
+      "temperature": 0.1,
+      "latencyMs": 116002,
+      "usage": {
+        "input_tokens": 833,
+        "output_tokens": 3797,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "rawText": "{\"highlight\":{\"0\":[0,2,5,2,10,2,14,2,20,2]}}",
+      "thinkingChars": 11046,
+      "starts": [
+        0,
+        5,
+        10,
+        14,
+        20
+      ],
+      "lengths": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "totalChars": 10,
+      "density": 43.5,
+      "overlap1": "2/5 starts within ±1 of query baseline",
+      "overlap2": "5/5 starts within ±2 of query baseline"
+    },
+    {
+      "label": "round3-10shot-no-length",
+      "numExamples": 10,
+      "withLengthConstraint": false,
+      "temperature": 0.1,
+      "latencyMs": 101006,
+      "usage": {
+        "input_tokens": 794,
+        "output_tokens": 4096,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "rawText": "",
+      "thinkingChars": 10243,
+      "parseError": "Unexpected end of JSON input"
+    }
+  ]
+}

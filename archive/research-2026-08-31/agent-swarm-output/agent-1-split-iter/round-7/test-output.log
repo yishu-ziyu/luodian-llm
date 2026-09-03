@@ -1,0 +1,66 @@
+[pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/tmp/node_modules/undici)
+[pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+[pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/Users/mahaoxuan/.local/lib/node_modules/@earendil-works/pi-coding-agent/node_modules/undici)
+[pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+TAP version 13
+# [pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/tmp/node_modules/undici)
+# [pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+# [pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/Users/mahaoxuan/.local/lib/node_modules/@earendil-works/pi-coding-agent/node_modules/undici)
+# [pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+# Subtest: splitIntoParagraphs removes blank paragraphs and preserves order
+ok 1 - splitIntoParagraphs removes blank paragraphs and preserves order
+  ---
+  duration_ms: 1.729167
+  type: 'test'
+  ...
+# Subtest: splitIntoParagraphs (auto) splits on single newline when no blank line exists
+ok 2 - splitIntoParagraphs (auto) splits on single newline when no blank line exists
+  ---
+  duration_ms: 0.068459
+  type: 'test'
+  ...
+# Subtest: splitIntoParagraphs (auto) treats long wrapped lines as one paragraph
+ok 3 - splitIntoParagraphs (auto) treats long wrapped lines as one paragraph
+  ---
+  duration_ms: 0.055042
+  type: 'test'
+  ...
+# Subtest: splitIntoParagraphs handles Chinese + English mixed single-newline paste
+ok 4 - splitIntoParagraphs handles Chinese + English mixed single-newline paste
+  ---
+  duration_ms: 0.050792
+  type: 'test'
+  ...
+# Subtest: splitIntoParagraphs honors explicit splitMode = 'single-newline'
+ok 5 - splitIntoParagraphs honors explicit splitMode = 'single-newline'
+  ---
+  duration_ms: 0.088792
+  type: 'test'
+  ...
+# Subtest: splitIntoParagraphs honors explicit splitMode = 'double-newline'
+ok 6 - splitIntoParagraphs honors explicit splitMode = 'double-newline'
+  ---
+  duration_ms: 0.061334
+  type: 'test'
+  ...
+# Subtest: splitIntoParagraphs does not mutate the input string
+ok 7 - splitIntoParagraphs does not mutate the input string
+  ---
+  duration_ms: 0.099958
+  type: 'test'
+  ...
+# Subtest: createArticleDocument returns stable paragraph ids
+ok 8 - createArticleDocument returns stable paragraph ids
+  ---
+  duration_ms: 1.087833
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 214.149584

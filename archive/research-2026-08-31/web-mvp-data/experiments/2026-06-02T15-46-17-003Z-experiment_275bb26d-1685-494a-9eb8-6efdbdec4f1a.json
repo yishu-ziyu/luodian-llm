@@ -1,0 +1,74 @@
+{
+  "id": "experiment_275bb26d-1685-494a-9eb8-6efdbdec4f1a",
+  "article": {
+    "id": "article_eada4573-a551-470d-b82b-4cf2fe3d04c5",
+    "sourceType": "url",
+    "sourceUrl": "https://example.com/",
+    "title": "Example Domain",
+    "plainText": "This domain is for use in documentation examples without needing permission. Avoid use in operations.\n\n[Learn more](https://iana.org/domains/example)",
+    "paragraphs": [
+      {
+        "id": "0",
+        "index": 0,
+        "text": "This domain is for use in documentation examples without needing permission. Avoid use in operations.",
+        "charLength": 101
+      },
+      {
+        "id": "1",
+        "index": 1,
+        "text": "[Learn more](https://iana.org/domains/example)",
+        "charLength": 46
+      }
+    ],
+    "extraction": {
+      "method": "defuddle",
+      "fallbackUsed": false,
+      "qualityScore": 1,
+      "warnings": []
+    },
+    "createdAt": "2026-06-02T15:46:16.997Z"
+  },
+  "aiHighlight": {
+    "0": [
+      0,
+      2,
+      10,
+      2,
+      20,
+      2,
+      30,
+      2,
+      40,
+      2,
+      50,
+      2,
+      60,
+      2,
+      70,
+      2,
+      80,
+      2,
+      90,
+      2,
+      100,
+      1
+    ],
+    "1": [
+      0,
+      2,
+      10,
+      2,
+      20,
+      2,
+      30,
+      2,
+      40,
+      2
+    ]
+  },
+  "modelInfo": {
+    "provider": "mock",
+    "model": "mock-semantic-reading-guide"
+  },
+  "createdAt": "2026-06-02T15:46:17.003Z"
+}

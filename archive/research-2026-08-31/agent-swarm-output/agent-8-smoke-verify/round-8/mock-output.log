@@ -1,0 +1,24 @@
+=== Agent 8 round-8 Phase 2: mock provider regression (50 texts) ===
+started at 2026-06-14T03:39:04.329Z
+corpus summary: {"totalPlanned":50,"zhExisting":20,"zhNewSingleNl":5,"zhNewDoubleNl":5,"enExisting":12,"enNewSingleNl":4,"enNewDoubleNl":4,"formats":{"single-paragraph":32,"single-newline":9,"double-newline":9}}
+
+=== aggregate ===
+total:           50
+success:         50 / 50  (target 50/50 — round-7 V3 baseline)
+failed:          0 / 50
+clip drops:      0  (target 0 — round-7 V3 baseline)
+detected lang ok:50 / 50
+
+density mean:    22.2%  (round-7 V3: zh 23.0% / en 21.0%)
+density p50/p95: 21.6% / 25.0%
+latency p50/p95: 0ms / 2ms
+
+--- per lang × format ---
+  en×double-newline             n=4  density mean=21.0%  min=20.8%  max=21.2%
+  en×single-newline             n=4  density mean=21.2%  min=21.0%  max=21.6%
+  en×single-paragraph           n=12  density mean=20.9%  min=20.0%  max=23.1%
+  zh×double-newline             n=5  density mean=23.9%  min=22.6%  max=25.0%
+  zh×single-newline             n=5  density mean=24.2%  min=22.2%  max=25.8%
+  zh×single-paragraph           n=20  density mean=22.4%  min=20.0%  max=27.3%
+
+elapsed: 0.02s

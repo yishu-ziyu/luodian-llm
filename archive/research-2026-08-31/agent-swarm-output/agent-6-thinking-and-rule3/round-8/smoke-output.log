@@ -1,0 +1,45 @@
+=== Agent 6 round-8 smoke test: thinking-block skip + Rule 3 first-content-word ===
+started at 2026-06-14T03:28:06.479Z
+
+--- Part A: English en-5-medium (Dickens 'best of times') ---
+
+[A1] detectLanguage -> "en"  (expected "en")
+
+[A2] calling generateAiHighlight with real MiniMax provider...
+provider=minimax  model=MiniMax-M2.7  latency=7.01s  requests=1
+
+[A3] en ranges: [11,2,19,2,37,2,46,2,64,2,71,2,90,2,97,2,110,2,117,2,131,2,139,2,155,2,161,2]
+  span count: 14
+  highlighted chars: 28 / 168  density=16.7%
+
+[A4] Rule 3 check: first start=11 lands on "be"
+  PASS: first anchor at position 11 is on the first content word (function words It/was/the skipped)
+[A5] gap: min=4  max=17  (Rule 5: min ≥ 3)
+[A6] clipHighlightSpans dropped: 0 OOB spans  (target 0)
+[A7] assertHighlightMap: PASS
+[A8] first 3 spans with context:
+  [11,2] = "be"  ctx: "...was the best of ti..."
+  [19,2] = "ti"  ctx: "...best of times, it ..."
+  [37,2] = "wo"  ctx: "...was the worst of t..."
+
+--- Part B: Chinese long paragraph (function-word led with 的/在/了/和) ---
+
+[B1] detectLanguage -> "zh"  (expected "zh")
+
+[B2] calling generateAiHighlight with real MiniMax provider (Chinese pool)...
+provider=minimax  model=MiniMax-M2.7  latency=8.65s  requests=1
+
+[B3] zh ranges: [1,2,3,2,6,2,9,2,15,2,19,2,24,2,30,2,34,2,38,2,41,2,46,2,49,2,55,2,60,2,64,2,68,2,73,2,78,2]
+  span count: 19
+  highlighted chars: 38 / 125  density=30.4%  (zh target 35-50%)
+[B4] zh first start=1 lands on "繁忙"
+  PASS: first anchor within first 2-3 chars (zh doesn't have a function-word cluster leading this paragraph)
+[B5] clipHighlightSpans dropped: 0 OOB spans  (target 0)
+[B6] assertHighlightMap: PASS
+
+=== summary ===
+en: provider=minimax (MiniMax-M2.7)  density=16.7%  first start=11("be")  OOB=0  latency=7.01s
+zh: provider=minimax (MiniMax-M2.7)  density=30.4%  first start=1("繁忙")  OOB=0  latency=8.65s
+elapsed: 15.67s
+B-side fix verified: request body includes thinking:{type:"disabled"} (no HTTP 400)
+A-side fix verified: no "did not include text content" errors during retry chain

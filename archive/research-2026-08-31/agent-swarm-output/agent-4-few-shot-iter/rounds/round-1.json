@@ -1,0 +1,86 @@
+{
+  "ranAt": "2026-06-13T13:11:45.720Z",
+  "model": "MiniMax-M2.7",
+  "results": [
+    {
+      "label": "round1-few-shot-only-no-length-rule",
+      "latencyMs": 108907,
+      "usage": {
+        "input_tokens": 265,
+        "output_tokens": 4096,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0
+      },
+      "rawText": "",
+      "spans": null,
+      "starts": null,
+      "lengths": null,
+      "totalChars": null,
+      "density": null,
+      "overlap1": null,
+      "overlap2": null,
+      "parseError": "Unexpected end of JSON input"
+    },
+    {
+      "label": "round1-few-shot-with-length-rule",
+      "latencyMs": 3768,
+      "usage": {
+        "input_tokens": 304,
+        "output_tokens": 769
+      },
+      "rawText": "{\"highlight\":{\"0\":[0,2,5,2,8,2,13,2,17,2,20,2,24,2]}}",
+      "spans": [
+        {
+          "start": 0,
+          "length": 2
+        },
+        {
+          "start": 5,
+          "length": 2
+        },
+        {
+          "start": 8,
+          "length": 2
+        },
+        {
+          "start": 13,
+          "length": 2
+        },
+        {
+          "start": 17,
+          "length": 2
+        },
+        {
+          "start": 20,
+          "length": 2
+        },
+        {
+          "start": 24,
+          "length": 2
+        }
+      ],
+      "starts": [
+        0,
+        5,
+        8,
+        13,
+        17,
+        20,
+        24
+      ],
+      "lengths": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "totalChars": 14,
+      "density": 50,
+      "overlap1": "5/7 starts within ±1 char of baseline",
+      "overlap2": "7/7 starts within ±2 char of baseline"
+    }
+  ]
+}

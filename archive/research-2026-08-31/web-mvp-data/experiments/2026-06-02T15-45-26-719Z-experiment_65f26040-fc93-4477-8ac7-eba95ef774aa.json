@@ -1,0 +1,42 @@
+{
+  "id": "experiment_65f26040-fc93-4477-8ac7-eba95ef774aa",
+  "article": {
+    "article": {
+      "id": "article_94fab3e7-4803-414d-b67e-e1212227d7fd",
+      "sourceType": "file",
+      "title": "sample.md",
+      "plainText": "# 标题\n\n第一段用于测试高亮。\n\n第二段用于验证保存。",
+      "paragraphs": [
+        {
+          "id": "0",
+          "index": 0,
+          "text": "# 标题",
+          "charLength": 4
+        },
+        {
+          "id": "1",
+          "index": 1,
+          "text": "第一段用于测试高亮。",
+          "charLength": 10
+        },
+        {
+          "id": "2",
+          "index": 2,
+          "text": "第二段用于验证保存。",
+          "charLength": 10
+        }
+      ],
+      "extraction": {
+        "method": "file",
+        "fallbackUsed": false,
+        "warnings": []
+      },
+      "createdAt": "2026-06-02T15:45:26.707Z"
+    }
+  },
+  "modelInfo": {
+    "provider": "mock",
+    "model": "mock-semantic-reading-guide"
+  },
+  "createdAt": "2026-06-02T15:45:26.719Z"
+}

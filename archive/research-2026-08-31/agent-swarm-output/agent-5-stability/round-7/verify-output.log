@@ -1,0 +1,168 @@
+===== Round 7 Stability Run (2026-06-13T18:32:08.883Z) =====
+Total articles: 50
+Concurrency: 5
+Summary: {"totalPlanned":50,"zhExisting":20,"zhNewSingleNl":5,"zhNewDoubleNl":5,"enExisting":12,"enNewSingleNl":4,"enNewDoubleNl":4,"formats":{"single-paragraph":32,"single-newline":9,"double-newline":9}}
+Provider: mock (no real LLM call)
+
+--- Phase 1: splitIntoParagraphs auto-mode sanity ---
+  ZH-00 [single-paragraph]: 1 paragraph(s) from 53 chars
+  ZH-01 [single-paragraph]: 1 paragraph(s) from 51 chars
+  ZH-02 [single-paragraph]: 1 paragraph(s) from 42 chars
+  ZH-03 [single-paragraph]: 1 paragraph(s) from 43 chars
+  ZH-04 [single-paragraph]: 1 paragraph(s) from 39 chars
+  ZH-05 [single-paragraph]: 1 paragraph(s) from 41 chars
+  ZH-06 [single-paragraph]: 1 paragraph(s) from 45 chars
+  ZH-07 [single-paragraph]: 1 paragraph(s) from 40 chars
+  ZH-08 [single-paragraph]: 1 paragraph(s) from 32 chars
+  ZH-09 [single-paragraph]: 1 paragraph(s) from 37 chars
+  ZH-10 [single-paragraph]: 1 paragraph(s) from 30 chars
+  ZH-11 [single-paragraph]: 1 paragraph(s) from 31 chars
+  ZH-12 [single-paragraph]: 1 paragraph(s) from 34 chars
+  ZH-13 [single-paragraph]: 1 paragraph(s) from 42 chars
+  ZH-14 [single-paragraph]: 1 paragraph(s) from 40 chars
+  ZH-15 [single-paragraph]: 1 paragraph(s) from 31 chars
+  ZH-16 [single-paragraph]: 1 paragraph(s) from 8 chars
+  ZH-17 [single-paragraph]: 1 paragraph(s) from 11 chars
+  ZH-18 [single-paragraph]: 1 paragraph(s) from 81 chars
+  ZH-19 [single-paragraph]: 1 paragraph(s) from 88 chars
+  ZH-20 [single-newline]: 5 paragraph(s) from 108 chars
+  ZH-21 [single-newline]: 5 paragraph(s) from 144 chars
+  ZH-22 [single-newline]: 5 paragraph(s) from 103 chars
+  ZH-23 [single-newline]: 5 paragraph(s) from 101 chars
+  ZH-24 [single-newline]: 5 paragraph(s) from 79 chars
+  ZH-25 [double-newline]: 5 paragraph(s) from 116 chars
+  ZH-26 [double-newline]: 5 paragraph(s) from 122 chars
+  ZH-27 [double-newline]: 5 paragraph(s) from 102 chars
+  ZH-28 [double-newline]: 5 paragraph(s) from 113 chars
+  ZH-29 [double-newline]: 5 paragraph(s) from 114 chars
+  EN-00 [single-paragraph]: 1 paragraph(s) from 44 chars
+  EN-01 [single-paragraph]: 1 paragraph(s) from 52 chars
+  EN-02 [single-paragraph]: 1 paragraph(s) from 63 chars
+  EN-03 [single-paragraph]: 1 paragraph(s) from 180 chars
+  EN-04 [single-paragraph]: 1 paragraph(s) from 168 chars
+  EN-05 [single-paragraph]: 1 paragraph(s) from 171 chars
+  EN-06 [single-paragraph]: 1 paragraph(s) from 139 chars
+  EN-07 [single-paragraph]: 1 paragraph(s) from 361 chars
+  EN-08 [single-paragraph]: 1 paragraph(s) from 304 chars
+  EN-09 [single-paragraph]: 1 paragraph(s) from 378 chars
+  EN-10 [single-paragraph]: 1 paragraph(s) from 125 chars
+  EN-11 [single-paragraph]: 1 paragraph(s) from 163 chars
+  EN-12 [single-newline]: 5 paragraph(s) from 279 chars
+  EN-13 [single-newline]: 5 paragraph(s) from 338 chars
+  EN-14 [single-newline]: 5 paragraph(s) from 335 chars
+  EN-15 [single-newline]: 5 paragraph(s) from 361 chars
+  EN-16 [double-newline]: 5 paragraph(s) from 372 chars
+  EN-17 [double-newline]: 5 paragraph(s) from 360 chars
+  EN-18 [double-newline]: 5 paragraph(s) from 359 chars
+  EN-19 [double-newline]: 5 paragraph(s) from 373 chars
+
+--- Phase 2: full generateAiHighlight(mock) on all 50 ---
+  ZH-00 [single-paragraph] lang=zh parts=1 spans=6 density=22.6% latency=2ms batches=1 clipDrops=0 oob=0 OK
+  ZH-01 [single-paragraph] lang=zh parts=1 spans=6 density=21.6% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  ZH-02 [single-paragraph] lang=zh parts=1 spans=5 density=23.8% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  ZH-03 [single-paragraph] lang=zh parts=1 spans=5 density=23.3% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  ZH-04 [single-paragraph] lang=zh parts=1 spans=4 density=20.5% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  ZH-05 [single-paragraph] lang=zh parts=1 spans=5 density=22.0% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  ZH-06 [single-paragraph] lang=zh parts=1 spans=5 density=22.2% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  ZH-07 [single-paragraph] lang=zh parts=1 spans=4 density=20.0% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  ZH-08 [single-paragraph] lang=zh parts=1 spans=4 density=25.0% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  ZH-09 [single-paragraph] lang=zh parts=1 spans=4 density=21.6% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  ZH-10 [single-paragraph] lang=zh parts=1 spans=3 density=20.0% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  ZH-11 [single-paragraph] lang=zh parts=1 spans=4 density=22.6% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  ZH-12 [single-paragraph] lang=zh parts=1 spans=4 density=23.5% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  ZH-13 [single-paragraph] lang=zh parts=1 spans=5 density=23.8% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  ZH-14 [single-paragraph] lang=zh parts=1 spans=4 density=20.0% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  ZH-15 [single-paragraph] lang=zh parts=1 spans=4 density=22.6% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  ZH-16 [single-paragraph] lang=zh parts=1 spans=1 density=25.0% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  ZH-17 [single-paragraph] lang=zh parts=1 spans=2 density=27.3% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  ZH-18 [single-paragraph] lang=zh parts=1 spans=9 density=21.0% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  ZH-19 [single-paragraph] lang=zh parts=1 spans=9 density=20.5% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  ZH-20 [single-newline] lang=zh parts=5 spans=13 density=24.0% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  ZH-21 [single-newline] lang=zh parts=5 spans=17 density=23.6% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  ZH-22 [single-newline] lang=zh parts=5 spans=11 density=22.2% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  ZH-23 [single-newline] lang=zh parts=5 spans=13 density=25.8% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  ZH-24 [single-newline] lang=zh parts=5 spans=10 density=25.3% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  ZH-25 [double-newline] lang=zh parts=5 spans=14 density=25.0% latency=2ms batches=2 clipDrops=0 oob=0 OK
+  ZH-26 [double-newline] lang=zh parts=5 spans=14 density=23.7% latency=1ms batches=2 clipDrops=0 oob=0 OK
+  ZH-27 [double-newline] lang=zh parts=5 spans=11 density=23.4% latency=1ms batches=2 clipDrops=0 oob=0 OK
+  ZH-28 [double-newline] lang=zh parts=5 spans=13 density=24.8% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  ZH-29 [double-newline] lang=zh parts=5 spans=12 density=22.6% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  EN-00 [single-paragraph] lang=en parts=1 spans=5 density=22.7% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  EN-01 [single-paragraph] lang=en parts=1 spans=6 density=23.1% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  EN-02 [single-paragraph] lang=en parts=1 spans=7 density=22.2% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  EN-03 [single-paragraph] lang=en parts=1 spans=18 density=20.0% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  EN-04 [single-paragraph] lang=en parts=1 spans=17 density=20.2% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  EN-05 [single-paragraph] lang=en parts=1 spans=18 density=20.5% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  EN-06 [single-paragraph] lang=en parts=1 spans=14 density=20.1% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  EN-07 [single-paragraph] lang=en parts=1 spans=37 density=20.2% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  EN-08 [single-paragraph] lang=en parts=1 spans=31 density=20.4% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  EN-09 [single-paragraph] lang=en parts=1 spans=38 density=20.1% latency=0ms batches=1 clipDrops=0 oob=0 OK
+  EN-10 [single-paragraph] lang=en parts=1 spans=13 density=20.8% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  EN-11 [single-paragraph] lang=en parts=1 spans=17 density=20.9% latency=1ms batches=1 clipDrops=0 oob=0 OK
+  EN-12 [single-newline] lang=en parts=5 spans=29 density=21.1% latency=1ms batches=2 clipDrops=0 oob=0 OK
+  EN-13 [single-newline] lang=en parts=5 spans=35 density=21.0% latency=1ms batches=2 clipDrops=0 oob=0 OK
+  EN-14 [single-newline] lang=en parts=5 spans=36 density=21.1% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  EN-15 [single-newline] lang=en parts=5 spans=39 density=21.6% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  EN-16 [double-newline] lang=en parts=5 spans=39 density=21.2% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  EN-17 [double-newline] lang=en parts=5 spans=38 density=21.0% latency=0ms batches=2 clipDrops=0 oob=0 OK
+  EN-18 [double-newline] lang=en parts=5 spans=37 density=21.1% latency=1ms batches=2 clipDrops=0 oob=0 OK
+  EN-19 [double-newline] lang=en parts=5 spans=38 density=20.8% latency=1ms batches=2 clipDrops=0 oob=0 OK
+
+--- Phase 3: aggregates ---
+Total: 50
+Successes: 50
+Errors: 0
+Latency p50: 0ms
+Latency p95: 1ms
+Latency max: 2ms
+
+By language × format:
+  en × double-newline          n=4 errors=0 density=21.0% (min 20.8, max 21.2) p50=0ms p95=1ms
+  en × single-newline          n=4 errors=0 density=21.2% (min 21.0, max 21.6) p50=0ms p95=1ms
+  en × single-paragraph        n=12 errors=0 density=20.9% (min 20.0, max 23.1) p50=0ms p95=1ms
+  zh × double-newline          n=5 errors=0 density=23.9% (min 22.6, max 25.0) p50=1ms p95=1ms
+  zh × single-newline          n=5 errors=0 density=24.2% (min 22.2, max 25.8) p50=0ms p95=0ms
+  zh × single-paragraph        n=20 errors=0 density=22.4% (min 20.0, max 27.3) p50=1ms p95=1ms
+
+By language only:
+  en       n=20 errors=0 density=21.0% (min 20.0, max 23.1) p50=0ms p95=1ms
+  zh       n=30 errors=0 density=23.0% (min 20.0, max 27.3) p50=0ms p95=1ms
+
+By format only:
+  double-newline       n=9 errors=0 split[5-5] batches[2-2] density=22.6%
+  single-newline       n=9 errors=0 split[5-5] batches[2-2] density=22.9%
+  single-paragraph     n=32 errors=0 split[1-1] batches[1-1] density=21.9%
+
+Language detection mismatches: 0 / 50
+
+OOB cases: 0
+Clip-drop cases: 0
+
+--- Top anomalies ---
+  slowest: ZH-00 2ms
+  slowest: ZH-25 2ms
+  slowest: ZH-01 1ms
+  slowest: ZH-02 1ms
+  slowest: ZH-05 1ms
+  lowest density: ZH-07 20.0% (4 spans / 8 chars)
+  lowest density: ZH-10 20.0% (3 spans / 6 chars)
+  lowest density: ZH-14 20.0% (4 spans / 8 chars)
+  lowest density: EN-03 20.0% (18 spans / 36 chars)
+  lowest density: EN-09 20.1% (38 spans / 76 chars)
+  highest density: ZH-17 27.3% (2 spans / 3 chars)
+  highest density: ZH-23 25.8% (13 spans / 25 chars)
+  highest density: ZH-24 25.3% (10 spans / 19 chars)
+  highest density: ZH-08 25.0% (4 spans / 8 chars)
+  highest density: ZH-16 25.0% (1 spans / 2 chars)
+
+--- Phase 4: real-LLM smoke (5 articles, only if env has MiniMax key) ---
+  hasKey=true
+  sampling: ZH-00, ZH-18, ZH-21, EN-07, EN-13
+  ZH-00 [single-paragraph] parts=1 spans=13 density=58.5% latency=19035ms oob=0 OK
+    modelInfo: provider=minimax model=MiniMax-M2.7 reqCount=1 latencyMs=19035
+  ZH-18 [single-paragraph] parts=1 spans=17 density=44.4% latency=6661ms oob=0 OK
+    modelInfo: provider=minimax model=MiniMax-M2.7 reqCount=1 latencyMs=6661
+  ZH-21 [single-newline] parts=5 spans=0 density=0.0% latency=15178ms oob=0 ERROR: MiniMax response did not include text content.
+  EN-07 [single-paragraph] parts=1 spans=0 density=0.0% latency=12957ms oob=0 ERROR: MiniMax response did not include text content.
+  EN-13 [single-newline] parts=5 spans=42 density=25.1% latency=73213ms oob=0 OK
+    modelInfo: provider=minimax model=MiniMax-M2.7 reqCount=2 latencyMs=73213

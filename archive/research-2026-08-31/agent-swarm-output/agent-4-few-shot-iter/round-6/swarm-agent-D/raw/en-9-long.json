@@ -1,0 +1,135 @@
+{
+  "id": "en-9-long",
+  "category": "long",
+  "text": "Call me Ishmael. Some years ago, never mind how long precisely, having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen, and regulating the circulation.",
+  "charLength": 304,
+  "status": 200,
+  "requestBody": {
+    "paragraphs": [
+      {
+        "id": "0",
+        "text": "Call me Ishmael. Some years ago, never mind how long precisely, having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen, and regulating the circulation.",
+        "charLength": 304
+      }
+    ],
+    "density": "medium"
+  },
+  "response": {
+    "baselineHighlight": {
+      "0": []
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        4,
+        2,
+        9,
+        2,
+        14,
+        2,
+        20,
+        2,
+        30,
+        2,
+        38,
+        2,
+        50,
+        2,
+        58,
+        2,
+        71,
+        2,
+        84,
+        2,
+        98,
+        2,
+        106,
+        2,
+        115,
+        2,
+        120,
+        2,
+        127,
+        2,
+        141,
+        2,
+        152,
+        2,
+        160,
+        2,
+        173,
+        2,
+        180,
+        2,
+        188,
+        2,
+        198,
+        2,
+        205,
+        2,
+        211,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 53
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 1801,
+      "requestCount": 1,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 94,
+        "output_tokens": 106,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 882,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 1,
+        "chars": 304,
+        "baselineRanges": 0,
+        "aiRanges": 25,
+        "baselineChars": 0,
+        "aiChars": 50,
+        "overlapChars": 0,
+        "unionChars": 50
+      },
+      "coverageSimilarity": 0,
+      "positionHitRate": 0,
+      "baselineRecall": 0,
+      "baselineDensity": 0,
+      "aiDensity": 0.1645,
+      "densityDelta": 0.1645,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 304,
+          "baselineRanges": 0,
+          "aiRanges": 25,
+          "baselineChars": 0,
+          "aiChars": 50,
+          "overlapChars": 0,
+          "unionChars": 50,
+          "coverageSimilarity": 0,
+          "positionHitRate": 0,
+          "baselineRecall": 0,
+          "baselineDensity": 0,
+          "aiDensity": 0.1645,
+          "densityDelta": 0.1645
+        }
+      ]
+    }
+  },
+  "rawTextSnippet": "{\"baselineHighlight\":{\"0\":[]},\"aiHighlight\":{\"0\":[0,2,4,2,9,2,14,2,20,2,30,2,38,2,50,2,58,2,71,2,84,2,98,2,106,2,115,2,120,2,127,2,141,2,152,2,160,2,173,2,180,2,188,2,198,2,205,2,211,2]},\"baselineInfo\":{\"provider\":\"tillglance-nlphl\",\"endpoint\":\"https://api.tillglance.com/nlphl\",\"latencyMs\":53},\"modelInfo\":{\"provider\":\"minimax\",\"model\":\"MiniMax-M3\",\"apiType\":\"anthropic-compatible\",\"latencyMs\":1801,\"requestCount\":1,\"fallbackUsed\":false,\"usage\":{\"input_tokens\":94,\"output_tokens\":106,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":882,\"service_tier\":\"standard\"}},\"metrics\":{\"tolerance\":2,\"totals\":{\"paragraphs\":1,\"chars\":304,\"baselineRanges\":0,\"aiRanges\":25,\"baselineChars\":0,\"aiChars\":50,\"overlapChars\":0,\"unionChars\":50},\"coverageSimilarity\":0,\"positionHitRate\":0,\"baselineRecall\":0,\"ba"
+}

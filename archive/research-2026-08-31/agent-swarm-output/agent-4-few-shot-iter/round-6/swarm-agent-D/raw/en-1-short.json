@@ -1,0 +1,103 @@
+{
+  "id": "en-1-short",
+  "category": "short",
+  "text": "The quick brown fox jumps over the lazy dog.",
+  "charLength": 44,
+  "status": 200,
+  "requestBody": {
+    "paragraphs": [
+      {
+        "id": "0",
+        "text": "The quick brown fox jumps over the lazy dog.",
+        "charLength": 44
+      }
+    ],
+    "density": "medium"
+  },
+  "response": {
+    "baselineHighlight": {
+      "0": []
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        4,
+        2,
+        10,
+        2,
+        14,
+        2,
+        19,
+        2,
+        25,
+        2,
+        30,
+        2,
+        35,
+        2,
+        40,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 436
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 2426,
+      "requestCount": 1,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 790,
+        "output_tokens": 43,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 128,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 1,
+        "chars": 44,
+        "baselineRanges": 0,
+        "aiRanges": 9,
+        "baselineChars": 0,
+        "aiChars": 18,
+        "overlapChars": 0,
+        "unionChars": 18
+      },
+      "coverageSimilarity": 0,
+      "positionHitRate": 0,
+      "baselineRecall": 0,
+      "baselineDensity": 0,
+      "aiDensity": 0.4091,
+      "densityDelta": 0.4091,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 44,
+          "baselineRanges": 0,
+          "aiRanges": 9,
+          "baselineChars": 0,
+          "aiChars": 18,
+          "overlapChars": 0,
+          "unionChars": 18,
+          "coverageSimilarity": 0,
+          "positionHitRate": 0,
+          "baselineRecall": 0,
+          "baselineDensity": 0,
+          "aiDensity": 0.4091,
+          "densityDelta": 0.4091
+        }
+      ]
+    }
+  },
+  "rawTextSnippet": "{\"baselineHighlight\":{\"0\":[]},\"aiHighlight\":{\"0\":[0,2,4,2,10,2,14,2,19,2,25,2,30,2,35,2,40,2]},\"baselineInfo\":{\"provider\":\"tillglance-nlphl\",\"endpoint\":\"https://api.tillglance.com/nlphl\",\"latencyMs\":436},\"modelInfo\":{\"provider\":\"minimax\",\"model\":\"MiniMax-M3\",\"apiType\":\"anthropic-compatible\",\"latencyMs\":2426,\"requestCount\":1,\"fallbackUsed\":false,\"usage\":{\"input_tokens\":790,\"output_tokens\":43,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":128,\"service_tier\":\"standard\"}},\"metrics\":{\"tolerance\":2,\"totals\":{\"paragraphs\":1,\"chars\":44,\"baselineRanges\":0,\"aiRanges\":9,\"baselineChars\":0,\"aiChars\":18,\"overlapChars\":0,\"unionChars\":18},\"coverageSimilarity\":0,\"positionHitRate\":0,\"baselineRecall\":0,\"baselineDensity\":0,\"aiDensity\":0.4091,\"densityDelta\":0.4091,\"perParagraph\":[{\"paragraphId\":\"0\","
+}

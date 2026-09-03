@@ -1,0 +1,33 @@
+{
+  "id": "experiment_3cdeb1fb-31a3-43cc-9281-eab2fc59da40",
+  "article": {
+    "id": "article_smoke",
+    "sourceType": "file",
+    "title": "sample.md",
+    "paragraphs": [
+      {
+        "id": "0",
+        "index": 0,
+        "text": "第一段",
+        "charLength": 3
+      }
+    ],
+    "extraction": {
+      "method": "file",
+      "fallbackUsed": false,
+      "warnings": []
+    },
+    "createdAt": "2026-06-02T00:00:00.000Z"
+  },
+  "aiHighlight": {
+    "0": [
+      0,
+      2
+    ]
+  },
+  "modelInfo": {
+    "provider": "mock",
+    "model": "mock-semantic-reading-guide"
+  },
+  "createdAt": "2026-06-02T15:17:15.780Z"
+}

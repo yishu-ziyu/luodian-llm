@@ -1,0 +1,57 @@
+{
+  "id": "experiment_7de1697e-9f83-40c5-86c0-8470909f4e28",
+  "article": {
+    "id": "article_66af2260-f402-41d7-ad4f-781a5a1cee35",
+    "sourceType": "url",
+    "sourceUrl": "https://example.com/",
+    "title": "Example Domain",
+    "plainText": "This domain is for use in documentation examples without needing permission. Avoid use in operations.\n\n[Learn more](https://iana.org/domains/example)",
+    "paragraphs": [
+      {
+        "id": "0",
+        "index": 0,
+        "text": "This domain is for use in documentation examples without needing permission. Avoid use in operations.",
+        "charLength": 101
+      },
+      {
+        "id": "1",
+        "index": 1,
+        "text": "[Learn more](https://iana.org/domains/example)",
+        "charLength": 46
+      }
+    ],
+    "extraction": {
+      "method": "defuddle",
+      "fallbackUsed": false,
+      "qualityScore": 1,
+      "warnings": []
+    },
+    "createdAt": "2026-06-03T04:08:44.208Z"
+  },
+  "aiHighlight": {
+    "0": [
+      40,
+      8,
+      77,
+      5
+    ],
+    "1": [
+      1,
+      10
+    ]
+  },
+  "modelInfo": {
+    "provider": "minimax",
+    "model": "MiniMax-M3",
+    "apiType": "anthropic-compatible",
+    "latencyMs": 30708,
+    "fallbackUsed": false,
+    "usage": {
+      "input_tokens": 340,
+      "output_tokens": 1895,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 114
+    }
+  },
+  "createdAt": "2026-06-03T04:09:14.921Z"
+}

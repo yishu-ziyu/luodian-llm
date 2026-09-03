@@ -1,0 +1,137 @@
+{
+  "id": "en-10-long",
+  "category": "long",
+  "text": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.",
+  "charLength": 378,
+  "status": 200,
+  "requestBody": {
+    "paragraphs": [
+      {
+        "id": "0",
+        "text": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.",
+        "charLength": 378
+      }
+    ],
+    "density": "medium"
+  },
+  "response": {
+    "baselineHighlight": {
+      "0": []
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        5,
+        2,
+        12,
+        2,
+        17,
+        2,
+        20,
+        2,
+        32,
+        2,
+        39,
+        2,
+        46,
+        2,
+        50,
+        2,
+        54,
+        2,
+        64,
+        2,
+        72,
+        2,
+        82,
+        2,
+        86,
+        2,
+        95,
+        2,
+        99,
+        2,
+        103,
+        2,
+        116,
+        2,
+        122,
+        2,
+        131,
+        2,
+        138,
+        2,
+        147,
+        2,
+        153,
+        2,
+        163,
+        2,
+        170,
+        2,
+        182,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 49
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 2125,
+      "requestCount": 1,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 103,
+        "output_tokens": 110,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 882,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 1,
+        "chars": 378,
+        "baselineRanges": 0,
+        "aiRanges": 26,
+        "baselineChars": 0,
+        "aiChars": 52,
+        "overlapChars": 0,
+        "unionChars": 52
+      },
+      "coverageSimilarity": 0,
+      "positionHitRate": 0,
+      "baselineRecall": 0,
+      "baselineDensity": 0,
+      "aiDensity": 0.1376,
+      "densityDelta": 0.1376,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 378,
+          "baselineRanges": 0,
+          "aiRanges": 26,
+          "baselineChars": 0,
+          "aiChars": 52,
+          "overlapChars": 0,
+          "unionChars": 52,
+          "coverageSimilarity": 0,
+          "positionHitRate": 0,
+          "baselineRecall": 0,
+          "baselineDensity": 0,
+          "aiDensity": 0.1376,
+          "densityDelta": 0.1376
+        }
+      ]
+    }
+  },
+  "rawTextSnippet": "{\"baselineHighlight\":{\"0\":[]},\"aiHighlight\":{\"0\":[0,2,5,2,12,2,17,2,20,2,32,2,39,2,46,2,50,2,54,2,64,2,72,2,82,2,86,2,95,2,99,2,103,2,116,2,122,2,131,2,138,2,147,2,153,2,163,2,170,2,182,2]},\"baselineInfo\":{\"provider\":\"tillglance-nlphl\",\"endpoint\":\"https://api.tillglance.com/nlphl\",\"latencyMs\":49},\"modelInfo\":{\"provider\":\"minimax\",\"model\":\"MiniMax-M3\",\"apiType\":\"anthropic-compatible\",\"latencyMs\":2125,\"requestCount\":1,\"fallbackUsed\":false,\"usage\":{\"input_tokens\":103,\"output_tokens\":110,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":882,\"service_tier\":\"standard\"}},\"metrics\":{\"tolerance\":2,\"totals\":{\"paragraphs\":1,\"chars\":378,\"baselineRanges\":0,\"aiRanges\":26,\"baselineChars\":0,\"aiChars\":52,\"overlapChars\":0,\"unionChars\":52},\"coverageSimilarity\":0,\"positionHitRate\":0,\"baselineRecall\":0"
+}

@@ -1,0 +1,124 @@
+{
+  "total": 12,
+  "byCategory": {
+    "short": {
+      "count": 3,
+      "densities": [
+        0.4090909090909091,
+        0.4230769230769231,
+        0.25396825396825395
+      ],
+      "spans": [
+        9,
+        11,
+        7
+      ],
+      "meanDensity": 0.362,
+      "meanSpans": 9.0
+    },
+    "medium": {
+      "count": 4,
+      "densities": [
+        0.2111111111111111,
+        0.15476190476190477,
+        0.2222222222222222,
+        0.2158273381294964
+      ],
+      "spans": [
+        19,
+        13,
+        19,
+        15
+      ],
+      "meanDensity": 0.201,
+      "meanSpans": 16.5
+    },
+    "long": {
+      "count": 3,
+      "densities": [
+        0.11634349030470914,
+        0.16447368421052633,
+        0.13756613756613756
+      ],
+      "spans": [
+        21,
+        25,
+        26
+      ],
+      "meanDensity": 0.1395,
+      "meanSpans": 24.0
+    },
+    "proper-nouns": {
+      "count": 2,
+      "densities": [
+        0.144,
+        0.17177914110429449
+      ],
+      "spans": [
+        9,
+        14
+      ],
+      "meanDensity": 0.1579,
+      "meanSpans": 11.5
+    }
+  },
+  "allAiDensities": [
+    0.4090909090909091,
+    0.4230769230769231,
+    0.25396825396825395,
+    0.2111111111111111,
+    0.15476190476190477,
+    0.2222222222222222,
+    0.2158273381294964,
+    0.11634349030470914,
+    0.16447368421052633,
+    0.13756613756613756,
+    0.144,
+    0.17177914110429449
+  ],
+  "allAiChars": [],
+  "allAiSpans": [
+    9,
+    11,
+    7,
+    19,
+    13,
+    19,
+    15,
+    21,
+    25,
+    26,
+    9,
+    14
+  ],
+  "allLengthDistribution": {
+    "2": 187,
+    "4": 1
+  },
+  "allLatencies": [
+    2426,
+    1318,
+    1114,
+    1516,
+    1428,
+    1905,
+    1732,
+    1778,
+    1801,
+    2125,
+    1043,
+    1841
+  ],
+  "chineseCharsInAi": 0,
+  "chineseCharsInResponse": 0,
+  "jsonParseFailures": 0,
+  "baselineEmptyCount": 12,
+  "totalAiChars": 378,
+  "totalTextChars": 2148,
+  "meanAiDensity": 0.2187,
+  "meanAiSpans": 15.67,
+  "meanLatencyMs": 1669.0,
+  "length2Share": 0.9947,
+  "baselineEmptyRate": 1.0,
+  "jsonValidRate": 1.0
+}

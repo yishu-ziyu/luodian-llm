@@ -1,0 +1,113 @@
+{
+  "id": "en-12-proper",
+  "category": "proper-nouns",
+  "text": "Albert Einstein published his theory of general relativity in 1915, and later received the Nobel Prize in Physics in 1921 for his work on the photoelectric effect.",
+  "charLength": 163,
+  "status": 200,
+  "requestBody": {
+    "paragraphs": [
+      {
+        "id": "0",
+        "text": "Albert Einstein published his theory of general relativity in 1915, and later received the Nobel Prize in Physics in 1921 for his work on the photoelectric effect.",
+        "charLength": 163
+      }
+    ],
+    "density": "medium"
+  },
+  "response": {
+    "baselineHighlight": {
+      "0": []
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        12,
+        2,
+        25,
+        2,
+        35,
+        2,
+        39,
+        2,
+        43,
+        2,
+        47,
+        2,
+        62,
+        2,
+        66,
+        2,
+        74,
+        2,
+        82,
+        2,
+        87,
+        2,
+        94,
+        2,
+        99,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 47
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 1841,
+      "requestCount": 1,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 796,
+        "output_tokens": 63,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 146,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 1,
+        "chars": 163,
+        "baselineRanges": 0,
+        "aiRanges": 14,
+        "baselineChars": 0,
+        "aiChars": 28,
+        "overlapChars": 0,
+        "unionChars": 28
+      },
+      "coverageSimilarity": 0,
+      "positionHitRate": 0,
+      "baselineRecall": 0,
+      "baselineDensity": 0,
+      "aiDensity": 0.1718,
+      "densityDelta": 0.1718,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 163,
+          "baselineRanges": 0,
+          "aiRanges": 14,
+          "baselineChars": 0,
+          "aiChars": 28,
+          "overlapChars": 0,
+          "unionChars": 28,
+          "coverageSimilarity": 0,
+          "positionHitRate": 0,
+          "baselineRecall": 0,
+          "baselineDensity": 0,
+          "aiDensity": 0.1718,
+          "densityDelta": 0.1718
+        }
+      ]
+    }
+  },
+  "rawTextSnippet": "{\"baselineHighlight\":{\"0\":[]},\"aiHighlight\":{\"0\":[0,2,12,2,25,2,35,2,39,2,43,2,47,2,62,2,66,2,74,2,82,2,87,2,94,2,99,2]},\"baselineInfo\":{\"provider\":\"tillglance-nlphl\",\"endpoint\":\"https://api.tillglance.com/nlphl\",\"latencyMs\":47},\"modelInfo\":{\"provider\":\"minimax\",\"model\":\"MiniMax-M3\",\"apiType\":\"anthropic-compatible\",\"latencyMs\":1841,\"requestCount\":1,\"fallbackUsed\":false,\"usage\":{\"input_tokens\":796,\"output_tokens\":63,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":146,\"service_tier\":\"standard\"}},\"metrics\":{\"tolerance\":2,\"totals\":{\"paragraphs\":1,\"chars\":163,\"baselineRanges\":0,\"aiRanges\":14,\"baselineChars\":0,\"aiChars\":28,\"overlapChars\":0,\"unionChars\":28},\"coverageSimilarity\":0,\"positionHitRate\":0,\"baselineRecall\":0,\"baselineDensity\":0,\"aiDensity\":0.1718,\"densityDelta\":0.1718,\"perPara"
+}

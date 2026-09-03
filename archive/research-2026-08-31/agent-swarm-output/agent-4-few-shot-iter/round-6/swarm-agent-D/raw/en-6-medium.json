@@ -1,0 +1,123 @@
+{
+  "id": "en-6-medium",
+  "category": "medium",
+  "text": "To be, or not to be, that is the question. Whether tis nobler in the mind to suffer the slings and arrows of outrageous fortune, or to take arms against a sea of troubles.",
+  "charLength": 171,
+  "status": 200,
+  "requestBody": {
+    "paragraphs": [
+      {
+        "id": "0",
+        "text": "To be, or not to be, that is the question. Whether tis nobler in the mind to suffer the slings and arrows of outrageous fortune, or to take arms against a sea of troubles.",
+        "charLength": 171
+      }
+    ],
+    "density": "medium"
+  },
+  "response": {
+    "baselineHighlight": {
+      "0": []
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        4,
+        2,
+        9,
+        2,
+        16,
+        2,
+        22,
+        2,
+        30,
+        2,
+        33,
+        2,
+        39,
+        2,
+        44,
+        2,
+        51,
+        2,
+        55,
+        2,
+        62,
+        2,
+        68,
+        2,
+        76,
+        2,
+        85,
+        2,
+        92,
+        2,
+        96,
+        2,
+        103,
+        2,
+        110,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 65
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 1905,
+      "requestCount": 1,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 67,
+        "output_tokens": 82,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 882,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 1,
+        "chars": 171,
+        "baselineRanges": 0,
+        "aiRanges": 19,
+        "baselineChars": 0,
+        "aiChars": 38,
+        "overlapChars": 0,
+        "unionChars": 38
+      },
+      "coverageSimilarity": 0,
+      "positionHitRate": 0,
+      "baselineRecall": 0,
+      "baselineDensity": 0,
+      "aiDensity": 0.2222,
+      "densityDelta": 0.2222,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 171,
+          "baselineRanges": 0,
+          "aiRanges": 19,
+          "baselineChars": 0,
+          "aiChars": 38,
+          "overlapChars": 0,
+          "unionChars": 38,
+          "coverageSimilarity": 0,
+          "positionHitRate": 0,
+          "baselineRecall": 0,
+          "baselineDensity": 0,
+          "aiDensity": 0.2222,
+          "densityDelta": 0.2222
+        }
+      ]
+    }
+  },
+  "rawTextSnippet": "{\"baselineHighlight\":{\"0\":[]},\"aiHighlight\":{\"0\":[0,2,4,2,9,2,16,2,22,2,30,2,33,2,39,2,44,2,51,2,55,2,62,2,68,2,76,2,85,2,92,2,96,2,103,2,110,2]},\"baselineInfo\":{\"provider\":\"tillglance-nlphl\",\"endpoint\":\"https://api.tillglance.com/nlphl\",\"latencyMs\":65},\"modelInfo\":{\"provider\":\"minimax\",\"model\":\"MiniMax-M3\",\"apiType\":\"anthropic-compatible\",\"latencyMs\":1905,\"requestCount\":1,\"fallbackUsed\":false,\"usage\":{\"input_tokens\":67,\"output_tokens\":82,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":882,\"service_tier\":\"standard\"}},\"metrics\":{\"tolerance\":2,\"totals\":{\"paragraphs\":1,\"chars\":171,\"baselineRanges\":0,\"aiRanges\":19,\"baselineChars\":0,\"aiChars\":38,\"overlapChars\":0,\"unionChars\":38},\"coverageSimilarity\":0,\"positionHitRate\":0,\"baselineRecall\":0,\"baselineDensity\":0,\"aiDensity\":0.2222,\"densi"
+}

@@ -1,0 +1,115 @@
+{
+  "id": "en-7-medium",
+  "category": "medium",
+  "text": "Knowledge is of no value unless you put it into practice. A single conversation with a wise man is better than ten years of solitary study.",
+  "charLength": 139,
+  "status": 200,
+  "requestBody": {
+    "paragraphs": [
+      {
+        "id": "0",
+        "text": "Knowledge is of no value unless you put it into practice. A single conversation with a wise man is better than ten years of solitary study.",
+        "charLength": 139
+      }
+    ],
+    "density": "medium"
+  },
+  "response": {
+    "baselineHighlight": {
+      "0": []
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        4,
+        2,
+        8,
+        2,
+        12,
+        2,
+        19,
+        2,
+        24,
+        2,
+        35,
+        2,
+        40,
+        2,
+        47,
+        2,
+        56,
+        2,
+        60,
+        2,
+        66,
+        2,
+        76,
+        2,
+        80,
+        2,
+        85,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 70
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 1732,
+      "requestCount": 1,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 54,
+        "output_tokens": 66,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 882,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 1,
+        "chars": 139,
+        "baselineRanges": 0,
+        "aiRanges": 15,
+        "baselineChars": 0,
+        "aiChars": 30,
+        "overlapChars": 0,
+        "unionChars": 30
+      },
+      "coverageSimilarity": 0,
+      "positionHitRate": 0,
+      "baselineRecall": 0,
+      "baselineDensity": 0,
+      "aiDensity": 0.2158,
+      "densityDelta": 0.2158,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 139,
+          "baselineRanges": 0,
+          "aiRanges": 15,
+          "baselineChars": 0,
+          "aiChars": 30,
+          "overlapChars": 0,
+          "unionChars": 30,
+          "coverageSimilarity": 0,
+          "positionHitRate": 0,
+          "baselineRecall": 0,
+          "baselineDensity": 0,
+          "aiDensity": 0.2158,
+          "densityDelta": 0.2158
+        }
+      ]
+    }
+  },
+  "rawTextSnippet": "{\"baselineHighlight\":{\"0\":[]},\"aiHighlight\":{\"0\":[0,2,4,2,8,2,12,2,19,2,24,2,35,2,40,2,47,2,56,2,60,2,66,2,76,2,80,2,85,2]},\"baselineInfo\":{\"provider\":\"tillglance-nlphl\",\"endpoint\":\"https://api.tillglance.com/nlphl\",\"latencyMs\":70},\"modelInfo\":{\"provider\":\"minimax\",\"model\":\"MiniMax-M3\",\"apiType\":\"anthropic-compatible\",\"latencyMs\":1732,\"requestCount\":1,\"fallbackUsed\":false,\"usage\":{\"input_tokens\":54,\"output_tokens\":66,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":882,\"service_tier\":\"standard\"}},\"metrics\":{\"tolerance\":2,\"totals\":{\"paragraphs\":1,\"chars\":139,\"baselineRanges\":0,\"aiRanges\":15,\"baselineChars\":0,\"aiChars\":30,\"overlapChars\":0,\"unionChars\":30},\"coverageSimilarity\":0,\"positionHitRate\":0,\"baselineRecall\":0,\"baselineDensity\":0,\"aiDensity\":0.2158,\"densityDelta\":0.2158,\"perPa"
+}

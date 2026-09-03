@@ -1,0 +1,19 @@
+[pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/tmp/node_modules/undici)
+[pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+[pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/Users/mahaoxuan/.local/lib/node_modules/@earendil-works/pi-coding-agent/node_modules/undici)
+[pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+# Agent D start 2026-06-13T18:05:34.017Z → 12 English paragraphs → http://localhost:4173
+[ 1/12] en-1-short (short, 44 chars) ... HTTP 200 aiLen=18 blLen=0 hit=? den=41%
+[ 2/12] en-2-short (short, 52 chars) ... HTTP 200 aiLen=22 blLen=0 hit=? den=42%
+[ 3/12] en-3-short (short, 63 chars) ... HTTP 200 aiLen=14 blLen=0 hit=? den=25%
+[ 4/12] en-4-medium (medium, 180 chars) ... HTTP 200 aiLen=38 blLen=0 hit=? den=21%
+[ 5/12] en-5-medium (medium, 168 chars) ... HTTP 200 aiLen=26 blLen=0 hit=? den=15%
+[ 6/12] en-6-medium (medium, 171 chars) ... HTTP 200 aiLen=38 blLen=0 hit=? den=22%
+[ 7/12] en-7-medium (medium, 139 chars) ... HTTP 200 aiLen=30 blLen=0 hit=? den=22%
+[ 8/12] en-8-long (long, 361 chars) ... HTTP 200 aiLen=42 blLen=0 hit=? den=12%
+[ 9/12] en-9-long (long, 304 chars) ... HTTP 200 aiLen=50 blLen=0 hit=? den=16%
+[10/12] en-10-long (long, 378 chars) ... HTTP 200 aiLen=52 blLen=0 hit=? den=14%
+[11/12] en-11-proper (proper-nouns, 125 chars) ... HTTP 200 aiLen=18 blLen=0 hit=? den=14%
+[12/12] en-12-proper (proper-nouns, 163 chars) ... HTTP 200 aiLen=28 blLen=0 hit=? den=17%
+
+# saved → /Users/mahaoxuan/Desktop/黑客松/眺览二次开发/agent-swarm-output/agent-4-few-shot-iter/round-6/swarm-agent-D/all-results.json

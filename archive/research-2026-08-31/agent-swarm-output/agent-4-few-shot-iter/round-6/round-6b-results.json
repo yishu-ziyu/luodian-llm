@@ -1,0 +1,2490 @@
+{
+  "ranAt": {
+    "startedAt": "2026-06-13T17:59:32.965Z",
+    "finishedAt": "2026-06-13T18:01:21.512Z"
+  },
+  "endpoint": "http://localhost:4173",
+  "config": "Agent 2 10 rules + Agent 4 optimal combo (user-verbose-T0) + 5-shot from 5new.json",
+  "model": "MiniMax-M3 (env: web-mvp/.env.local override)",
+  "summary": {
+    "total": 20,
+    "successful": 17,
+    "failed": 3,
+    "avgLatencyMs": 2950,
+    "avgWallMs": null,
+    "avgPositionHitRate": 0.872,
+    "avgBaselineRecall": 0.9046,
+    "avgCoverageSimilarity": 0.3598,
+    "avgAiDensity": 0.4665,
+    "avgBaselineDensity": 0.4736,
+    "avgDensityDelta": -0.0071,
+    "totalSpans": 142,
+    "totalBaselineSpans": 144,
+    "hitRate": {
+      "±0": 0.2676,
+      "±1": 0.6408,
+      "±2": 0.8521
+    },
+    "lengthDistribution": {
+      "2": 137,
+      "3": 5
+    }
+  },
+  "perResultSummary": [
+    {
+      "id": "B1",
+      "source": "baseline-12:34",
+      "aiStarts": [
+        0,
+        4,
+        8,
+        11,
+        16,
+        19,
+        23,
+        27,
+        30,
+        35,
+        39,
+        44
+      ],
+      "blStarts": [
+        4,
+        8,
+        13,
+        18,
+        21,
+        24,
+        27,
+        30,
+        34,
+        41,
+        48
+      ],
+      "matched": 10,
+      "total": 12,
+      "lengths": {
+        "2": 12
+      }
+    },
+    {
+      "id": "B3",
+      "source": "baseline-13:12",
+      "aiStarts": [
+        0,
+        4,
+        8,
+        11,
+        17,
+        21,
+        25,
+        30,
+        35,
+        40
+      ],
+      "blStarts": [
+        3,
+        8,
+        12,
+        15,
+        19,
+        23,
+        26,
+        29,
+        34,
+        40
+      ],
+      "matched": 9,
+      "total": 10,
+      "lengths": {
+        "2": 10
+      }
+    },
+    {
+      "id": "B4",
+      "source": "baseline-13:12",
+      "aiStarts": [
+        0,
+        3,
+        5,
+        9,
+        14,
+        18,
+        24,
+        28
+      ],
+      "blStarts": [
+        0,
+        6,
+        10,
+        19,
+        22,
+        25,
+        31,
+        36
+      ],
+      "matched": 5,
+      "total": 8,
+      "lengths": {
+        "2": 8
+      }
+    },
+    {
+      "id": "B5",
+      "source": "baseline-13:12",
+      "aiStarts": [
+        0,
+        5,
+        9,
+        15,
+        20,
+        24,
+        30,
+        35
+      ],
+      "blStarts": [
+        0,
+        3,
+        8,
+        14,
+        18,
+        23,
+        27,
+        30,
+        34,
+        38
+      ],
+      "matched": 8,
+      "total": 8,
+      "lengths": {
+        "2": 8
+      }
+    },
+    {
+      "id": "B7",
+      "source": "baseline-13:14",
+      "aiStarts": [
+        0,
+        5,
+        9,
+        17,
+        22,
+        29,
+        36
+      ],
+      "blStarts": [
+        0,
+        4,
+        8,
+        14,
+        17,
+        22,
+        25,
+        30,
+        37
+      ],
+      "matched": 7,
+      "total": 7,
+      "lengths": {
+        "2": 5,
+        "3": 2
+      }
+    },
+    {
+      "id": "B8",
+      "source": "baseline-13:14",
+      "aiStarts": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        25,
+        29
+      ],
+      "blStarts": [
+        0,
+        3,
+        7,
+        10,
+        14,
+        21,
+        25,
+        29
+      ],
+      "matched": 8,
+      "total": 8,
+      "lengths": {
+        "2": 8
+      }
+    },
+    {
+      "id": "B9",
+      "source": "baseline-13:14",
+      "aiStarts": [
+        0,
+        4,
+        10,
+        17,
+        22,
+        27,
+        32
+      ],
+      "blStarts": [
+        0,
+        3,
+        6,
+        9,
+        14,
+        17,
+        21,
+        24,
+        29
+      ],
+      "matched": 6,
+      "total": 7,
+      "lengths": {
+        "2": 6,
+        "3": 1
+      }
+    },
+    {
+      "id": "F0",
+      "source": "fresh-散文-短",
+      "aiStarts": [
+        0,
+        4,
+        8,
+        12,
+        17,
+        21,
+        25
+      ],
+      "blStarts": [
+        0,
+        5,
+        9,
+        12,
+        16,
+        21,
+        27
+      ],
+      "matched": 7,
+      "total": 7,
+      "lengths": {
+        "2": 7
+      }
+    },
+    {
+      "id": "F1",
+      "source": "fresh-散文-中",
+      "aiStarts": [
+        0,
+        5,
+        8,
+        15,
+        19,
+        24,
+        28
+      ],
+      "blStarts": [
+        0,
+        3,
+        7,
+        10,
+        15,
+        21,
+        25,
+        28
+      ],
+      "matched": 7,
+      "total": 7,
+      "lengths": {
+        "2": 7
+      }
+    },
+    {
+      "id": "F2",
+      "source": "fresh-技术-中",
+      "aiStarts": [
+        0,
+        4,
+        9,
+        13,
+        17,
+        20,
+        23,
+        26
+      ],
+      "blStarts": [
+        4,
+        9,
+        13,
+        16,
+        20,
+        23,
+        26,
+        31
+      ],
+      "matched": 7,
+      "total": 8,
+      "lengths": {
+        "2": 8
+      }
+    },
+    {
+      "id": "F3",
+      "source": "fresh-技术-中",
+      "aiStarts": [
+        0,
+        3,
+        10,
+        15,
+        19,
+        23,
+        29,
+        35
+      ],
+      "blStarts": [
+        11,
+        16,
+        22,
+        27,
+        31,
+        35
+      ],
+      "matched": 5,
+      "total": 8,
+      "lengths": {
+        "2": 8
+      }
+    },
+    {
+      "id": "F4",
+      "source": "fresh-对话-短",
+      "aiStarts": [
+        0,
+        4,
+        9,
+        12,
+        16,
+        19,
+        22,
+        26,
+        30,
+        33,
+        37
+      ],
+      "blStarts": [
+        2,
+        7,
+        14,
+        17,
+        20,
+        24,
+        30,
+        35
+      ],
+      "matched": 11,
+      "total": 11,
+      "lengths": {
+        "2": 10,
+        "3": 1
+      }
+    },
+    {
+      "id": "F5",
+      "source": "fresh-对话-短",
+      "aiStarts": [
+        0,
+        3,
+        6,
+        8,
+        11,
+        14,
+        16,
+        19,
+        22,
+        26
+      ],
+      "blStarts": [
+        3,
+        17,
+        20,
+        25
+      ],
+      "matched": 5,
+      "total": 10,
+      "lengths": {
+        "2": 10
+      }
+    },
+    {
+      "id": "F6",
+      "source": "fresh-短句",
+      "aiStarts": [
+        0,
+        3,
+        5
+      ],
+      "blStarts": [
+        0,
+        5
+      ],
+      "matched": 3,
+      "total": 3,
+      "lengths": {
+        "2": 3
+      }
+    },
+    {
+      "id": "F7",
+      "source": "fresh-短句",
+      "aiStarts": [
+        0,
+        3,
+        7
+      ],
+      "blStarts": [
+        0,
+        5,
+        8
+      ],
+      "matched": 3,
+      "total": 3,
+      "lengths": {
+        "2": 3
+      }
+    },
+    {
+      "id": "F8",
+      "source": "fresh-长-生活",
+      "aiStarts": [
+        0,
+        4,
+        11,
+        15,
+        21,
+        27,
+        33,
+        37,
+        42,
+        49,
+        55,
+        61
+      ],
+      "blStarts": [
+        1,
+        6,
+        9,
+        12,
+        16,
+        20,
+        23,
+        26,
+        29,
+        32,
+        38,
+        41,
+        45,
+        48,
+        56,
+        65,
+        72,
+        78
+      ],
+      "matched": 11,
+      "total": 12,
+      "lengths": {
+        "2": 12
+      }
+    },
+    {
+      "id": "F9",
+      "source": "fresh-长-技术",
+      "aiStarts": [
+        0,
+        4,
+        12,
+        17,
+        25,
+        32,
+        39,
+        46,
+        53,
+        56,
+        64,
+        69,
+        75
+      ],
+      "blStarts": [
+        0,
+        6,
+        13,
+        20,
+        25,
+        29,
+        42,
+        47,
+        58,
+        66,
+        69,
+        73,
+        78,
+        81,
+        85
+      ],
+      "matched": 9,
+      "total": 13,
+      "lengths": {
+        "2": 12,
+        "3": 1
+      }
+    }
+  ],
+  "results": [
+    {
+      "id": "B0",
+      "source": "baseline-12:34",
+      "category": "技术-长",
+      "text": "阅读不是眼睛平滑扫过文字，而是由注视和眼跳组成。合适的高亮可以像轨道一样，帮助读者更快找到下一次视线落点。",
+      "error": "fetch failed",
+      "attempts": []
+    },
+    {
+      "id": "B1",
+      "source": "baseline-12:34",
+      "category": "技术-长",
+      "text": "中文阅读没有天然空格，读者需要在连续汉字中判断词边界。语义、词频和句子结构都会影响眼睛下一步看向哪里。",
+      "charLength": 51,
+      "baseline": [
+        4,
+        2,
+        8,
+        2,
+        13,
+        2,
+        18,
+        2,
+        21,
+        2,
+        24,
+        2,
+        27,
+        2,
+        30,
+        2,
+        34,
+        3,
+        41,
+        2,
+        48,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        4,
+        2,
+        8,
+        2,
+        11,
+        2,
+        16,
+        2,
+        19,
+        2,
+        23,
+        2,
+        27,
+        2,
+        30,
+        2,
+        35,
+        2,
+        39,
+        2,
+        44,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 57
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 1778,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 1,
+          "output_tokens": 55,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 936,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 51,
+          "baselineRanges": 11,
+          "aiRanges": 12,
+          "baselineChars": 23,
+          "aiChars": 24,
+          "overlapChars": 12,
+          "unionChars": 35
+        },
+        "coverageSimilarity": 0.3429,
+        "positionHitRate": 0.8333,
+        "baselineRecall": 0.9091,
+        "baselineDensity": 0.451,
+        "aiDensity": 0.4706,
+        "densityDelta": 0.0196,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 51,
+            "baselineRanges": 11,
+            "aiRanges": 12,
+            "baselineChars": 23,
+            "aiChars": 24,
+            "overlapChars": 12,
+            "unionChars": 35,
+            "coverageSimilarity": 0.3429,
+            "positionHitRate": 0.8333,
+            "baselineRecall": 0.9091,
+            "baselineDensity": 0.451,
+            "aiDensity": 0.4706,
+            "densityDelta": 0.0196
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": false,
+          "status": 500,
+          "error": "{\"error\":\"Range out of bounds at paragraph 0.\"}"
+        },
+        {
+          "attempt": 1,
+          "ok": false,
+          "status": 500,
+          "error": "{\"error\":\"Range out of bounds at paragraph 0.\"}"
+        },
+        {
+          "attempt": 2,
+          "ok": true,
+          "latencyMs": 1778
+        }
+      ],
+      "wallMs": 9998
+    },
+    {
+      "id": "B2",
+      "source": "baseline-13:12",
+      "category": "生活-中",
+      "text": "城市的清晨从一碗热粥开始，街角的早餐店冒着蒸汽。上班族匆忙走过，手里握着刚买的咖啡。",
+      "error": "compare failed after 4 attempts",
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": false,
+          "status": 500,
+          "error": "{\"error\":\"Range out of bounds at paragraph 0.\"}"
+        },
+        {
+          "attempt": 1,
+          "ok": false,
+          "status": 500,
+          "error": "{\"error\":\"Range out of bounds at paragraph 0.\"}"
+        },
+        {
+          "attempt": 2,
+          "ok": false,
+          "status": 500,
+          "error": "{\"error\":\"Range out of bounds at paragraph 0.\"}"
+        },
+        {
+          "attempt": 3,
+          "ok": false,
+          "status": 500,
+          "error": "{\"error\":\"Range out of bounds at paragraph 0.\"}"
+        }
+      ]
+    },
+    {
+      "id": "B3",
+      "source": "baseline-13:12",
+      "category": "评论-中",
+      "text": "互联网改变了阅读习惯，屏幕前的读者习惯快速扫过文字。合适的视觉节奏能帮助他们重新聚焦。",
+      "charLength": 43,
+      "baseline": [
+        3,
+        2,
+        8,
+        2,
+        12,
+        2,
+        15,
+        2,
+        19,
+        2,
+        23,
+        2,
+        26,
+        2,
+        29,
+        4,
+        34,
+        2,
+        40,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        4,
+        2,
+        8,
+        2,
+        11,
+        2,
+        17,
+        2,
+        21,
+        2,
+        25,
+        2,
+        30,
+        2,
+        35,
+        2,
+        40,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 51
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 1468,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 50,
+          "output_tokens": 46,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 882,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 43,
+          "baselineRanges": 10,
+          "aiRanges": 10,
+          "baselineChars": 22,
+          "aiChars": 20,
+          "overlapChars": 10,
+          "unionChars": 32
+        },
+        "coverageSimilarity": 0.3125,
+        "positionHitRate": 0.9,
+        "baselineRecall": 1,
+        "baselineDensity": 0.5116,
+        "aiDensity": 0.4651,
+        "densityDelta": -0.0465,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 43,
+            "baselineRanges": 10,
+            "aiRanges": 10,
+            "baselineChars": 22,
+            "aiChars": 20,
+            "overlapChars": 10,
+            "unionChars": 32,
+            "coverageSimilarity": 0.3125,
+            "positionHitRate": 0.9,
+            "baselineRecall": 1,
+            "baselineDensity": 0.5116,
+            "aiDensity": 0.4651,
+            "densityDelta": -0.0465
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 1468
+        }
+      ],
+      "wallMs": 1475
+    },
+    {
+      "id": "B4",
+      "source": "baseline-13:12",
+      "category": "散文-中",
+      "text": "登山者在云层之上看到日出，第一缕光穿过山峰的缝隙。那一刻，所有疲惫都显得值得。",
+      "charLength": 39,
+      "baseline": [
+        0,
+        3,
+        6,
+        2,
+        10,
+        2,
+        19,
+        2,
+        22,
+        2,
+        25,
+        3,
+        31,
+        2,
+        36,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        3,
+        2,
+        5,
+        2,
+        9,
+        2,
+        14,
+        2,
+        18,
+        2,
+        24,
+        2,
+        28,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 50
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 1028,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 49,
+          "output_tokens": 38,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 882,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 39,
+          "baselineRanges": 8,
+          "aiRanges": 8,
+          "baselineChars": 18,
+          "aiChars": 16,
+          "overlapChars": 6,
+          "unionChars": 28
+        },
+        "coverageSimilarity": 0.2143,
+        "positionHitRate": 0.625,
+        "baselineRecall": 0.75,
+        "baselineDensity": 0.4615,
+        "aiDensity": 0.4103,
+        "densityDelta": -0.0513,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 39,
+            "baselineRanges": 8,
+            "aiRanges": 8,
+            "baselineChars": 18,
+            "aiChars": 16,
+            "overlapChars": 6,
+            "unionChars": 28,
+            "coverageSimilarity": 0.2143,
+            "positionHitRate": 0.625,
+            "baselineRecall": 0.75,
+            "baselineDensity": 0.4615,
+            "aiDensity": 0.4103,
+            "densityDelta": -0.0513
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 1028
+        }
+      ],
+      "wallMs": 1031
+    },
+    {
+      "id": "B5",
+      "source": "baseline-13:12",
+      "category": "技术-中",
+      "text": "代码是程序员写给未来的信，每一行都要考虑下一个维护者的感受。可读性与性能同等重要。",
+      "charLength": 41,
+      "baseline": [
+        0,
+        2,
+        3,
+        3,
+        8,
+        2,
+        14,
+        2,
+        18,
+        2,
+        23,
+        3,
+        27,
+        2,
+        30,
+        3,
+        34,
+        2,
+        38,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        5,
+        2,
+        9,
+        2,
+        15,
+        2,
+        20,
+        2,
+        24,
+        2,
+        30,
+        2,
+        35,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 63
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 2040,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 802,
+          "output_tokens": 39,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 128,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 41,
+          "baselineRanges": 10,
+          "aiRanges": 8,
+          "baselineChars": 23,
+          "aiChars": 16,
+          "overlapChars": 10,
+          "unionChars": 29
+        },
+        "coverageSimilarity": 0.3448,
+        "positionHitRate": 1,
+        "baselineRecall": 0.8,
+        "baselineDensity": 0.561,
+        "aiDensity": 0.3902,
+        "densityDelta": -0.1707,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 41,
+            "baselineRanges": 10,
+            "aiRanges": 8,
+            "baselineChars": 23,
+            "aiChars": 16,
+            "overlapChars": 10,
+            "unionChars": 29,
+            "coverageSimilarity": 0.3448,
+            "positionHitRate": 1,
+            "baselineRecall": 0.8,
+            "baselineDensity": 0.561,
+            "aiDensity": 0.3902,
+            "densityDelta": -0.1707
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 2040
+        }
+      ],
+      "wallMs": 2043
+    },
+    {
+      "id": "B6",
+      "source": "baseline-13:12",
+      "category": "文化-中",
+      "text": "音乐会上，指挥家的手势决定整支乐队的呼吸。乐手跟随节奏，把作曲家埋在音符里的情感表达出来。",
+      "error": "fetch failed",
+      "attempts": []
+    },
+    {
+      "id": "B7",
+      "source": "baseline-13:14",
+      "category": "散文-中",
+      "text": "步行穿过老巷子，两旁的老房子保留了上个世纪的痕迹。墙角的青苔记录了无数次的雨季。",
+      "charLength": 40,
+      "baseline": [
+        0,
+        2,
+        4,
+        3,
+        8,
+        2,
+        14,
+        2,
+        17,
+        4,
+        22,
+        2,
+        25,
+        2,
+        30,
+        2,
+        37,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        5,
+        2,
+        9,
+        3,
+        17,
+        2,
+        22,
+        2,
+        29,
+        3,
+        36,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 379
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 10254,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 806,
+          "output_tokens": 43,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 128,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 40,
+          "baselineRanges": 9,
+          "aiRanges": 7,
+          "baselineChars": 21,
+          "aiChars": 16,
+          "overlapChars": 12,
+          "unionChars": 25
+        },
+        "coverageSimilarity": 0.48,
+        "positionHitRate": 1,
+        "baselineRecall": 0.7778,
+        "baselineDensity": 0.525,
+        "aiDensity": 0.4,
+        "densityDelta": -0.125,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 40,
+            "baselineRanges": 9,
+            "aiRanges": 7,
+            "baselineChars": 21,
+            "aiChars": 16,
+            "overlapChars": 12,
+            "unionChars": 25,
+            "coverageSimilarity": 0.48,
+            "positionHitRate": 1,
+            "baselineRecall": 0.7778,
+            "baselineDensity": 0.525,
+            "aiDensity": 0.4,
+            "densityDelta": -0.125
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 10254
+        }
+      ],
+      "wallMs": 10750
+    },
+    {
+      "id": "B8",
+      "source": "baseline-13:14",
+      "category": "生活-短",
+      "text": "深夜的城市依然有光，便利店的招牌亮着，等候晚归的人带走一份热食。",
+      "charLength": 32,
+      "baseline": [
+        0,
+        2,
+        3,
+        2,
+        7,
+        2,
+        10,
+        3,
+        14,
+        2,
+        21,
+        2,
+        25,
+        2,
+        29,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        4,
+        2,
+        8,
+        2,
+        12,
+        2,
+        16,
+        2,
+        20,
+        2,
+        25,
+        2,
+        29,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 326
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 1731,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 802,
+          "output_tokens": 43,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 128,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 32,
+          "baselineRanges": 8,
+          "aiRanges": 8,
+          "baselineChars": 17,
+          "aiChars": 16,
+          "overlapChars": 10,
+          "unionChars": 23
+        },
+        "coverageSimilarity": 0.4348,
+        "positionHitRate": 1,
+        "baselineRecall": 1,
+        "baselineDensity": 0.5313,
+        "aiDensity": 0.5,
+        "densityDelta": -0.0313,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 32,
+            "baselineRanges": 8,
+            "aiRanges": 8,
+            "baselineChars": 17,
+            "aiChars": 16,
+            "overlapChars": 10,
+            "unionChars": 23,
+            "coverageSimilarity": 0.4348,
+            "positionHitRate": 1,
+            "baselineRecall": 1,
+            "baselineDensity": 0.5313,
+            "aiDensity": 0.5,
+            "densityDelta": -0.0313
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 1731
+        }
+      ],
+      "wallMs": 1736
+    },
+    {
+      "id": "B9",
+      "source": "baseline-13:14",
+      "category": "散文-中",
+      "text": "海边的礁石上长满了贝类，潮水退去后留下海盐结晶。远处的灯塔每隔几秒闪一次。",
+      "charLength": 37,
+      "baseline": [
+        0,
+        2,
+        3,
+        2,
+        6,
+        2,
+        9,
+        2,
+        14,
+        2,
+        17,
+        2,
+        21,
+        2,
+        24,
+        2,
+        29,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        4,
+        2,
+        10,
+        2,
+        17,
+        2,
+        22,
+        2,
+        27,
+        3,
+        32,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 59
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 1683,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 808,
+          "output_tokens": 35,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 128,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 37,
+          "baselineRanges": 9,
+          "aiRanges": 7,
+          "baselineChars": 18,
+          "aiChars": 15,
+          "overlapChars": 8,
+          "unionChars": 25
+        },
+        "coverageSimilarity": 0.32,
+        "positionHitRate": 0.8571,
+        "baselineRecall": 0.8889,
+        "baselineDensity": 0.4865,
+        "aiDensity": 0.4054,
+        "densityDelta": -0.0811,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 37,
+            "baselineRanges": 9,
+            "aiRanges": 7,
+            "baselineChars": 18,
+            "aiChars": 15,
+            "overlapChars": 8,
+            "unionChars": 25,
+            "coverageSimilarity": 0.32,
+            "positionHitRate": 0.8571,
+            "baselineRecall": 0.8889,
+            "baselineDensity": 0.4865,
+            "aiDensity": 0.4054,
+            "densityDelta": -0.0811
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 1683
+        }
+      ],
+      "wallMs": 1687
+    },
+    {
+      "id": "F0",
+      "source": "fresh-散文-短",
+      "category": "散文-短",
+      "text": "故乡的春天总是来得迟缓，院子里的玉兰在清明前后才肯打开花苞。",
+      "charLength": 30,
+      "baseline": [
+        0,
+        2,
+        5,
+        2,
+        9,
+        2,
+        12,
+        2,
+        16,
+        2,
+        21,
+        2,
+        27,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        4,
+        2,
+        8,
+        2,
+        12,
+        2,
+        17,
+        2,
+        21,
+        2,
+        25,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 82
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 2127,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 674,
+          "output_tokens": 39,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 256,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 30,
+          "baselineRanges": 7,
+          "aiRanges": 7,
+          "baselineChars": 14,
+          "aiChars": 14,
+          "overlapChars": 9,
+          "unionChars": 19
+        },
+        "coverageSimilarity": 0.4737,
+        "positionHitRate": 1,
+        "baselineRecall": 1,
+        "baselineDensity": 0.4667,
+        "aiDensity": 0.4667,
+        "densityDelta": 0,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 30,
+            "baselineRanges": 7,
+            "aiRanges": 7,
+            "baselineChars": 14,
+            "aiChars": 14,
+            "overlapChars": 9,
+            "unionChars": 19,
+            "coverageSimilarity": 0.4737,
+            "positionHitRate": 1,
+            "baselineRecall": 1,
+            "baselineDensity": 0.4667,
+            "aiDensity": 0.4667,
+            "densityDelta": 0
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 2127
+        }
+      ],
+      "wallMs": 2140
+    },
+    {
+      "id": "F1",
+      "source": "fresh-散文-中",
+      "category": "散文-中",
+      "text": "黄昏的光线斜斜地铺在书桌上，把打开的笔记本染成一片温暖的金色。",
+      "charLength": 31,
+      "baseline": [
+        0,
+        2,
+        3,
+        2,
+        7,
+        2,
+        10,
+        3,
+        15,
+        2,
+        21,
+        2,
+        25,
+        2,
+        28,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        5,
+        2,
+        8,
+        2,
+        15,
+        2,
+        19,
+        2,
+        24,
+        2,
+        28,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 147
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 1331,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 48,
+          "output_tokens": 34,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 882,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 31,
+          "baselineRanges": 8,
+          "aiRanges": 7,
+          "baselineChars": 17,
+          "aiChars": 14,
+          "overlapChars": 8,
+          "unionChars": 23
+        },
+        "coverageSimilarity": 0.3478,
+        "positionHitRate": 1,
+        "baselineRecall": 1,
+        "baselineDensity": 0.5484,
+        "aiDensity": 0.4516,
+        "densityDelta": -0.0968,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 31,
+            "baselineRanges": 8,
+            "aiRanges": 7,
+            "baselineChars": 17,
+            "aiChars": 14,
+            "overlapChars": 8,
+            "unionChars": 23,
+            "coverageSimilarity": 0.3478,
+            "positionHitRate": 1,
+            "baselineRecall": 1,
+            "baselineDensity": 0.5484,
+            "aiDensity": 0.4516,
+            "densityDelta": -0.0968
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 1331
+        }
+      ],
+      "wallMs": 1340
+    },
+    {
+      "id": "F2",
+      "source": "fresh-技术-中",
+      "category": "技术-中",
+      "text": "深度学习模型的推理速度受到显存带宽限制，量化与剪枝是常见的优化手段。",
+      "charLength": 34,
+      "baseline": [
+        4,
+        2,
+        9,
+        2,
+        13,
+        2,
+        16,
+        2,
+        20,
+        2,
+        23,
+        2,
+        26,
+        2,
+        31,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        4,
+        2,
+        9,
+        2,
+        13,
+        2,
+        17,
+        2,
+        20,
+        2,
+        23,
+        2,
+        26,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 81
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 1738,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 800,
+          "output_tokens": 39,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 128,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 34,
+          "baselineRanges": 8,
+          "aiRanges": 8,
+          "baselineChars": 16,
+          "aiChars": 16,
+          "overlapChars": 13,
+          "unionChars": 19
+        },
+        "coverageSimilarity": 0.6842,
+        "positionHitRate": 0.875,
+        "baselineRecall": 0.875,
+        "baselineDensity": 0.4706,
+        "aiDensity": 0.4706,
+        "densityDelta": 0,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 34,
+            "baselineRanges": 8,
+            "aiRanges": 8,
+            "baselineChars": 16,
+            "aiChars": 16,
+            "overlapChars": 13,
+            "unionChars": 19,
+            "coverageSimilarity": 0.6842,
+            "positionHitRate": 0.875,
+            "baselineRecall": 0.875,
+            "baselineDensity": 0.4706,
+            "aiDensity": 0.4706,
+            "densityDelta": 0
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 1738
+        }
+      ],
+      "wallMs": 1742
+    },
+    {
+      "id": "F3",
+      "source": "fresh-技术-中",
+      "category": "技术-中",
+      "text": "Kubernetes 通过声明式配置管理容器集群，节点故障时会自动重新调度 Pod。",
+      "charLength": 42,
+      "baseline": [
+        11,
+        2,
+        16,
+        4,
+        22,
+        2,
+        27,
+        2,
+        31,
+        2,
+        35,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        3,
+        2,
+        10,
+        2,
+        15,
+        2,
+        19,
+        2,
+        23,
+        2,
+        29,
+        2,
+        35,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 82
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 3665,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 543,
+          "output_tokens": 39,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 382,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 42,
+          "baselineRanges": 6,
+          "aiRanges": 8,
+          "baselineChars": 14,
+          "aiChars": 16,
+          "overlapChars": 6,
+          "unionChars": 24
+        },
+        "coverageSimilarity": 0.25,
+        "positionHitRate": 0.625,
+        "baselineRecall": 1,
+        "baselineDensity": 0.3333,
+        "aiDensity": 0.381,
+        "densityDelta": 0.0476,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 42,
+            "baselineRanges": 6,
+            "aiRanges": 8,
+            "baselineChars": 14,
+            "aiChars": 16,
+            "overlapChars": 6,
+            "unionChars": 24,
+            "coverageSimilarity": 0.25,
+            "positionHitRate": 0.625,
+            "baselineRecall": 1,
+            "baselineDensity": 0.3333,
+            "aiDensity": 0.381,
+            "densityDelta": 0.0476
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 3665
+        }
+      ],
+      "wallMs": 3667
+    },
+    {
+      "id": "F4",
+      "source": "fresh-对话-短",
+      "category": "对话-短",
+      "text": "“你觉得这本书怎么样？” “作者把复杂的概念讲得通俗易懂，我推荐给所有初学者。”",
+      "charLength": 40,
+      "baseline": [
+        2,
+        2,
+        7,
+        3,
+        14,
+        2,
+        17,
+        2,
+        20,
+        2,
+        24,
+        4,
+        30,
+        2,
+        35,
+        3
+      ],
+      "ai": [
+        0,
+        2,
+        4,
+        2,
+        9,
+        2,
+        12,
+        2,
+        16,
+        2,
+        19,
+        2,
+        22,
+        3,
+        26,
+        2,
+        30,
+        2,
+        33,
+        2,
+        37,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 285
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 8736,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 801,
+          "output_tokens": 51,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 128,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 40,
+          "baselineRanges": 8,
+          "aiRanges": 11,
+          "baselineChars": 20,
+          "aiChars": 23,
+          "overlapChars": 9,
+          "unionChars": 34
+        },
+        "coverageSimilarity": 0.2647,
+        "positionHitRate": 1,
+        "baselineRecall": 1,
+        "baselineDensity": 0.5,
+        "aiDensity": 0.575,
+        "densityDelta": 0.075,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 40,
+            "baselineRanges": 8,
+            "aiRanges": 11,
+            "baselineChars": 20,
+            "aiChars": 23,
+            "overlapChars": 9,
+            "unionChars": 34,
+            "coverageSimilarity": 0.2647,
+            "positionHitRate": 1,
+            "baselineRecall": 1,
+            "baselineDensity": 0.5,
+            "aiDensity": 0.575,
+            "densityDelta": 0.075
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 8736
+        }
+      ],
+      "wallMs": 8766
+    },
+    {
+      "id": "F5",
+      "source": "fresh-对话-短",
+      "category": "对话-短",
+      "text": "“今晚加班吗？” “不了，我想早点回家陪孩子。周末再处理吧。”",
+      "charLength": 31,
+      "baseline": [
+        3,
+        2,
+        17,
+        2,
+        20,
+        2,
+        25,
+        3
+      ],
+      "ai": [
+        0,
+        2,
+        3,
+        2,
+        6,
+        2,
+        8,
+        2,
+        11,
+        2,
+        14,
+        2,
+        16,
+        2,
+        19,
+        2,
+        22,
+        2,
+        26,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 337
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 10226,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 798,
+          "output_tokens": 47,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 128,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 31,
+          "baselineRanges": 4,
+          "aiRanges": 10,
+          "baselineChars": 9,
+          "aiChars": 20,
+          "overlapChars": 6,
+          "unionChars": 23
+        },
+        "coverageSimilarity": 0.2609,
+        "positionHitRate": 0.5,
+        "baselineRecall": 1,
+        "baselineDensity": 0.2903,
+        "aiDensity": 0.6452,
+        "densityDelta": 0.3548,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 31,
+            "baselineRanges": 4,
+            "aiRanges": 10,
+            "baselineChars": 9,
+            "aiChars": 20,
+            "overlapChars": 6,
+            "unionChars": 23,
+            "coverageSimilarity": 0.2609,
+            "positionHitRate": 0.5,
+            "baselineRecall": 1,
+            "baselineDensity": 0.2903,
+            "aiDensity": 0.6452,
+            "densityDelta": 0.3548
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 10226
+        }
+      ],
+      "wallMs": 10231
+    },
+    {
+      "id": "F6",
+      "source": "fresh-短句",
+      "category": "短句",
+      "text": "时间会回答一切。",
+      "charLength": 8,
+      "baseline": [
+        0,
+        2,
+        5,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        3,
+        2,
+        5,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 67
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 7675,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 767,
+          "output_tokens": 19,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 146,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 8,
+          "baselineRanges": 2,
+          "aiRanges": 3,
+          "baselineChars": 4,
+          "aiChars": 6,
+          "overlapChars": 4,
+          "unionChars": 6
+        },
+        "coverageSimilarity": 0.6667,
+        "positionHitRate": 1,
+        "baselineRecall": 1,
+        "baselineDensity": 0.5,
+        "aiDensity": 0.75,
+        "densityDelta": 0.25,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 8,
+            "baselineRanges": 2,
+            "aiRanges": 3,
+            "baselineChars": 4,
+            "aiChars": 6,
+            "overlapChars": 4,
+            "unionChars": 6,
+            "coverageSimilarity": 0.6667,
+            "positionHitRate": 1,
+            "baselineRecall": 1,
+            "baselineDensity": 0.5,
+            "aiDensity": 0.75,
+            "densityDelta": 0.25
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 7675
+        }
+      ],
+      "wallMs": 7694
+    },
+    {
+      "id": "F7",
+      "source": "fresh-短句",
+      "category": "短句",
+      "text": "坚持是一种温柔的倔强。",
+      "charLength": 11,
+      "baseline": [
+        0,
+        2,
+        5,
+        2,
+        8,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        3,
+        2,
+        7,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 272
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 930,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 33,
+          "output_tokens": 18,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 882,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 11,
+          "baselineRanges": 3,
+          "aiRanges": 3,
+          "baselineChars": 6,
+          "aiChars": 6,
+          "overlapChars": 3,
+          "unionChars": 9
+        },
+        "coverageSimilarity": 0.3333,
+        "positionHitRate": 1,
+        "baselineRecall": 1,
+        "baselineDensity": 0.5455,
+        "aiDensity": 0.5455,
+        "densityDelta": 0,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 11,
+            "baselineRanges": 3,
+            "aiRanges": 3,
+            "baselineChars": 6,
+            "aiChars": 6,
+            "overlapChars": 3,
+            "unionChars": 9,
+            "coverageSimilarity": 0.3333,
+            "positionHitRate": 1,
+            "baselineRecall": 1,
+            "baselineDensity": 0.5455,
+            "aiDensity": 0.5455,
+            "densityDelta": 0
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 930
+        }
+      ],
+      "wallMs": 936
+    },
+    {
+      "id": "F8",
+      "source": "fresh-长-生活",
+      "category": "长-生活",
+      "text": "我坐在咖啡馆靠窗的位置，雨水顺着玻璃缓缓流下，模糊了街景。店员端来一杯拿铁，热气在冷空气中升起，杯口的奶泡像一朵小小的云。手边的书翻到了第三章，故事刚刚进入高潮。",
+      "charLength": 81,
+      "baseline": [
+        1,
+        2,
+        6,
+        2,
+        9,
+        2,
+        12,
+        2,
+        16,
+        2,
+        20,
+        2,
+        23,
+        2,
+        26,
+        2,
+        29,
+        2,
+        32,
+        3,
+        38,
+        2,
+        41,
+        3,
+        45,
+        2,
+        48,
+        2,
+        56,
+        3,
+        65,
+        2,
+        72,
+        2,
+        78,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        4,
+        2,
+        11,
+        2,
+        15,
+        2,
+        21,
+        2,
+        27,
+        2,
+        33,
+        2,
+        37,
+        2,
+        42,
+        2,
+        49,
+        2,
+        55,
+        2,
+        61,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 53
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 1317,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 79,
+          "output_tokens": 54,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 882,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 81,
+          "baselineRanges": 18,
+          "aiRanges": 12,
+          "baselineChars": 39,
+          "aiChars": 24,
+          "overlapChars": 12,
+          "unionChars": 51
+        },
+        "coverageSimilarity": 0.2353,
+        "positionHitRate": 0.9167,
+        "baselineRecall": 0.7778,
+        "baselineDensity": 0.4815,
+        "aiDensity": 0.2963,
+        "densityDelta": -0.1852,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 81,
+            "baselineRanges": 18,
+            "aiRanges": 12,
+            "baselineChars": 39,
+            "aiChars": 24,
+            "overlapChars": 12,
+            "unionChars": 51,
+            "coverageSimilarity": 0.2353,
+            "positionHitRate": 0.9167,
+            "baselineRecall": 0.7778,
+            "baselineDensity": 0.4815,
+            "aiDensity": 0.2963,
+            "densityDelta": -0.1852
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 1317
+        }
+      ],
+      "wallMs": 1320
+    },
+    {
+      "id": "F9",
+      "source": "fresh-长-技术",
+      "category": "长-技术",
+      "text": "程序员的一天往往从一杯咖啡开始，先看一眼邮件，然后处理昨天留下的 bug。中午叫一份外卖，下午集中精力写新功能。下班前提交代码，关上电脑的那一刻，感觉自己像完成了某种小型仪式。",
+      "charLength": 88,
+      "baseline": [
+        0,
+        3,
+        6,
+        2,
+        13,
+        2,
+        20,
+        2,
+        25,
+        2,
+        29,
+        2,
+        42,
+        2,
+        47,
+        4,
+        58,
+        2,
+        66,
+        2,
+        69,
+        3,
+        73,
+        2,
+        78,
+        2,
+        81,
+        2,
+        85,
+        2
+      ],
+      "ai": [
+        0,
+        2,
+        4,
+        2,
+        12,
+        2,
+        17,
+        2,
+        25,
+        3,
+        32,
+        2,
+        39,
+        2,
+        46,
+        2,
+        53,
+        2,
+        56,
+        2,
+        64,
+        2,
+        69,
+        2,
+        75,
+        2
+      ],
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 51
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 1278,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 70,
+          "output_tokens": 58,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 882,
+          "service_tier": "standard"
+        }
+      },
+      "metrics": {
+        "tolerance": 2,
+        "totals": {
+          "paragraphs": 1,
+          "chars": 88,
+          "baselineRanges": 15,
+          "aiRanges": 13,
+          "baselineChars": 34,
+          "aiChars": 27,
+          "overlapChars": 8,
+          "unionChars": 53
+        },
+        "coverageSimilarity": 0.1509,
+        "positionHitRate": 0.6923,
+        "baselineRecall": 0.6,
+        "baselineDensity": 0.3864,
+        "aiDensity": 0.3068,
+        "densityDelta": -0.0795,
+        "perParagraph": [
+          {
+            "paragraphId": "0",
+            "index": 0,
+            "charLength": 88,
+            "baselineRanges": 15,
+            "aiRanges": 13,
+            "baselineChars": 34,
+            "aiChars": 27,
+            "overlapChars": 8,
+            "unionChars": 53,
+            "coverageSimilarity": 0.1509,
+            "positionHitRate": 0.6923,
+            "baselineRecall": 0.6,
+            "baselineDensity": 0.3864,
+            "aiDensity": 0.3068,
+            "densityDelta": -0.0795
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "attempt": 0,
+          "ok": true,
+          "latencyMs": 1278
+        }
+      ],
+      "wallMs": 1282
+    }
+  ]
+}

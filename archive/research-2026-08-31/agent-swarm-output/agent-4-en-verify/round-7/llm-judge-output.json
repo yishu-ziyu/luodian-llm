@@ -1,0 +1,1598 @@
+{
+  "startedAt": "2026-06-13T18:37:00.188Z",
+  "elapsedMs": 28864,
+  "providerMode": "minimax",
+  "totalTexts": 12,
+  "passCount": 11,
+  "perText": [
+    {
+      "id": "en-1-short",
+      "category": "short",
+      "charLength": 44,
+      "latencyMs": 2064,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 8,
+      "highlightedChars": 16,
+      "density": 36.36363636363637,
+      "firstStart": 0,
+      "first3HasHighlight": true,
+      "spanCounts": {
+        "consonant_digraph": 2,
+        "vowel_anchored": 6,
+        "mid_word_vowel": 0,
+        "mid_word_consonant": 0,
+        "len!=2": 0,
+        "total": 8
+      },
+      "badDigraphShare": 25,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 0,
+            "length": 2,
+            "snippet": "Th"
+          },
+          {
+            "start": 10,
+            "length": 2,
+            "snippet": "br"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 4,
+            "length": 2,
+            "snippet": "qu"
+          },
+          {
+            "start": 16,
+            "length": 2,
+            "snippet": "fo"
+          },
+          {
+            "start": 20,
+            "length": 2,
+            "snippet": "ju"
+          },
+          {
+            "start": 26,
+            "length": 2,
+            "snippet": "ov"
+          },
+          {
+            "start": 35,
+            "length": 2,
+            "snippet": "la"
+          }
+        ],
+        "mid_word_vowel": [],
+        "mid_word_consonant": []
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        0,
+        2,
+        4,
+        2,
+        10,
+        2,
+        16,
+        2,
+        20,
+        2,
+        26,
+        2,
+        35,
+        2,
+        40,
+        2
+      ]
+    },
+    {
+      "id": "en-2-short",
+      "category": "short",
+      "charLength": 52,
+      "latencyMs": 1318,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 11,
+      "highlightedChars": 22,
+      "density": 42.30769230769231,
+      "firstStart": 0,
+      "first3HasHighlight": true,
+      "spanCounts": {
+        "consonant_digraph": 0,
+        "vowel_anchored": 3,
+        "mid_word_vowel": 4,
+        "mid_word_consonant": 4,
+        "len!=2": 0,
+        "total": 11
+      },
+      "badDigraphShare": 0,
+      "samples": {
+        "consonant_digraph": [],
+        "vowel_anchored": [
+          {
+            "start": 0,
+            "length": 2,
+            "snippet": "Re"
+          },
+          {
+            "start": 8,
+            "length": 2,
+            "snippet": "is"
+          },
+          {
+            "start": 37,
+            "length": 2,
+            "snippet": "is"
+          }
+        ],
+        "mid_word_vowel": [
+          {
+            "start": 12,
+            "length": 2,
+            "snippet": "o "
+          },
+          {
+            "start": 16,
+            "length": 2,
+            "snippet": "e "
+          },
+          {
+            "start": 33,
+            "length": 2,
+            "snippet": "is"
+          },
+          {
+            "start": 48,
+            "length": 2,
+            "snippet": "od"
+          }
+        ],
+        "mid_word_consonant": [
+          {
+            "start": 20,
+            "length": 2,
+            "snippet": "nd"
+          },
+          {
+            "start": 24,
+            "length": 2,
+            "snippet": "ha"
+          },
+          {
+            "start": 27,
+            "length": 2,
+            "snippet": " e"
+          },
+          {
+            "start": 42,
+            "length": 2,
+            "snippet": " t"
+          }
+        ]
+      },
+      "verdict": {
+        "ok": false,
+        "reason": "density=42.3% out of [15,40] for length=52"
+      },
+      "_ranges": [
+        0,
+        2,
+        8,
+        2,
+        12,
+        2,
+        16,
+        2,
+        20,
+        2,
+        24,
+        2,
+        27,
+        2,
+        33,
+        2,
+        37,
+        2,
+        42,
+        2,
+        48,
+        2
+      ]
+    },
+    {
+      "id": "en-3-short",
+      "category": "short",
+      "charLength": 63,
+      "latencyMs": 1778,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 9,
+      "highlightedChars": 18,
+      "density": 28.57142857142857,
+      "firstStart": 0,
+      "first3HasHighlight": true,
+      "spanCounts": {
+        "consonant_digraph": 1,
+        "vowel_anchored": 1,
+        "mid_word_vowel": 0,
+        "mid_word_consonant": 7,
+        "len!=2": 0,
+        "total": 9
+      },
+      "badDigraphShare": 11.11111111111111,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 9,
+            "length": 2,
+            "snippet": "gl"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 0,
+            "length": 2,
+            "snippet": "Al"
+          }
+        ],
+        "mid_word_vowel": [],
+        "mid_word_consonant": [
+          {
+            "start": 5,
+            "length": 2,
+            "snippet": "ha"
+          },
+          {
+            "start": 15,
+            "length": 2,
+            "snippet": "rs"
+          },
+          {
+            "start": 19,
+            "length": 2,
+            "snippet": "s "
+          },
+          {
+            "start": 29,
+            "length": 2,
+            "snippet": ", "
+          },
+          {
+            "start": 34,
+            "length": 2,
+            "snippet": " n"
+          }
+        ]
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        0,
+        2,
+        5,
+        2,
+        9,
+        2,
+        15,
+        2,
+        19,
+        2,
+        29,
+        2,
+        34,
+        2,
+        40,
+        2,
+        44,
+        2
+      ]
+    },
+    {
+      "id": "en-4-medium",
+      "category": "medium",
+      "charLength": 180,
+      "latencyMs": 1113,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 16,
+      "highlightedChars": 32,
+      "density": 17.77777777777778,
+      "firstStart": 4,
+      "first3HasHighlight": false,
+      "spanCounts": {
+        "consonant_digraph": 2,
+        "vowel_anchored": 2,
+        "mid_word_vowel": 5,
+        "mid_word_consonant": 7,
+        "len!=2": 0,
+        "total": 16
+      },
+      "badDigraphShare": 12.5,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 42,
+            "length": 2,
+            "snippet": "Th"
+          },
+          {
+            "start": 133,
+            "length": 2,
+            "snippet": "th"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 4,
+            "length": 2,
+            "snippet": "To"
+          },
+          {
+            "start": 124,
+            "length": 2,
+            "snippet": "ti"
+          }
+        ],
+        "mid_word_vowel": [
+          {
+            "start": 11,
+            "length": 2,
+            "snippet": "e "
+          },
+          {
+            "start": 19,
+            "length": 2,
+            "snippet": "e "
+          },
+          {
+            "start": 77,
+            "length": 2,
+            "snippet": "oi"
+          },
+          {
+            "start": 114,
+            "length": 2,
+            "snippet": "oi"
+          },
+          {
+            "start": 139,
+            "length": 2,
+            "snippet": "ug"
+          }
+        ],
+        "mid_word_consonant": [
+          {
+            "start": 28,
+            "length": 2,
+            "snippet": "re"
+          },
+          {
+            "start": 38,
+            "length": 2,
+            "snippet": "rs"
+          },
+          {
+            "start": 56,
+            "length": 2,
+            "snippet": "s "
+          },
+          {
+            "start": 70,
+            "length": 2,
+            "snippet": "he"
+          },
+          {
+            "start": 85,
+            "length": 2,
+            "snippet": " b"
+          }
+        ]
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        4,
+        2,
+        11,
+        2,
+        19,
+        2,
+        28,
+        2,
+        38,
+        2,
+        42,
+        2,
+        56,
+        2,
+        70,
+        2,
+        77,
+        2,
+        85,
+        2,
+        99,
+        2,
+        107,
+        2,
+        114,
+        2,
+        124,
+        2,
+        133,
+        2,
+        139,
+        2
+      ]
+    },
+    {
+      "id": "en-5-medium",
+      "category": "medium",
+      "charLength": 168,
+      "latencyMs": 950,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 14,
+      "highlightedChars": 28,
+      "density": 16.666666666666664,
+      "firstStart": 11,
+      "first3HasHighlight": false,
+      "spanCounts": {
+        "consonant_digraph": 3,
+        "vowel_anchored": 11,
+        "mid_word_vowel": 0,
+        "mid_word_consonant": 0,
+        "len!=2": 0,
+        "total": 14
+      },
+      "badDigraphShare": 21.428571428571427,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 117,
+            "length": 2,
+            "snippet": "sp"
+          },
+          {
+            "start": 155,
+            "length": 2,
+            "snippet": "sm"
+          },
+          {
+            "start": 161,
+            "length": 2,
+            "snippet": "pl"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 11,
+            "length": 2,
+            "snippet": "be"
+          },
+          {
+            "start": 19,
+            "length": 2,
+            "snippet": "ti"
+          },
+          {
+            "start": 37,
+            "length": 2,
+            "snippet": "wo"
+          },
+          {
+            "start": 46,
+            "length": 2,
+            "snippet": "ti"
+          },
+          {
+            "start": 64,
+            "length": 2,
+            "snippet": "ag"
+          }
+        ],
+        "mid_word_vowel": [],
+        "mid_word_consonant": []
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        11,
+        2,
+        19,
+        2,
+        37,
+        2,
+        46,
+        2,
+        64,
+        2,
+        71,
+        2,
+        90,
+        2,
+        97,
+        2,
+        110,
+        2,
+        117,
+        2,
+        131,
+        2,
+        139,
+        2,
+        155,
+        2,
+        161,
+        2
+      ]
+    },
+    {
+      "id": "en-6-medium",
+      "category": "medium",
+      "charLength": 171,
+      "latencyMs": 2127,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 17,
+      "highlightedChars": 34,
+      "density": 19.883040935672515,
+      "firstStart": 0,
+      "first3HasHighlight": true,
+      "spanCounts": {
+        "consonant_digraph": 1,
+        "vowel_anchored": 3,
+        "mid_word_vowel": 4,
+        "mid_word_consonant": 9,
+        "len!=2": 0,
+        "total": 17
+      },
+      "badDigraphShare": 5.88235294117647,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 21,
+            "length": 2,
+            "snippet": "th"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 0,
+            "length": 2,
+            "snippet": "To"
+          },
+          {
+            "start": 33,
+            "length": 2,
+            "snippet": "qu"
+          },
+          {
+            "start": 99,
+            "length": 2,
+            "snippet": "ar"
+          }
+        ],
+        "mid_word_vowel": [
+          {
+            "start": 38,
+            "length": 2,
+            "snippet": "io"
+          },
+          {
+            "start": 75,
+            "length": 2,
+            "snippet": "o "
+          },
+          {
+            "start": 90,
+            "length": 2,
+            "snippet": "in"
+          },
+          {
+            "start": 124,
+            "length": 2,
+            "snippet": "un"
+          }
+        ],
+        "mid_word_consonant": [
+          {
+            "start": 8,
+            "length": 2,
+            "snippet": "r "
+          },
+          {
+            "start": 16,
+            "length": 2,
+            "snippet": " b"
+          },
+          {
+            "start": 44,
+            "length": 2,
+            "snippet": "he"
+          },
+          {
+            "start": 50,
+            "length": 2,
+            "snippet": " t"
+          },
+          {
+            "start": 57,
+            "length": 2,
+            "snippet": "bl"
+          }
+        ]
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        0,
+        2,
+        8,
+        2,
+        16,
+        2,
+        21,
+        2,
+        33,
+        2,
+        38,
+        2,
+        44,
+        2,
+        50,
+        2,
+        57,
+        2,
+        66,
+        2,
+        75,
+        2,
+        82,
+        2,
+        90,
+        2,
+        99,
+        2,
+        105,
+        2,
+        114,
+        2,
+        124,
+        2
+      ]
+    },
+    {
+      "id": "en-7-medium",
+      "category": "medium",
+      "charLength": 139,
+      "latencyMs": 1853,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 16,
+      "highlightedChars": 32,
+      "density": 23.021582733812952,
+      "firstStart": 0,
+      "first3HasHighlight": true,
+      "spanCounts": {
+        "consonant_digraph": 3,
+        "vowel_anchored": 13,
+        "mid_word_vowel": 0,
+        "mid_word_consonant": 0,
+        "len!=2": 0,
+        "total": 16
+      },
+      "badDigraphShare": 18.75,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 0,
+            "length": 2,
+            "snippet": "Kn"
+          },
+          {
+            "start": 48,
+            "length": 2,
+            "snippet": "pr"
+          },
+          {
+            "start": 133,
+            "length": 2,
+            "snippet": "st"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 16,
+            "length": 2,
+            "snippet": "no"
+          },
+          {
+            "start": 19,
+            "length": 2,
+            "snippet": "va"
+          },
+          {
+            "start": 25,
+            "length": 2,
+            "snippet": "un"
+          },
+          {
+            "start": 32,
+            "length": 2,
+            "snippet": "yo"
+          },
+          {
+            "start": 36,
+            "length": 2,
+            "snippet": "pu"
+          }
+        ],
+        "mid_word_vowel": [],
+        "mid_word_consonant": []
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        0,
+        2,
+        16,
+        2,
+        19,
+        2,
+        25,
+        2,
+        32,
+        2,
+        36,
+        2,
+        48,
+        2,
+        60,
+        2,
+        67,
+        2,
+        87,
+        2,
+        92,
+        2,
+        99,
+        2,
+        111,
+        2,
+        115,
+        2,
+        124,
+        2,
+        133,
+        2
+      ]
+    },
+    {
+      "id": "en-8-long",
+      "category": "long",
+      "charLength": 361,
+      "latencyMs": 2226,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 35,
+      "highlightedChars": 70,
+      "density": 19.390581717451525,
+      "firstStart": 5,
+      "first3HasHighlight": false,
+      "spanCounts": {
+        "consonant_digraph": 7,
+        "vowel_anchored": 28,
+        "mid_word_vowel": 0,
+        "mid_word_consonant": 0,
+        "len!=2": 0,
+        "total": 35
+      },
+      "badDigraphShare": 20,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 17,
+            "length": 2,
+            "snippet": "gr"
+          },
+          {
+            "start": 118,
+            "length": 2,
+            "snippet": "sm"
+          },
+          {
+            "start": 135,
+            "length": 2,
+            "snippet": "dr"
+          },
+          {
+            "start": 303,
+            "length": 2,
+            "snippet": "gr"
+          },
+          {
+            "start": 317,
+            "length": 2,
+            "snippet": "sh"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 5,
+            "length": 2,
+            "snippet": "ho"
+          },
+          {
+            "start": 30,
+            "length": 2,
+            "snippet": "li"
+          },
+          {
+            "start": 38,
+            "length": 2,
+            "snippet": "ho"
+          },
+          {
+            "start": 46,
+            "length": 2,
+            "snippet": "No"
+          },
+          {
+            "start": 52,
+            "length": 2,
+            "snippet": "na"
+          }
+        ],
+        "mid_word_vowel": [],
+        "mid_word_consonant": []
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        5,
+        2,
+        17,
+        2,
+        30,
+        2,
+        38,
+        2,
+        46,
+        2,
+        52,
+        2,
+        59,
+        2,
+        66,
+        2,
+        76,
+        2,
+        92,
+        2,
+        100,
+        2,
+        113,
+        2,
+        118,
+        2,
+        135,
+        2,
+        140,
+        2,
+        146,
+        2,
+        152,
+        2,
+        162,
+        2,
+        179,
+        2,
+        197,
+        2,
+        211,
+        2,
+        233,
+        2,
+        239,
+        2,
+        257,
+        2,
+        267,
+        2,
+        273,
+        2,
+        285,
+        2,
+        295,
+        2,
+        303,
+        2,
+        317,
+        2,
+        323,
+        2,
+        330,
+        2,
+        336,
+        2,
+        348,
+        2,
+        354,
+        2
+      ]
+    },
+    {
+      "id": "en-9-long",
+      "category": "long",
+      "charLength": 304,
+      "latencyMs": 2353,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 34,
+      "highlightedChars": 68,
+      "density": 22.36842105263158,
+      "firstStart": 0,
+      "first3HasHighlight": true,
+      "spanCounts": {
+        "consonant_digraph": 2,
+        "vowel_anchored": 3,
+        "mid_word_vowel": 7,
+        "mid_word_consonant": 22,
+        "len!=2": 0,
+        "total": 34
+      },
+      "badDigraphShare": 5.88235294117647,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 32,
+            "length": 2,
+            "snippet": " n"
+          },
+          {
+            "start": 53,
+            "length": 2,
+            "snippet": "pr"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 0,
+            "length": 2,
+            "snippet": "Ca"
+          },
+          {
+            "start": 5,
+            "length": 2,
+            "snippet": "me"
+          },
+          {
+            "start": 8,
+            "length": 2,
+            "snippet": "Is"
+          }
+        ],
+        "mid_word_vowel": [
+          {
+            "start": 24,
+            "length": 2,
+            "snippet": "ar"
+          },
+          {
+            "start": 59,
+            "length": 2,
+            "snippet": "el"
+          },
+          {
+            "start": 85,
+            "length": 2,
+            "snippet": "on"
+          },
+          {
+            "start": 111,
+            "length": 2,
+            "snippet": "in"
+          },
+          {
+            "start": 165,
+            "length": 2,
+            "snippet": "ul"
+          }
+        ],
+        "mid_word_consonant": [
+          {
+            "start": 15,
+            "length": 2,
+            "snippet": ". "
+          },
+          {
+            "start": 42,
+            "length": 2,
+            "snippet": "d "
+          },
+          {
+            "start": 66,
+            "length": 2,
+            "snippet": "vi"
+          },
+          {
+            "start": 73,
+            "length": 2,
+            "snippet": "tt"
+          },
+          {
+            "start": 99,
+            "length": 2,
+            "snippet": "se"
+          }
+        ]
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        0,
+        2,
+        5,
+        2,
+        8,
+        2,
+        15,
+        2,
+        24,
+        2,
+        32,
+        2,
+        42,
+        2,
+        53,
+        2,
+        59,
+        2,
+        66,
+        2,
+        73,
+        2,
+        85,
+        2,
+        99,
+        2,
+        105,
+        2,
+        111,
+        2,
+        120,
+        2,
+        130,
+        2,
+        136,
+        2,
+        143,
+        2,
+        152,
+        2,
+        165,
+        2,
+        178,
+        2,
+        191,
+        2,
+        198,
+        2,
+        205,
+        2,
+        215,
+        2,
+        224,
+        2,
+        234,
+        2,
+        240,
+        2,
+        248,
+        2,
+        260,
+        2,
+        269,
+        2,
+        282,
+        2,
+        289,
+        2
+      ]
+    },
+    {
+      "id": "en-10-long",
+      "category": "long",
+      "charLength": 378,
+      "latencyMs": 1895,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 32,
+      "highlightedChars": 64,
+      "density": 16.93121693121693,
+      "firstStart": 8,
+      "first3HasHighlight": false,
+      "spanCounts": {
+        "consonant_digraph": 4,
+        "vowel_anchored": 28,
+        "mid_word_vowel": 0,
+        "mid_word_consonant": 0,
+        "len!=2": 0,
+        "total": 32
+      },
+      "badDigraphShare": 12.5,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 8,
+            "length": 2,
+            "snippet": "tr"
+          },
+          {
+            "start": 133,
+            "length": 2,
+            "snippet": "kn"
+          },
+          {
+            "start": 226,
+            "length": 2,
+            "snippet": "tr"
+          },
+          {
+            "start": 329,
+            "length": 2,
+            "snippet": "pr"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 14,
+            "length": 2,
+            "snippet": "un"
+          },
+          {
+            "start": 26,
+            "length": 2,
+            "snippet": "ac"
+          },
+          {
+            "start": 47,
+            "length": 2,
+            "snippet": "si"
+          },
+          {
+            "start": 54,
+            "length": 2,
+            "snippet": "ma"
+          },
+          {
+            "start": 61,
+            "length": 2,
+            "snippet": "po"
+          }
+        ],
+        "mid_word_vowel": [],
+        "mid_word_consonant": []
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        8,
+        2,
+        14,
+        2,
+        26,
+        2,
+        47,
+        2,
+        54,
+        2,
+        61,
+        2,
+        77,
+        2,
+        82,
+        2,
+        102,
+        2,
+        112,
+        2,
+        118,
+        2,
+        126,
+        2,
+        133,
+        2,
+        143,
+        2,
+        155,
+        2,
+        164,
+        2,
+        171,
+        2,
+        189,
+        2,
+        195,
+        2,
+        206,
+        2,
+        226,
+        2,
+        243,
+        2,
+        256,
+        2,
+        269,
+        2,
+        281,
+        2,
+        302,
+        2,
+        320,
+        2,
+        329,
+        2,
+        341,
+        2,
+        346,
+        2,
+        353,
+        2,
+        368,
+        2
+      ]
+    },
+    {
+      "id": "en-11-proper",
+      "category": "proper-nouns",
+      "charLength": 125,
+      "latencyMs": 1237,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 11,
+      "highlightedChars": 22,
+      "density": 17.599999999999998,
+      "firstStart": 3,
+      "first3HasHighlight": true,
+      "spanCounts": {
+        "consonant_digraph": 1,
+        "vowel_anchored": 2,
+        "mid_word_vowel": 4,
+        "mid_word_consonant": 4,
+        "len!=2": 0,
+        "total": 11
+      },
+      "badDigraphShare": 9.090909090909092,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 17,
+            "length": 2,
+            "snippet": "th"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 3,
+            "length": 2,
+            "snippet": "Ju"
+          },
+          {
+            "start": 33,
+            "length": 2,
+            "snippet": "of"
+          }
+        ],
+        "mid_word_vowel": [
+          {
+            "start": 27,
+            "length": 2,
+            "snippet": "at"
+          },
+          {
+            "start": 69,
+            "length": 2,
+            "snippet": "el"
+          },
+          {
+            "start": 74,
+            "length": 2,
+            "snippet": "a "
+          },
+          {
+            "start": 80,
+            "length": 2,
+            "snippet": "el"
+          }
+        ],
+        "mid_word_consonant": [
+          {
+            "start": 9,
+            "length": 2,
+            "snippet": ", "
+          },
+          {
+            "start": 42,
+            "length": 2,
+            "snippet": "nd"
+          },
+          {
+            "start": 58,
+            "length": 2,
+            "snippet": "d "
+          },
+          {
+            "start": 85,
+            "length": 2,
+            "snippet": "te"
+          }
+        ]
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        3,
+        2,
+        9,
+        2,
+        17,
+        2,
+        27,
+        2,
+        33,
+        2,
+        42,
+        2,
+        58,
+        2,
+        69,
+        2,
+        74,
+        2,
+        80,
+        2,
+        85,
+        2
+      ]
+    },
+    {
+      "id": "en-12-proper",
+      "category": "proper-nouns",
+      "charLength": 163,
+      "latencyMs": 1341,
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "languageDetected": "en",
+      "assertOk": true,
+      "assertErr": null,
+      "oobDrops": 0,
+      "spanCount": 13,
+      "highlightedChars": 26,
+      "density": 15.950920245398773,
+      "firstStart": 0,
+      "first3HasHighlight": true,
+      "spanCounts": {
+        "consonant_digraph": 1,
+        "vowel_anchored": 4,
+        "mid_word_vowel": 4,
+        "mid_word_consonant": 4,
+        "len!=2": 0,
+        "total": 13
+      },
+      "badDigraphShare": 7.6923076923076925,
+      "samples": {
+        "consonant_digraph": [
+          {
+            "start": 97,
+            "length": 2,
+            "snippet": "Pr"
+          }
+        ],
+        "vowel_anchored": [
+          {
+            "start": 0,
+            "length": 2,
+            "snippet": "Al"
+          },
+          {
+            "start": 68,
+            "length": 2,
+            "snippet": "an"
+          },
+          {
+            "start": 91,
+            "length": 2,
+            "snippet": "No"
+          },
+          {
+            "start": 114,
+            "length": 2,
+            "snippet": "in"
+          }
+        ],
+        "mid_word_vowel": [
+          {
+            "start": 8,
+            "length": 2,
+            "snippet": "in"
+          },
+          {
+            "start": 27,
+            "length": 2,
+            "snippet": "is"
+          },
+          {
+            "start": 55,
+            "length": 2,
+            "snippet": "it"
+          },
+          {
+            "start": 84,
+            "length": 2,
+            "snippet": "ed"
+          }
+        ],
+        "mid_word_consonant": [
+          {
+            "start": 19,
+            "length": 2,
+            "snippet": "li"
+          },
+          {
+            "start": 35,
+            "length": 2,
+            "snippet": "y "
+          },
+          {
+            "start": 47,
+            "length": 2,
+            "snippet": " r"
+          },
+          {
+            "start": 76,
+            "length": 2,
+            "snippet": "r "
+          }
+        ]
+      },
+      "verdict": {
+        "ok": true,
+        "reason": "ok"
+      },
+      "_ranges": [
+        0,
+        2,
+        8,
+        2,
+        19,
+        2,
+        27,
+        2,
+        35,
+        2,
+        47,
+        2,
+        55,
+        2,
+        68,
+        2,
+        76,
+        2,
+        84,
+        2,
+        91,
+        2,
+        97,
+        2,
+        114,
+        2
+      ]
+    }
+  ],
+  "llmJudge": [
+    {
+      "id": "en-1-short",
+      "raw": "Let me analyze the highlights against the paragraph.\n\nParagraph: \"The quick brown fox jumps over the lazy dog.\"\n\nHighlights decode to:\n- [0,2]: \"Th\" (part of \"The\")\n- [4,2]: \"qu\" (part of \"quick\")\n- [10,2]: \"br\" (part of \"brown\")\n- [16,2]: \"fo\" (part of \"fox\")\n- [20,2]: \"ov\" (part of \"over\")\n- [26,2]: \"la\" (part of \"lazy\")\n- [35,2]: \"do\" (part of \"dog\")\n\n1) Content words: \"The\" is a function word (article). \"quick\" is content (adj). \"brown\" is content (adj). \"fox\" is content (noun). \"over\" is function word (preposition). \"lazy\" is content (adj). \"dog\" is content (noun). So 2 out of 7 are function words — partial match.\n\n2) Word boundary: Each highlight starts at a word boundary ✓ — but the length of 2 only captures part of each word (e.g., \"Th\" instead of \"The\", \"qu\" instead of \"quick\"). The highlights split words mid-letter. This fails the \"does not split a word mid-letter\" criterion.\n\n3) Topic anchor: [0,2] starts at character 0, within the first 3 characters ✓.\n\n{\"content_words\":2,\"word_boundary\":2,\"topic_anchor\":5,\"notes\":\"Highlights start at word boundaries but cut each word to only 2 letters, and include function words 'The' and 'over'.\"}",
+      "parsed": {
+        "content_words": 2,
+        "word_boundary": 2,
+        "topic_anchor": 5,
+        "notes": "Highlights start at word boundaries but cut each word to only 2 letters, and include function words 'The' and 'over'."
+      },
+      "prompt": "You are evaluating an English-language AI highlighter. The model output is a flat array of [start, length] pairs applied to the paragraph below.\n\nParagraph: \"The quick brown fox jumps over the lazy dog.\"\n\nHighlight spans: [0,2,4,2,10,2,16,2,20,2,26,2,35,2,40,2]\n\nRate the highlight on THREE criteria, each 1-5 (5 = excellent):\n\n1) Content words: does each highlight land on a content word (noun/verb/"
+    },
+    {
+      "id": "en-5-medium",
+      "raw": "{\"content_words\":3,\"word_boundary\":5,\"topic_anchor\":1,\"notes\":\"Highlights land on the word 'of' repeated, which is a function word (preposition), not content words; word boundaries are clean but topic anchor is missed since highlights start at character 11 rather than the opening.\"}",
+      "parsed": {
+        "content_words": 3,
+        "word_boundary": 5,
+        "topic_anchor": 1,
+        "notes": "Highlights land on the word 'of' repeated, which is a function word (preposition), not content words; word boundaries are clean but topic anchor is missed since highlights start at character 11 rather than the opening."
+      },
+      "prompt": "You are evaluating an English-language AI highlighter. The model output is a flat array of [start, length] pairs applied to the paragraph below.\n\nParagraph: \"It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness. Cities sprung up and empires fell across the small planet.\"\n\nHighlight spans: [11,2,19,2,37,2,46,2,64,2,71,2,90,2,97,2,110,2,117,2,1"
+    },
+    {
+      "id": "en-8-long",
+      "raw": "{\"content_words\":2,\"word_boundary\":4,\"topic_anchor\":1,\"notes\":\"Highlights systematically target 2-character spans that cut words mid-letter (e.g., 'In', 'hole', 'lived', 'a', 'hobbit'), violating word boundaries and largely landing on function words like 'a' and 'the'.\"}",
+      "parsed": {
+        "content_words": 2,
+        "word_boundary": 4,
+        "topic_anchor": 1,
+        "notes": "Highlights systematically target 2-character spans that cut words mid-letter (e.g., 'In', 'hole', 'lived', 'a', 'hobbit'), violating word boundaries and largely landing on function words like 'a' and 'the'."
+      },
+      "prompt": "You are evaluating an English-language AI highlighter. The model output is a flat array of [start, length] pairs applied to the paragraph below.\n\nParagraph: \"In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means com"
+    }
+  ]
+}

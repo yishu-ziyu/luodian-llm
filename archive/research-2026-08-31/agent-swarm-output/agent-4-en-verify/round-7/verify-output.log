@@ -1,0 +1,126 @@
+=== Agent 4 round-7 — English verification ===
+started at 2026-06-13T18:37:00.188Z
+providerMode: minimax (real MiniMax call)
+
+[en-1-short] (short, 44 chars) latency=2064ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 8  density: 36.4%  first_start: 0  first3_anchor: yes
+    consonant_digraph: 2/8 = 25.0%
+    span kinds: {"consonant_digraph":2,"vowel_anchored":6,"mid_word_vowel":0,"mid_word_consonant":0,"len!=2":0,"total":8}
+    sample bad digraphs: [0,2]="Th" [10,2]="br"
+    sample good ORPs:   [4,2]="qu" [16,2]="fo" [20,2]="ju" [26,2]="ov" [35,2]="la"
+    verdict: PASS  (ok)
+
+[en-2-short] (short, 52 chars) latency=1318ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 11  density: 42.3%  first_start: 0  first3_anchor: yes
+    consonant_digraph: 0/11 = 0.0%
+    span kinds: {"consonant_digraph":0,"vowel_anchored":3,"mid_word_vowel":4,"mid_word_consonant":4,"len!=2":0,"total":11}
+    sample good ORPs:   [0,2]="Re" [8,2]="is" [37,2]="is"
+    verdict: FAIL  (density=42.3% out of [15,40] for length=52)
+
+[en-3-short] (short, 63 chars) latency=1778ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 9  density: 28.6%  first_start: 0  first3_anchor: yes
+    consonant_digraph: 1/9 = 11.1%
+    span kinds: {"consonant_digraph":1,"vowel_anchored":1,"mid_word_vowel":0,"mid_word_consonant":7,"len!=2":0,"total":9}
+    sample bad digraphs: [9,2]="gl"
+    sample good ORPs:   [0,2]="Al"
+    verdict: PASS  (ok)
+
+[en-4-medium] (medium, 180 chars) latency=1113ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 16  density: 17.8%  first_start: 4  first3_anchor: no
+    consonant_digraph: 2/16 = 12.5%
+    span kinds: {"consonant_digraph":2,"vowel_anchored":2,"mid_word_vowel":5,"mid_word_consonant":7,"len!=2":0,"total":16}
+    sample bad digraphs: [42,2]="Th" [133,2]="th"
+    sample good ORPs:   [4,2]="To" [124,2]="ti"
+    verdict: PASS  (ok)
+
+[en-5-medium] (medium, 168 chars) latency=950ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 14  density: 16.7%  first_start: 11  first3_anchor: no
+    consonant_digraph: 3/14 = 21.4%
+    span kinds: {"consonant_digraph":3,"vowel_anchored":11,"mid_word_vowel":0,"mid_word_consonant":0,"len!=2":0,"total":14}
+    sample bad digraphs: [117,2]="sp" [155,2]="sm" [161,2]="pl"
+    sample good ORPs:   [11,2]="be" [19,2]="ti" [37,2]="wo" [46,2]="ti" [64,2]="ag"
+    verdict: PASS  (ok)
+
+[en-6-medium] (medium, 171 chars) latency=2127ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 17  density: 19.9%  first_start: 0  first3_anchor: yes
+    consonant_digraph: 1/17 = 5.9%
+    span kinds: {"consonant_digraph":1,"vowel_anchored":3,"mid_word_vowel":4,"mid_word_consonant":9,"len!=2":0,"total":17}
+    sample bad digraphs: [21,2]="th"
+    sample good ORPs:   [0,2]="To" [33,2]="qu" [99,2]="ar"
+    verdict: PASS  (ok)
+
+[en-7-medium] (medium, 139 chars) latency=1853ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 16  density: 23.0%  first_start: 0  first3_anchor: yes
+    consonant_digraph: 3/16 = 18.8%
+    span kinds: {"consonant_digraph":3,"vowel_anchored":13,"mid_word_vowel":0,"mid_word_consonant":0,"len!=2":0,"total":16}
+    sample bad digraphs: [0,2]="Kn" [48,2]="pr" [133,2]="st"
+    sample good ORPs:   [16,2]="no" [19,2]="va" [25,2]="un" [32,2]="yo" [36,2]="pu"
+    verdict: PASS  (ok)
+
+[en-8-long] (long, 361 chars) latency=2226ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 35  density: 19.4%  first_start: 5  first3_anchor: no
+    consonant_digraph: 7/35 = 20.0%
+    span kinds: {"consonant_digraph":7,"vowel_anchored":28,"mid_word_vowel":0,"mid_word_consonant":0,"len!=2":0,"total":35}
+    sample bad digraphs: [17,2]="gr" [118,2]="sm" [135,2]="dr" [303,2]="gr" [317,2]="sh"
+    sample good ORPs:   [5,2]="ho" [30,2]="li" [38,2]="ho" [46,2]="No" [52,2]="na"
+    verdict: PASS  (ok)
+
+[en-9-long] (long, 304 chars) latency=2353ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 34  density: 22.4%  first_start: 0  first3_anchor: yes
+    consonant_digraph: 2/34 = 5.9%
+    span kinds: {"consonant_digraph":2,"vowel_anchored":3,"mid_word_vowel":7,"mid_word_consonant":22,"len!=2":0,"total":34}
+    sample bad digraphs: [32,2]=" n" [53,2]="pr"
+    sample good ORPs:   [0,2]="Ca" [5,2]="me" [8,2]="Is"
+    verdict: PASS  (ok)
+
+[en-10-long] (long, 378 chars) latency=1895ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 32  density: 16.9%  first_start: 8  first3_anchor: no
+    consonant_digraph: 4/32 = 12.5%
+    span kinds: {"consonant_digraph":4,"vowel_anchored":28,"mid_word_vowel":0,"mid_word_consonant":0,"len!=2":0,"total":32}
+    sample bad digraphs: [8,2]="tr" [133,2]="kn" [226,2]="tr" [329,2]="pr"
+    sample good ORPs:   [14,2]="un" [26,2]="ac" [47,2]="si" [54,2]="ma" [61,2]="po"
+    verdict: PASS  (ok)
+
+[en-11-proper] (proper-nouns, 125 chars) latency=1237ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 11  density: 17.6%  first_start: 3  first3_anchor: yes
+    consonant_digraph: 1/11 = 9.1%
+    span kinds: {"consonant_digraph":1,"vowel_anchored":2,"mid_word_vowel":4,"mid_word_consonant":4,"len!=2":0,"total":11}
+    sample bad digraphs: [17,2]="th"
+    sample good ORPs:   [3,2]="Ju" [33,2]="of"
+    verdict: PASS  (ok)
+
+[en-12-proper] (proper-nouns, 163 chars) latency=1341ms provider=minimax
+    language: en  assert: ok  oob_drops: 0
+    spans: 13  density: 16.0%  first_start: 0  first3_anchor: yes
+    consonant_digraph: 1/13 = 7.7%
+    span kinds: {"consonant_digraph":1,"vowel_anchored":4,"mid_word_vowel":4,"mid_word_consonant":4,"len!=2":0,"total":13}
+    sample bad digraphs: [97,2]="Pr"
+    sample good ORPs:   [0,2]="Al" [68,2]="an" [91,2]="No" [114,2]="in"
+    verdict: PASS  (ok)
+
+=== LLM-as-judge spot-check (3 texts) ===
+
+[judge] using endpoint=https://api.minimaxi.com/anthropic/v1/messages  model=MiniMax-M3  keyPrefix=sk-cp-08_fbu…
+[warmup] generateAiHighlight succeeded — judge fetch path primed
+[judge en-1-short] content_words=2 word_boundary=2 topic_anchor=5
+    notes: Highlights start at word boundaries but cut each word to only 2 letters, and include function words 'The' and 'over'.
+[judge en-5-medium] content_words=3 word_boundary=5 topic_anchor=1
+    notes: Highlights land on the word 'of' repeated, which is a function word (preposition), not content words; word boundaries are clean but topic anchor is missed since highlights start at character 11 rather than the opening.
+[judge en-8-long] content_words=2 word_boundary=4 topic_anchor=1
+    notes: Highlights systematically target 2-character spans that cut words mid-letter (e.g., 'In', 'hole', 'lived', 'a', 'hobbit'), violating word boundaries and largely landing on function words like 'a' and 'the'.
+
+=== summary ===
+total texts: 12
+deterministic pass: 11/12
+elapsed: 28.9s

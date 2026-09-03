@@ -1,0 +1,73 @@
+[pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/tmp/node_modules/undici)
+[pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+[pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/Users/mahaoxuan/.local/lib/node_modules/@earendil-works/pi-coding-agent/node_modules/undici)
+[pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+========================================================================
+Agent-3 Verifier — Round-7: splitMode auto verification
+========================================================================
+
+[A] PASS — 飞书粘贴：5 行短散文，单 \n 分隔
+    desc: Real product scenario: 飞书/Notion style short-line paste
+    mode: auto (default)
+    input (91 chars):
+      今天是周六的早晨，我决定去公园散步。\n阳光透过树叶，斑驳地洒在小路上。\n微风带着花香，让人心情舒畅。\n湖边的鸭子排成一队，悠闲地游过水面。\n我坐在长椅上，看了一会儿书，享受这份宁静。
+    output (5 paragraphs):
+      [0] 今天是周六的早晨，我决定去公园散步。
+      [1] 阳光透过树叶，斑驳地洒在小路上。
+      [2] 微风带着花香，让人心情舒畅。
+      [3] 湖边的鸭子排成一队，悠闲地游过水面。
+      [4] 我坐在长椅上，看了一会儿书，享受这份宁静。
+
+[B] PASS — 旧 markdown：\n\n 分隔 3 段
+    desc: Backward compat: legacy markdown with double-newline
+    mode: auto (default)
+    input (37 chars):
+      第一段开头。\n这是同一段的延续。\n\n第二段单独成段。\n\n第三段最后的内容。
+    output (3 paragraphs):
+      [0] 第一段开头。\n这是同一段的延续。
+      [1] 第二段单独成段。
+      [2] 第三段最后的内容。
+
+[C] PASS — 混合：\n\n + 单 \n 混用
+    desc: auto should degrade to double-newline when \n{2,} exists
+    mode: auto (default)
+    input (25 chars):
+      第一段。\n\n第二段开头。\n第二段中间。\n\n第三段。
+    output (3 paragraphs):
+      [0] 第一段。
+      [1] 第二段开头。\n第二段中间。
+      [2] 第三段。
+
+[D] PASS — wrap 长文：1 段被 wrap 成 5 行
+    desc: Pinned behavior: editor wrap will be over-split in auto mode
+    mode: auto (default)
+    input (96 chars):
+      这是一段被编辑器自动换行成长段的正文，第一行写到这里结束。\n这是同一段的第二行，被编辑器 wrap 出来。\n第三行继续，语义上仍然是同一段。\n第四行 wrap 出来。\n最后一行在同一段里收尾。
+    output (5 paragraphs):
+      [0] 这是一段被编辑器自动换行成长段的正文，第一行写到这里结束。
+      [1] 这是同一段的第二行，被编辑器 wrap 出来。
+      [2] 第三行继续，语义上仍然是同一段。
+      [3] 第四行 wrap 出来。
+      [4] 最后一行在同一段里收尾。
+
+[E] PASS — 显式 single-newline + \n\n 输入
+    desc: escape hatch: explicit single-newline always splits on \n
+    mode: single-newline
+    input (6 chars):
+      a\n\nb\nc
+    output (3 paragraphs):
+      [0] a
+      [1] b
+      [2] c
+
+[F] PASS — 显式 double-newline + 单 \n 输入
+    desc: escape hatch: explicit double-newline collapses when no \n\n
+    mode: double-newline
+    input (5 chars):
+      a\nb\nc
+    output (1 paragraphs):
+      [0] a\nb\nc
+
+========================================================================
+SUMMARY: 6 pass / 0 fail (of 6)
+========================================================================

@@ -1,0 +1,176 @@
+{
+  "id": "experiment_38e3e76a-8b29-4f5b-93fa-93ee489688d0",
+  "article": {
+    "id": "article_3c59088c-c15e-4ba4-95cd-d1ef7a3912eb",
+    "sourceType": "file",
+    "title": "compare-smoke.md",
+    "plainText": "阅读不是眼睛平滑扫过文字，而是由注视和眼跳组成。合适的高亮可以像轨道一样，帮助读者更快找到下一次视线落点。\n\n中文阅读没有天然空格，读者需要在连续汉字中判断词边界。语义、词频和句子结构都会影响眼睛下一步看向哪里。",
+    "paragraphs": [
+      {
+        "id": "0",
+        "index": 0,
+        "text": "阅读不是眼睛平滑扫过文字，而是由注视和眼跳组成。合适的高亮可以像轨道一样，帮助读者更快找到下一次视线落点。",
+        "charLength": 53
+      },
+      {
+        "id": "1",
+        "index": 1,
+        "text": "中文阅读没有天然空格，读者需要在连续汉字中判断词边界。语义、词频和句子结构都会影响眼睛下一步看向哪里。",
+        "charLength": 51
+      }
+    ],
+    "extraction": {
+      "method": "file",
+      "fallbackUsed": false,
+      "warnings": []
+    },
+    "createdAt": "2026-06-03T06:19:13.735Z"
+  },
+  "aiHighlight": {
+    "0": [
+      16,
+      2,
+      19,
+      2,
+      27,
+      2,
+      32,
+      2
+    ],
+    "1": [
+      0,
+      4,
+      23,
+      3,
+      40,
+      2
+    ]
+  },
+  "baselineHighlight": {
+    "0": [
+      2,
+      2,
+      6,
+      2,
+      10,
+      2,
+      13,
+      2,
+      16,
+      2,
+      21,
+      2,
+      24,
+      2,
+      29,
+      2,
+      32,
+      2,
+      39,
+      2,
+      43,
+      2,
+      50,
+      2
+    ],
+    "1": [
+      4,
+      2,
+      8,
+      2,
+      13,
+      2,
+      16,
+      2,
+      21,
+      2,
+      24,
+      2,
+      27,
+      2,
+      30,
+      2,
+      34,
+      3,
+      39,
+      2,
+      48,
+      2
+    ]
+  },
+  "baselineInfo": {
+    "provider": "tillglance-nlphl",
+    "endpoint": "https://api.tillglance.com/nlphl",
+    "latencyMs": 9403
+  },
+  "metrics": {
+    "tolerance": 2,
+    "totals": {
+      "paragraphs": 2,
+      "chars": 104,
+      "baselineRanges": 23,
+      "aiRanges": 7,
+      "baselineChars": 47,
+      "aiChars": 17,
+      "overlapChars": 7,
+      "unionChars": 57
+    },
+    "coverageSimilarity": 0.1228,
+    "positionHitRate": 0.8572,
+    "baselineRecall": 0.3043,
+    "baselineDensity": 0.4519,
+    "aiDensity": 0.1635,
+    "densityDelta": -0.2885,
+    "perParagraph": [
+      {
+        "paragraphId": "0",
+        "index": 0,
+        "charLength": 53,
+        "baselineRanges": 12,
+        "aiRanges": 4,
+        "baselineChars": 24,
+        "aiChars": 8,
+        "overlapChars": 4,
+        "unionChars": 28,
+        "coverageSimilarity": 0.1429,
+        "positionHitRate": 1,
+        "baselineRecall": 0.3333,
+        "baselineDensity": 0.4528,
+        "aiDensity": 0.1509,
+        "densityDelta": -0.3019
+      },
+      {
+        "paragraphId": "1",
+        "index": 1,
+        "charLength": 51,
+        "baselineRanges": 11,
+        "aiRanges": 3,
+        "baselineChars": 23,
+        "aiChars": 9,
+        "overlapChars": 3,
+        "unionChars": 29,
+        "coverageSimilarity": 0.1034,
+        "positionHitRate": 0.6667,
+        "baselineRecall": 0.2727,
+        "baselineDensity": 0.451,
+        "aiDensity": 0.1765,
+        "densityDelta": -0.2745
+      }
+    ]
+  },
+  "modelInfo": {
+    "provider": "minimax",
+    "model": "MiniMax-M3",
+    "apiType": "anthropic-compatible",
+    "latencyMs": 104048,
+    "requestCount": 1,
+    "fallbackUsed": false,
+    "usage": {
+      "input_tokens": 144,
+      "output_tokens": 2460,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 740
+    }
+  },
+  "createdAt": "2026-06-03T06:20:58.541Z"
+}

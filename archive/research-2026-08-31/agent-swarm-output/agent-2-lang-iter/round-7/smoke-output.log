@@ -1,0 +1,41 @@
+=== Agent 2 round-7 smoke test: English few-shot pool ===
+started at 2026-06-13T18:24:36.898Z
+
+[1] detectLanguage -> "en"  (expected "en")
+[1b] detectLanguage on Chinese text -> "zh"  (expected "zh")
+
+[2] calling generateAiHighlight with real MiniMax provider...
+provider=minimax  model=MiniMax-M3  latency=2.47s  requestCount=1
+
+[3] HighlightMap:
+  ranges: [11,2,19,2,37,2,46,2,64,2,71,2,90,2,97,2,110,2,117,2,131,2,139,2,155,2,161,2]
+  span count: 14
+  highlighted chars: 28
+  paragraph length: 168
+  density: 16.7%  (expected 15-30% for English)
+
+[4] topic anchor check: first start = 11  (expected 0-2)
+  WARN: first highlight starts at 11, expected 0-2 (Rule 3 topic anchor)
+
+[5] length distribution: {"2":14}  (expected: 2 dominates)
+[6] gap distribution: min=4  mean=9.5  max=17  (Rule 5: never less than 3)
+
+[7] assertHighlightMap...
+  OK
+
+[8] OOB check via clipHighlightSpans...
+  dropped OOB spans: 0  (expected 0)
+
+[9] content-word check (sample first 3 spans):
+  [11,2] = "be"  ctx: " the best of"
+  [19,2] = "ti"  ctx: "t of times, "
+  [37,2] = "wo"  ctx: " the worst o"
+
+=== summary ===
+detected language: en
+provider: minimax (MiniMax-M3)
+density: 16.7%  (target 15-30%)
+topic anchor: starts at 11  (target 0-2)
+OOB dropped: 0  (target 0)
+assertHighlightMap: pass
+elapsed: 2.47s

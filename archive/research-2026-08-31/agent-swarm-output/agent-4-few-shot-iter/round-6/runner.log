@@ -1,0 +1,53 @@
+[pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/tmp/node_modules/undici)
+[pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+[pi-proxy] undici dispatcher set to http://127.0.0.1:7897 (/Users/mahaoxuan/.local/lib/node_modules/@earendil-works/pi-coding-agent/node_modules/undici)
+[pi-proxy] globalThis.WebSocket replaced with undici.WebSocket
+# start 2026-06-13T17:40:17.264Z → 20 paragraphs → http://localhost:4173
+[ 1/20] B0 技术-长 ... hit=83% den=45% lat=6518ms
+[ 2/20] B1 技术-长 ... hit=89% den=35% lat=1248ms (retry x1)
+[ 3/20] B2 生活-中 ... hit=100% den=48% lat=2692ms
+[ 4/20] B3 评论-中 ... hit=89% den=42% lat=1933ms
+[ 5/20] B4 散文-中 ... hit=78% den=46% lat=1626ms
+[ 6/20] B5 技术-中 ... hit=100% den=49% lat=1777ms
+[ 7/20] B6 文化-中 ... hit=89% den=40% lat=1606ms (retry x2)
+[ 8/20] B7 散文-中 ... ERROR x4 {"error":"Range out of bounds at paragraph 0."}
+[ 9/20] B8 生活-短 ... hit=100% den=50% lat=2000ms
+[10/20] B9 散文-中 ... hit=89% den=49% lat=1785ms (retry x1)
+[11/20] F0 散文-短 ... hit=83% den=40% lat=1676ms (retry x1)
+[12/20] F1 散文-中 ... hit=100% den=45% lat=2036ms
+[13/20] F2 技术-中 ... hit=86% den=41% lat=1371ms (retry x1)
+[14/20] F3 技术-中 ... hit=75% den=38% lat=1865ms
+[15/20] F4 对话-短 ... hit=100% den=40% lat=2071ms
+[16/20] F5 对话-短 ... hit=71% den=45% lat=2027ms
+[17/20] F6 短句 ... hit=100% den=50% lat=1058ms
+[18/20] F7 短句 ... hit=100% den=55% lat=1971ms
+[19/20] F8 长-生活 ... hit=83% den=44% lat=2440ms
+[20/20] F9 长-技术 ... hit=80% den=34% lat=3995ms
+
+# === SUMMARY ===
+{
+  "total": 20,
+  "successful": 19,
+  "failed": 1,
+  "avgLatencyMs": 2085,
+  "avgWallMs": null,
+  "avgPositionHitRate": 0.8924,
+  "avgBaselineRecall": 0.8929,
+  "avgCoverageSimilarity": 0.3394,
+  "avgAiDensity": 0.4402,
+  "avgBaselineDensity": 0.4731,
+  "avgDensityDelta": -0.033,
+  "totalSpans": 165,
+  "totalBaselineSpans": 166,
+  "hitRate": {
+    "±0": 0.2242,
+    "±1": 0.6788,
+    "±2": 0.8788
+  },
+  "lengthDistribution": {
+    "2": 164,
+    "4": 1
+  }
+}
+
+# saved → /Users/mahaoxuan/Desktop/黑客松/眺览二次开发/agent-swarm-output/agent-4-few-shot-iter/round-6/round-6-results.json

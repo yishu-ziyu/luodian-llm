@@ -1,0 +1,334 @@
+{
+  "articleId": "M5",
+  "source": "fresh-生活-小店",
+  "category": "生活",
+  "importedParagraphs": [
+    {
+      "id": "0",
+      "index": 0,
+      "text": "街角的早餐店凌晨四点就亮起灯，老板娘揉着面团准备第一批客人。",
+      "charLength": 30
+    },
+    {
+      "id": "1",
+      "index": 1,
+      "text": "隔壁的咖啡师在吧台后调整磨豆机的刻度，咖啡香渐渐漫过整条巷子。",
+      "charLength": 31
+    },
+    {
+      "id": "2",
+      "index": 2,
+      "text": "五金店老板一边看电视一边磨刀，把锈迹斑斑的剪子擦得锃亮。",
+      "charLength": 28
+    },
+    {
+      "id": "3",
+      "index": 3,
+      "text": "书店的女孩把新到的诗集摆进橱窗，封面是浅蓝色的山。",
+      "charLength": 25
+    },
+    {
+      "id": "4",
+      "index": 4,
+      "text": "傍晚路灯一盏一盏亮起来，小巷里飘出各家厨房混在一起的饭菜香。",
+      "charLength": 30
+    }
+  ],
+  "compareResponse": {
+    "baselineHighlight": {
+      "0": [
+        0,
+        2,
+        3,
+        2,
+        6,
+        2,
+        11,
+        2,
+        15,
+        3,
+        22,
+        2,
+        27,
+        2
+      ],
+      "1": [
+        0,
+        2,
+        3,
+        3,
+        7,
+        2,
+        10,
+        2,
+        16,
+        2,
+        19,
+        2,
+        22,
+        2,
+        28,
+        2
+      ],
+      "2": [
+        0,
+        3,
+        7,
+        3,
+        12,
+        2,
+        16,
+        4,
+        21,
+        2,
+        25,
+        2
+      ],
+      "3": [
+        0,
+        2,
+        3,
+        2,
+        9,
+        2,
+        13,
+        2,
+        16,
+        2,
+        19,
+        3
+      ],
+      "4": [
+        0,
+        2,
+        9,
+        2,
+        12,
+        2,
+        19,
+        2,
+        26,
+        3
+      ]
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        4,
+        2,
+        8,
+        2,
+        12,
+        2,
+        15,
+        2,
+        18,
+        2,
+        23,
+        2,
+        27,
+        2
+      ],
+      "1": [
+        0,
+        2,
+        4,
+        2,
+        7,
+        2,
+        12,
+        2,
+        18,
+        2,
+        21,
+        2,
+        26,
+        2,
+        29,
+        2
+      ],
+      "2": [
+        0,
+        2,
+        6,
+        2,
+        9,
+        2,
+        13,
+        2,
+        16,
+        2,
+        21,
+        2,
+        24,
+        2
+      ],
+      "3": [
+        0,
+        2,
+        4,
+        2,
+        8,
+        2,
+        12,
+        2,
+        15,
+        2,
+        21,
+        2
+      ],
+      "4": [
+        0,
+        2,
+        5,
+        2,
+        11,
+        2,
+        15,
+        2,
+        20,
+        2,
+        23,
+        2,
+        26,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 53
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 4517,
+      "requestCount": 2,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 914,
+        "output_tokens": 184,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1024,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 5,
+        "chars": 144,
+        "baselineRanges": 32,
+        "aiRanges": 36,
+        "baselineChars": 72,
+        "aiChars": 72,
+        "overlapChars": 41,
+        "unionChars": 103
+      },
+      "coverageSimilarity": 0.3981,
+      "positionHitRate": 0.8889,
+      "baselineRecall": 1,
+      "baselineDensity": 0.5,
+      "aiDensity": 0.5,
+      "densityDelta": 0,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 30,
+          "baselineRanges": 7,
+          "aiRanges": 8,
+          "baselineChars": 15,
+          "aiChars": 16,
+          "overlapChars": 9,
+          "unionChars": 22,
+          "coverageSimilarity": 0.4091,
+          "positionHitRate": 0.875,
+          "baselineRecall": 1,
+          "baselineDensity": 0.5,
+          "aiDensity": 0.5333,
+          "densityDelta": 0.0333
+        },
+        {
+          "paragraphId": "1",
+          "index": 1,
+          "charLength": 31,
+          "baselineRanges": 8,
+          "aiRanges": 8,
+          "baselineChars": 17,
+          "aiChars": 16,
+          "overlapChars": 9,
+          "unionChars": 24,
+          "coverageSimilarity": 0.375,
+          "positionHitRate": 1,
+          "baselineRecall": 1,
+          "baselineDensity": 0.5484,
+          "aiDensity": 0.5161,
+          "densityDelta": -0.0323
+        },
+        {
+          "paragraphId": "2",
+          "index": 2,
+          "charLength": 28,
+          "baselineRanges": 6,
+          "aiRanges": 7,
+          "baselineChars": 16,
+          "aiChars": 14,
+          "overlapChars": 10,
+          "unionChars": 20,
+          "coverageSimilarity": 0.5,
+          "positionHitRate": 1,
+          "baselineRecall": 1,
+          "baselineDensity": 0.5714,
+          "aiDensity": 0.5,
+          "densityDelta": -0.0714
+        },
+        {
+          "paragraphId": "3",
+          "index": 3,
+          "charLength": 25,
+          "baselineRanges": 6,
+          "aiRanges": 6,
+          "baselineChars": 13,
+          "aiChars": 12,
+          "overlapChars": 7,
+          "unionChars": 18,
+          "coverageSimilarity": 0.3889,
+          "positionHitRate": 1,
+          "baselineRecall": 1,
+          "baselineDensity": 0.52,
+          "aiDensity": 0.48,
+          "densityDelta": -0.04
+        },
+        {
+          "paragraphId": "4",
+          "index": 4,
+          "charLength": 30,
+          "baselineRanges": 5,
+          "aiRanges": 7,
+          "baselineChars": 11,
+          "aiChars": 14,
+          "overlapChars": 6,
+          "unionChars": 19,
+          "coverageSimilarity": 0.3158,
+          "positionHitRate": 0.5714,
+          "baselineRecall": 1,
+          "baselineDensity": 0.3667,
+          "aiDensity": 0.4667,
+          "densityDelta": 0.1
+        }
+      ]
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "attempt": 0,
+      "ok": true,
+      "status": 200
+    }
+  ],
+  "wallMs": 4525
+}

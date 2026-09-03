@@ -1,0 +1,1160 @@
+{
+  "ranAt": {
+    "startedAt": "2026-06-13T18:08:53.650Z",
+    "finishedAt": "2026-06-13T18:09:19.482Z"
+  },
+  "endpoint": "http://localhost:4173",
+  "config": "Swarm Agent B: 5 multi-paragraph articles (3-5 paragraphs each)",
+  "model": "MiniMax-M3 (server-side, env: web-mvp/.env.local)",
+  "summary": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0,
+    "totalParagraphs": 22,
+    "totalChars": 748,
+    "totalSpans": 176,
+    "totalBaselineSpans": 168,
+    "avgHitRate": 0.9108,
+    "avgBaselineRecall": 0.9571,
+    "avgCoverageSimilarity": 0.3874,
+    "avgAiDensity": 0.481,
+    "avgBaselineDensity": 0.5037,
+    "avgDensityDelta": -0.0226,
+    "hitRate": {
+      "±0": 0.3512,
+      "±1": 0.7052,
+      "±2": 0.9108
+    },
+    "lengthDistribution": {
+      "2": 171,
+      "3": 5
+    },
+    "batching": {
+      "requestCountByArticle": {
+        "M1": {
+          "requestCount": 2,
+          "latencyMs": 2890
+        },
+        "M2": {
+          "requestCount": 2,
+          "latencyMs": 2721
+        },
+        "M3": {
+          "requestCount": 1,
+          "latencyMs": 7230
+        },
+        "M4": {
+          "requestCount": 1,
+          "latencyMs": 2398
+        },
+        "M5": {
+          "requestCount": 2,
+          "latencyMs": 4517
+        }
+      },
+      "articlesWithMultipleBatches": [
+        "M1",
+        "M2",
+        "M5"
+      ],
+      "articlesWithSingleBatch": [
+        "M3",
+        "M4"
+      ],
+      "cacheHits": [
+        {
+          "id": "M1",
+          "cache_read_input_tokens": 1764,
+          "cache_creation_input_tokens": 0,
+          "input_tokens": 185,
+          "output_tokens": 234
+        },
+        {
+          "id": "M2",
+          "cache_read_input_tokens": 1764,
+          "cache_creation_input_tokens": 0,
+          "input_tokens": 184,
+          "output_tokens": 194
+        },
+        {
+          "id": "M3",
+          "cache_read_input_tokens": 128,
+          "cache_creation_input_tokens": 0,
+          "input_tokens": 878,
+          "output_tokens": 157
+        },
+        {
+          "id": "M4",
+          "cache_read_input_tokens": 900,
+          "cache_creation_input_tokens": 0,
+          "input_tokens": 70,
+          "output_tokens": 111
+        },
+        {
+          "id": "M5",
+          "cache_read_input_tokens": 1024,
+          "cache_creation_input_tokens": 0,
+          "input_tokens": 914,
+          "output_tokens": 184
+        }
+      ]
+    }
+  },
+  "articles": [
+    {
+      "id": "M1",
+      "source": "13:12-5new-joined",
+      "category": "城市生活多主题",
+      "paragraphCount": 5,
+      "totalChars": 210,
+      "requestCount": 2,
+      "latencyMs": 2890,
+      "modelUsage": {
+        "input_tokens": 185,
+        "output_tokens": 234,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1764,
+        "service_tier": "standard"
+      },
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 285
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 2890,
+        "requestCount": 2,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 185,
+          "output_tokens": 234,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 1764,
+          "service_tier": "standard"
+        }
+      },
+      "aggregateMetrics": {
+        "aiDensity": 0.4476,
+        "baselineDensity": 0.5143,
+        "densityDelta": -0.0667,
+        "positionHitRate": 0.8936,
+        "baselineRecall": 0.9575,
+        "coverageSimilarity": 0.2785,
+        "totalAiRanges": 47,
+        "totalBaselineRanges": 47
+      },
+      "hitRate": {
+        "±0": 0.2553,
+        "±1": 0.6809,
+        "±2": 0.8936,
+        "total": 47
+      },
+      "lengthDistribution": {
+        "2": 47
+      },
+      "perParagraph": [
+        {
+          "id": "0",
+          "index": 0,
+          "charLength": 42,
+          "baselineRanges": 10,
+          "aiRanges": 9,
+          "positionHitRate": 0.8889,
+          "coverageSimilarity": 0.3448,
+          "baselineDensity": 0.5,
+          "aiDensity": 0.4286,
+          "densityDelta": -0.0714,
+          "aiStarts": [
+            0,
+            4,
+            7,
+            11,
+            17,
+            22,
+            30,
+            33,
+            39
+          ],
+          "blStarts": [
+            0,
+            3,
+            10,
+            13,
+            16,
+            21,
+            24,
+            29,
+            32,
+            39
+          ],
+          "lengths": {
+            "2": 9
+          }
+        },
+        {
+          "id": "1",
+          "index": 1,
+          "charLength": 43,
+          "baselineRanges": 10,
+          "aiRanges": 8,
+          "positionHitRate": 0.875,
+          "coverageSimilarity": 0.1818,
+          "baselineDensity": 0.5349,
+          "aiDensity": 0.3721,
+          "densityDelta": -0.1628,
+          "aiStarts": [
+            0,
+            5,
+            9,
+            14,
+            21,
+            28,
+            33,
+            38
+          ],
+          "blStarts": [
+            0,
+            6,
+            12,
+            15,
+            19,
+            23,
+            26,
+            29,
+            34,
+            40
+          ],
+          "lengths": {
+            "2": 8
+          }
+        },
+        {
+          "id": "2",
+          "index": 2,
+          "charLength": 39,
+          "baselineRanges": 8,
+          "aiRanges": 10,
+          "positionHitRate": 0.8,
+          "coverageSimilarity": 0.2667,
+          "baselineDensity": 0.4615,
+          "aiDensity": 0.5128,
+          "densityDelta": 0.0513,
+          "aiStarts": [
+            0,
+            3,
+            8,
+            11,
+            15,
+            20,
+            24,
+            28,
+            32,
+            37
+          ],
+          "blStarts": [
+            0,
+            4,
+            8,
+            17,
+            22,
+            25,
+            31,
+            36
+          ],
+          "lengths": {
+            "2": 10
+          }
+        },
+        {
+          "id": "3",
+          "index": 3,
+          "charLength": 41,
+          "baselineRanges": 10,
+          "aiRanges": 10,
+          "positionHitRate": 0.9,
+          "coverageSimilarity": 0.3871,
+          "baselineDensity": 0.561,
+          "aiDensity": 0.4878,
+          "densityDelta": -0.0732,
+          "aiStarts": [
+            0,
+            3,
+            7,
+            11,
+            15,
+            20,
+            23,
+            29,
+            33,
+            38
+          ],
+          "blStarts": [
+            0,
+            3,
+            8,
+            14,
+            18,
+            23,
+            27,
+            30,
+            34,
+            38
+          ],
+          "lengths": {
+            "2": 10
+          }
+        },
+        {
+          "id": "4",
+          "index": 4,
+          "charLength": 45,
+          "baselineRanges": 9,
+          "aiRanges": 10,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.2286,
+          "baselineDensity": 0.5111,
+          "aiDensity": 0.4444,
+          "densityDelta": -0.0667,
+          "aiStarts": [
+            3,
+            5,
+            10,
+            13,
+            18,
+            23,
+            25,
+            32,
+            36,
+            39
+          ],
+          "blStarts": [
+            0,
+            5,
+            11,
+            15,
+            18,
+            23,
+            29,
+            34,
+            40
+          ],
+          "lengths": {
+            "2": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "M2",
+      "source": "13:13+13:14-joined-自然-夜读",
+      "category": "自然与技术混合",
+      "paragraphCount": 5,
+      "totalChars": 182,
+      "requestCount": 2,
+      "latencyMs": 2721,
+      "modelUsage": {
+        "input_tokens": 184,
+        "output_tokens": 194,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1764,
+        "service_tier": "standard"
+      },
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 192
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 2721,
+        "requestCount": 2,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 184,
+          "output_tokens": 194,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 1764,
+          "service_tier": "standard"
+        }
+      },
+      "aggregateMetrics": {
+        "aiDensity": 0.4725,
+        "baselineDensity": 0.5,
+        "densityDelta": -0.0275,
+        "positionHitRate": 1,
+        "baselineRecall": 1,
+        "coverageSimilarity": 0.4628,
+        "totalAiRanges": 42,
+        "totalBaselineRanges": 42
+      },
+      "hitRate": {
+        "±0": 0.4762,
+        "±1": 0.7143,
+        "±2": 1,
+        "total": 42
+      },
+      "lengthDistribution": {
+        "2": 40,
+        "3": 2
+      },
+      "perParagraph": [
+        {
+          "id": "0",
+          "index": 0,
+          "charLength": 39,
+          "baselineRanges": 10,
+          "aiRanges": 9,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.7391,
+          "baselineDensity": 0.5385,
+          "aiDensity": 0.4872,
+          "densityDelta": -0.0513,
+          "aiStarts": [
+            0,
+            5,
+            10,
+            15,
+            19,
+            25,
+            28,
+            32,
+            36
+          ],
+          "blStarts": [
+            0,
+            3,
+            7,
+            10,
+            15,
+            19,
+            25,
+            28,
+            32,
+            36
+          ],
+          "lengths": {
+            "2": 8,
+            "3": 1
+          }
+        },
+        {
+          "id": "1",
+          "index": 1,
+          "charLength": 34,
+          "baselineRanges": 7,
+          "aiRanges": 7,
+          "positionHitRate": 1,
+          "coverageSimilarity": 1,
+          "baselineDensity": 0.4412,
+          "aiDensity": 0.4412,
+          "densityDelta": 0,
+          "aiStarts": [
+            3,
+            11,
+            14,
+            18,
+            22,
+            26,
+            31
+          ],
+          "blStarts": [
+            3,
+            11,
+            14,
+            18,
+            22,
+            26,
+            31
+          ],
+          "lengths": {
+            "2": 6,
+            "3": 1
+          }
+        },
+        {
+          "id": "2",
+          "index": 2,
+          "charLength": 40,
+          "baselineRanges": 9,
+          "aiRanges": 10,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.3548,
+          "baselineDensity": 0.55,
+          "aiDensity": 0.5,
+          "densityDelta": -0.05,
+          "aiStarts": [
+            0,
+            5,
+            9,
+            13,
+            18,
+            23,
+            26,
+            30,
+            35,
+            38
+          ],
+          "blStarts": [
+            0,
+            4,
+            8,
+            11,
+            17,
+            22,
+            25,
+            28,
+            37
+          ],
+          "lengths": {
+            "2": 10
+          }
+        },
+        {
+          "id": "3",
+          "index": 3,
+          "charLength": 32,
+          "baselineRanges": 7,
+          "aiRanges": 8,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.24,
+          "baselineDensity": 0.4688,
+          "aiDensity": 0.5,
+          "densityDelta": 0.0313,
+          "aiStarts": [
+            0,
+            3,
+            7,
+            11,
+            16,
+            19,
+            23,
+            27
+          ],
+          "blStarts": [
+            0,
+            5,
+            10,
+            14,
+            19,
+            25,
+            29
+          ],
+          "lengths": {
+            "2": 8
+          }
+        },
+        {
+          "id": "4",
+          "index": 4,
+          "charLength": 37,
+          "baselineRanges": 9,
+          "aiRanges": 8,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.2593,
+          "baselineDensity": 0.4865,
+          "aiDensity": 0.4324,
+          "densityDelta": -0.0541,
+          "aiStarts": [
+            0,
+            4,
+            9,
+            14,
+            19,
+            22,
+            28,
+            31
+          ],
+          "blStarts": [
+            0,
+            3,
+            6,
+            9,
+            12,
+            17,
+            21,
+            24,
+            29
+          ],
+          "lengths": {
+            "2": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "M3",
+      "source": "fresh-散文-四季",
+      "category": "散文",
+      "paragraphCount": 4,
+      "totalChars": 121,
+      "requestCount": 1,
+      "latencyMs": 7230,
+      "modelUsage": {
+        "input_tokens": 878,
+        "output_tokens": 157,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 128,
+        "service_tier": "standard"
+      },
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 179
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 7230,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 878,
+          "output_tokens": 157,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 128,
+          "service_tier": "standard"
+        }
+      },
+      "aggregateMetrics": {
+        "aiDensity": 0.5124,
+        "baselineDensity": 0.4545,
+        "densityDelta": 0.0579,
+        "positionHitRate": 0.8667,
+        "baselineRecall": 0.9231,
+        "coverageSimilarity": 0.4096,
+        "totalAiRanges": 30,
+        "totalBaselineRanges": 26
+      },
+      "hitRate": {
+        "±0": 0.4333,
+        "±1": 0.6667,
+        "±2": 0.8667,
+        "total": 30
+      },
+      "lengthDistribution": {
+        "2": 28,
+        "3": 2
+      },
+      "perParagraph": [
+        {
+          "id": "0",
+          "index": 0,
+          "charLength": 30,
+          "baselineRanges": 7,
+          "aiRanges": 7,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.7059,
+          "baselineDensity": 0.4667,
+          "aiDensity": 0.5,
+          "densityDelta": 0.0333,
+          "aiStarts": [
+            0,
+            5,
+            9,
+            12,
+            17,
+            22,
+            27
+          ],
+          "blStarts": [
+            0,
+            5,
+            9,
+            12,
+            16,
+            21,
+            27
+          ],
+          "lengths": {
+            "2": 6,
+            "3": 1
+          }
+        },
+        {
+          "id": "1",
+          "index": 1,
+          "charLength": 26,
+          "baselineRanges": 4,
+          "aiRanges": 7,
+          "positionHitRate": 0.7143,
+          "coverageSimilarity": 0.2632,
+          "baselineDensity": 0.3462,
+          "aiDensity": 0.5769,
+          "densityDelta": 0.2308,
+          "aiStarts": [
+            0,
+            4,
+            8,
+            13,
+            16,
+            20,
+            24
+          ],
+          "blStarts": [
+            2,
+            8,
+            13,
+            21
+          ],
+          "lengths": {
+            "2": 6,
+            "3": 1
+          }
+        },
+        {
+          "id": "2",
+          "index": 2,
+          "charLength": 36,
+          "baselineRanges": 9,
+          "aiRanges": 9,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.52,
+          "baselineDensity": 0.5556,
+          "aiDensity": 0.5,
+          "densityDelta": -0.0556,
+          "aiStarts": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            23,
+            28,
+            31
+          ],
+          "blStarts": [
+            0,
+            3,
+            8,
+            13,
+            17,
+            20,
+            23,
+            27,
+            33
+          ],
+          "lengths": {
+            "2": 9
+          }
+        },
+        {
+          "id": "3",
+          "index": 3,
+          "charLength": 29,
+          "baselineRanges": 6,
+          "aiRanges": 7,
+          "positionHitRate": 0.7143,
+          "coverageSimilarity": 0.1818,
+          "baselineDensity": 0.4138,
+          "aiDensity": 0.4828,
+          "densityDelta": 0.069,
+          "aiStarts": [
+            0,
+            4,
+            6,
+            11,
+            15,
+            19,
+            23
+          ],
+          "blStarts": [
+            2,
+            10,
+            13,
+            16,
+            23,
+            26
+          ],
+          "lengths": {
+            "2": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "M4",
+      "source": "fresh-技术-架构",
+      "category": "技术",
+      "paragraphCount": 3,
+      "totalChars": 91,
+      "requestCount": 1,
+      "latencyMs": 2398,
+      "modelUsage": {
+        "input_tokens": 70,
+        "output_tokens": 111,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 900,
+        "service_tier": "standard"
+      },
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 294
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 2398,
+        "requestCount": 1,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 70,
+          "output_tokens": 111,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 900,
+          "service_tier": "standard"
+        }
+      },
+      "aggregateMetrics": {
+        "aiDensity": 0.4725,
+        "baselineDensity": 0.5495,
+        "densityDelta": -0.0769,
+        "positionHitRate": 0.9048,
+        "baselineRecall": 0.9047,
+        "coverageSimilarity": 0.3881,
+        "totalAiRanges": 21,
+        "totalBaselineRanges": 21
+      },
+      "hitRate": {
+        "±0": 0.2857,
+        "±1": 0.7143,
+        "±2": 0.9048,
+        "total": 21
+      },
+      "lengthDistribution": {
+        "2": 20,
+        "3": 1
+      },
+      "perParagraph": [
+        {
+          "id": "0",
+          "index": 0,
+          "charLength": 31,
+          "baselineRanges": 8,
+          "aiRanges": 7,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.4762,
+          "baselineDensity": 0.5484,
+          "aiDensity": 0.4516,
+          "densityDelta": -0.0968,
+          "aiStarts": [
+            0,
+            4,
+            8,
+            15,
+            18,
+            22,
+            26
+          ],
+          "blStarts": [
+            0,
+            4,
+            8,
+            14,
+            17,
+            21,
+            25,
+            28
+          ],
+          "lengths": {
+            "2": 7
+          }
+        },
+        {
+          "id": "1",
+          "index": 1,
+          "charLength": 31,
+          "baselineRanges": 6,
+          "aiRanges": 7,
+          "positionHitRate": 0.7143,
+          "coverageSimilarity": 0.1739,
+          "baselineDensity": 0.3871,
+          "aiDensity": 0.4839,
+          "densityDelta": 0.0968,
+          "aiStarts": [
+            0,
+            7,
+            10,
+            14,
+            18,
+            25,
+            29
+          ],
+          "blStarts": [
+            4,
+            8,
+            12,
+            17,
+            23,
+            26
+          ],
+          "lengths": {
+            "2": 6,
+            "3": 1
+          }
+        },
+        {
+          "id": "2",
+          "index": 2,
+          "charLength": 29,
+          "baselineRanges": 7,
+          "aiRanges": 7,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.5217,
+          "baselineDensity": 0.7241,
+          "aiDensity": 0.4828,
+          "densityDelta": -0.2414,
+          "aiStarts": [
+            0,
+            7,
+            14,
+            18,
+            20,
+            23,
+            26
+          ],
+          "blStarts": [
+            0,
+            5,
+            11,
+            14,
+            17,
+            20,
+            24
+          ],
+          "lengths": {
+            "2": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "M5",
+      "source": "fresh-生活-小店",
+      "category": "生活",
+      "paragraphCount": 5,
+      "totalChars": 144,
+      "requestCount": 2,
+      "latencyMs": 4517,
+      "modelUsage": {
+        "input_tokens": 914,
+        "output_tokens": 184,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 1024,
+        "service_tier": "standard"
+      },
+      "baselineInfo": {
+        "provider": "tillglance-nlphl",
+        "endpoint": "https://api.tillglance.com/nlphl",
+        "latencyMs": 53
+      },
+      "modelInfo": {
+        "provider": "minimax",
+        "model": "MiniMax-M3",
+        "apiType": "anthropic-compatible",
+        "latencyMs": 4517,
+        "requestCount": 2,
+        "fallbackUsed": false,
+        "usage": {
+          "input_tokens": 914,
+          "output_tokens": 184,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 1024,
+          "service_tier": "standard"
+        }
+      },
+      "aggregateMetrics": {
+        "aiDensity": 0.5,
+        "baselineDensity": 0.5,
+        "densityDelta": 0,
+        "positionHitRate": 0.8889,
+        "baselineRecall": 1,
+        "coverageSimilarity": 0.3981,
+        "totalAiRanges": 36,
+        "totalBaselineRanges": 32
+      },
+      "hitRate": {
+        "±0": 0.3056,
+        "±1": 0.75,
+        "±2": 0.8889,
+        "total": 36
+      },
+      "lengthDistribution": {
+        "2": 36
+      },
+      "perParagraph": [
+        {
+          "id": "0",
+          "index": 0,
+          "charLength": 30,
+          "baselineRanges": 7,
+          "aiRanges": 8,
+          "positionHitRate": 0.875,
+          "coverageSimilarity": 0.4091,
+          "baselineDensity": 0.5,
+          "aiDensity": 0.5333,
+          "densityDelta": 0.0333,
+          "aiStarts": [
+            0,
+            4,
+            8,
+            12,
+            15,
+            18,
+            23,
+            27
+          ],
+          "blStarts": [
+            0,
+            3,
+            6,
+            11,
+            15,
+            22,
+            27
+          ],
+          "lengths": {
+            "2": 8
+          }
+        },
+        {
+          "id": "1",
+          "index": 1,
+          "charLength": 31,
+          "baselineRanges": 8,
+          "aiRanges": 8,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.375,
+          "baselineDensity": 0.5484,
+          "aiDensity": 0.5161,
+          "densityDelta": -0.0323,
+          "aiStarts": [
+            0,
+            4,
+            7,
+            12,
+            18,
+            21,
+            26,
+            29
+          ],
+          "blStarts": [
+            0,
+            3,
+            7,
+            10,
+            16,
+            19,
+            22,
+            28
+          ],
+          "lengths": {
+            "2": 8
+          }
+        },
+        {
+          "id": "2",
+          "index": 2,
+          "charLength": 28,
+          "baselineRanges": 6,
+          "aiRanges": 7,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.5,
+          "baselineDensity": 0.5714,
+          "aiDensity": 0.5,
+          "densityDelta": -0.0714,
+          "aiStarts": [
+            0,
+            6,
+            9,
+            13,
+            16,
+            21,
+            24
+          ],
+          "blStarts": [
+            0,
+            7,
+            12,
+            16,
+            21,
+            25
+          ],
+          "lengths": {
+            "2": 7
+          }
+        },
+        {
+          "id": "3",
+          "index": 3,
+          "charLength": 25,
+          "baselineRanges": 6,
+          "aiRanges": 6,
+          "positionHitRate": 1,
+          "coverageSimilarity": 0.3889,
+          "baselineDensity": 0.52,
+          "aiDensity": 0.48,
+          "densityDelta": -0.04,
+          "aiStarts": [
+            0,
+            4,
+            8,
+            12,
+            15,
+            21
+          ],
+          "blStarts": [
+            0,
+            3,
+            9,
+            13,
+            16,
+            19
+          ],
+          "lengths": {
+            "2": 6
+          }
+        },
+        {
+          "id": "4",
+          "index": 4,
+          "charLength": 30,
+          "baselineRanges": 5,
+          "aiRanges": 7,
+          "positionHitRate": 0.5714,
+          "coverageSimilarity": 0.3158,
+          "baselineDensity": 0.3667,
+          "aiDensity": 0.4667,
+          "densityDelta": 0.1,
+          "aiStarts": [
+            0,
+            5,
+            11,
+            15,
+            20,
+            23,
+            26
+          ],
+          "blStarts": [
+            0,
+            9,
+            12,
+            19,
+            26
+          ],
+          "lengths": {
+            "2": 7
+          }
+        }
+      ]
+    }
+  ]
+}

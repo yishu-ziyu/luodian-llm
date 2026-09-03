@@ -1,0 +1,59 @@
+{
+  "id": "experiment_59057486-131c-434d-9ca1-309dd7956cc2",
+  "article": {
+    "id": "article_46159754-8853-4901-8fbb-1aaff60ae457",
+    "sourceType": "file",
+    "title": "sample.md",
+    "plainText": "第一段：这是一篇用于验证眺览 AI 阅读高亮的短文。\n\n第二段：系统需要保留原文顺序，同时把视觉落点用高亮标出来。",
+    "paragraphs": [
+      {
+        "id": "0",
+        "index": 0,
+        "text": "第一段：这是一篇用于验证眺览 AI 阅读高亮的短文。",
+        "charLength": 26
+      },
+      {
+        "id": "1",
+        "index": 1,
+        "text": "第二段：系统需要保留原文顺序，同时把视觉落点用高亮标出来。",
+        "charLength": 29
+      }
+    ],
+    "extraction": {
+      "method": "file",
+      "fallbackUsed": false,
+      "warnings": []
+    },
+    "createdAt": "2026-06-02T15:57:37.333Z"
+  },
+  "aiHighlight": {
+    "0": [
+      8,
+      2,
+      21,
+      2
+    ],
+    "1": [
+      5,
+      2,
+      14,
+      4,
+      25,
+      2
+    ]
+  },
+  "modelInfo": {
+    "provider": "minimax",
+    "model": "MiniMax-M2.7",
+    "apiType": "anthropic-compatible",
+    "latencyMs": 10912,
+    "fallbackUsed": false,
+    "usage": {
+      "input_tokens": 263,
+      "output_tokens": 1170,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    }
+  },
+  "createdAt": "2026-06-02T15:57:48.265Z"
+}

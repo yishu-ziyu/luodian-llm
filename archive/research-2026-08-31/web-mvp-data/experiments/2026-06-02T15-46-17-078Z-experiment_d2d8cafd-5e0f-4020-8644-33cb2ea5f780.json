@@ -1,0 +1,52 @@
+{
+  "id": "experiment_d2d8cafd-5e0f-4020-8644-33cb2ea5f780",
+  "article": {
+    "id": "article_f032d65c-ebb1-4b7c-98bb-d71edbf077f4",
+    "sourceType": "file",
+    "title": "sample.md",
+    "plainText": "第一段：这是一篇用于验证眺览 AI 阅读高亮的短文。\n\n第二段：系统需要保留原文顺序，同时把视觉落点用高亮标出来。",
+    "paragraphs": [
+      {
+        "id": "0",
+        "index": 0,
+        "text": "第一段：这是一篇用于验证眺览 AI 阅读高亮的短文。",
+        "charLength": 26
+      },
+      {
+        "id": "1",
+        "index": 1,
+        "text": "第二段：系统需要保留原文顺序，同时把视觉落点用高亮标出来。",
+        "charLength": 29
+      }
+    ],
+    "extraction": {
+      "method": "file",
+      "fallbackUsed": false,
+      "warnings": []
+    },
+    "createdAt": "2026-06-02T15:46:17.075Z"
+  },
+  "aiHighlight": {
+    "0": [
+      0,
+      2,
+      10,
+      2,
+      20,
+      2
+    ],
+    "1": [
+      0,
+      2,
+      10,
+      2,
+      20,
+      2
+    ]
+  },
+  "modelInfo": {
+    "provider": "mock",
+    "model": "mock-semantic-reading-guide"
+  },
+  "createdAt": "2026-06-02T15:46:17.078Z"
+}

@@ -1,0 +1,228 @@
+{
+  "articleId": "M4",
+  "source": "fresh-技术-架构",
+  "category": "技术",
+  "importedParagraphs": [
+    {
+      "id": "0",
+      "index": 0,
+      "text": "微服务把单体应用拆成多个独立进程，每个进程可以单独扩展和部署。",
+      "charLength": 31
+    },
+    {
+      "id": "1",
+      "index": 1,
+      "text": "事件驱动通过异步消息解耦服务之间的依赖，但调试链路会变得更长。",
+      "charLength": 31
+    },
+    {
+      "id": "2",
+      "index": 2,
+      "text": "可观测性是分布式系统的支柱，日志、指标、追踪三者缺一不可。",
+      "charLength": 29
+    }
+  ],
+  "compareResponse": {
+    "baselineHighlight": {
+      "0": [
+        0,
+        3,
+        4,
+        2,
+        8,
+        2,
+        14,
+        2,
+        17,
+        2,
+        21,
+        2,
+        25,
+        2,
+        28,
+        2
+      ],
+      "1": [
+        4,
+        2,
+        8,
+        2,
+        12,
+        2,
+        17,
+        2,
+        23,
+        2,
+        26,
+        2
+      ],
+      "2": [
+        0,
+        4,
+        5,
+        5,
+        11,
+        2,
+        14,
+        2,
+        17,
+        2,
+        20,
+        2,
+        24,
+        4
+      ]
+    },
+    "aiHighlight": {
+      "0": [
+        0,
+        2,
+        4,
+        2,
+        8,
+        2,
+        15,
+        2,
+        18,
+        2,
+        22,
+        2,
+        26,
+        2
+      ],
+      "1": [
+        0,
+        2,
+        7,
+        2,
+        10,
+        3,
+        14,
+        2,
+        18,
+        2,
+        25,
+        2,
+        29,
+        2
+      ],
+      "2": [
+        0,
+        2,
+        7,
+        2,
+        14,
+        2,
+        18,
+        2,
+        20,
+        2,
+        23,
+        2,
+        26,
+        2
+      ]
+    },
+    "baselineInfo": {
+      "provider": "tillglance-nlphl",
+      "endpoint": "https://api.tillglance.com/nlphl",
+      "latencyMs": 294
+    },
+    "modelInfo": {
+      "provider": "minimax",
+      "model": "MiniMax-M3",
+      "apiType": "anthropic-compatible",
+      "latencyMs": 2398,
+      "requestCount": 1,
+      "fallbackUsed": false,
+      "usage": {
+        "input_tokens": 70,
+        "output_tokens": 111,
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 900,
+        "service_tier": "standard"
+      }
+    },
+    "metrics": {
+      "tolerance": 2,
+      "totals": {
+        "paragraphs": 3,
+        "chars": 91,
+        "baselineRanges": 21,
+        "aiRanges": 21,
+        "baselineChars": 50,
+        "aiChars": 43,
+        "overlapChars": 26,
+        "unionChars": 67
+      },
+      "coverageSimilarity": 0.3881,
+      "positionHitRate": 0.9048,
+      "baselineRecall": 0.9047,
+      "baselineDensity": 0.5495,
+      "aiDensity": 0.4725,
+      "densityDelta": -0.0769,
+      "perParagraph": [
+        {
+          "paragraphId": "0",
+          "index": 0,
+          "charLength": 31,
+          "baselineRanges": 8,
+          "aiRanges": 7,
+          "baselineChars": 17,
+          "aiChars": 14,
+          "overlapChars": 10,
+          "unionChars": 21,
+          "coverageSimilarity": 0.4762,
+          "positionHitRate": 1,
+          "baselineRecall": 1,
+          "baselineDensity": 0.5484,
+          "aiDensity": 0.4516,
+          "densityDelta": -0.0968
+        },
+        {
+          "paragraphId": "1",
+          "index": 1,
+          "charLength": 31,
+          "baselineRanges": 6,
+          "aiRanges": 7,
+          "baselineChars": 12,
+          "aiChars": 15,
+          "overlapChars": 4,
+          "unionChars": 23,
+          "coverageSimilarity": 0.1739,
+          "positionHitRate": 0.7143,
+          "baselineRecall": 0.8333,
+          "baselineDensity": 0.3871,
+          "aiDensity": 0.4839,
+          "densityDelta": 0.0968
+        },
+        {
+          "paragraphId": "2",
+          "index": 2,
+          "charLength": 29,
+          "baselineRanges": 7,
+          "aiRanges": 7,
+          "baselineChars": 21,
+          "aiChars": 14,
+          "overlapChars": 12,
+          "unionChars": 23,
+          "coverageSimilarity": 0.5217,
+          "positionHitRate": 1,
+          "baselineRecall": 0.8571,
+          "baselineDensity": 0.7241,
+          "aiDensity": 0.4828,
+          "densityDelta": -0.2414
+        }
+      ]
+    }
+  },
+  "error": null,
+  "attempts": [
+    {
+      "attempt": 0,
+      "ok": true,
+      "status": 200
+    }
+  ],
+  "wallMs": 2407
+}
